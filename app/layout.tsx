@@ -71,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${lato.variable}${inter.variable} ${playfair.variable} ${protest.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${lato.variable}${inter.variable} ${playfair.variable} ${protest.variable} ${merienda.variable} `}>
       <body className="bg-[var(--color-background)] text-[var(--color-foreground)] font-sans">
         <SplashScreen />
         <ScrollProgressBar />
