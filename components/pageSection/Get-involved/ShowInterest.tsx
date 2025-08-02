@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -15,18 +15,21 @@ const formSchema = z.object({
   honey: z.string().optional(), // honeypot
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 export default function ShowInterest() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm({
+  } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     if (data.honey) return; // spam detected
+
 
     const res = await fetch("/api/contact", {
       method: "POST",
