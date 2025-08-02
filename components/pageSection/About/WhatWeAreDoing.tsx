@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { motion } from "framer-motion";
 import "swiper/css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
@@ -105,7 +106,8 @@ const data = [
 
 export default function WhatWeAreDoing() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
+
 
   const handlePrev = () => {
     if (swiperRef.current) swiperRef.current.slidePrev();
@@ -114,6 +116,8 @@ export default function WhatWeAreDoing() {
   const handleNext = () => {
     if (swiperRef.current) swiperRef.current.slideNext();
   };
+
+  const Icon = data[activeIndex].icon;
 
   return (
     <section
@@ -137,7 +141,7 @@ export default function WhatWeAreDoing() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center space-x-4 mb-4">
-              <div className="text-5xl">{data[activeIndex].icon}</div>
+              <div className="text-5xl"><Icon /></div>
               <h3 className="text-2xl font-bold text-green-500 font-[Playfair]">
                 {data[activeIndex].title}
               </h3>
@@ -173,7 +177,7 @@ export default function WhatWeAreDoing() {
                     }`}
                   >
                     <div className="flex items-center space-x-3 mb-2">
-                      <div className="text-xl">{item.icon}</div>
+                      <div className="text-xl"><item.icon /></div>
                       <h4 className="text-md font-semibold text-green-500">
                         {item.title}
                       </h4>

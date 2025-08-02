@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { motion } from "framer-motion";
 import "swiper/css";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
@@ -91,7 +92,8 @@ const data = [
 
 export default function HomeIssues() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
+
 
   const handlePrev = () => {
     if (swiperRef.current) swiperRef.current.slidePrev();
