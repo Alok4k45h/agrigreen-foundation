@@ -1,14 +1,11 @@
 
 import { IconType } from "react-icons";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 interface PathCardProps {
   title: string;
   points: string[];
   icon: IconType;
-  buttonText: string;
-  link: string;
 }
 
 export default function PathCard({
