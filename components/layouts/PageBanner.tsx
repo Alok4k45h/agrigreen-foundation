@@ -35,7 +35,6 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
               loop: true,
               delay: 60,
               deleteSpeed: 30,
-              pauseFor: 2000,
             }}
           />
         </h1>
