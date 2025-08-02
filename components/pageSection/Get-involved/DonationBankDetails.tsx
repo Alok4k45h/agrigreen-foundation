@@ -64,7 +64,7 @@ export default function DonationBankDetails() {
 
         <div className="text-sm text-gray-600">
           For any queries or confirmation, contact us at{" "}
-          <a href="mailto:contact@agrigreen.org" className="text-green-700 font-medium underline">
+          <a href="mailto:agrigreen.agf@gmail.com" className="text-green-700 font-medium underline">
             agrigreen.agf@gmail.com
           </a>
           {" "} or fill out our below contact form. we will get back to you as soon as possible.

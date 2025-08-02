@@ -8,10 +8,10 @@ const AgriTeamData = [
   {
     id: 1,
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdzADmH92YPCinCQ29lmLq_DDe4KPEjnbjg&s",
-    name: "Sundar Pichai",
-    position: "CEO, Google",
-    linkedInLink: "https://www.linkedin.com/in/sundar-pichai/",
+      "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754162596/NS_ProfilePic_wjecyf.jpg",
+      name: "Nitish Shankar",
+    position: "Founding member of  AgriGreen Foundation | Founding Member & Head- Bihar Operations at KiVi",
+    linkedInLink: "https://www.linkedin.com/in/nitish-shankar-36454819?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   },
   {
     id: 2,

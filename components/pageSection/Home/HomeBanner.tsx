@@ -80,7 +80,7 @@ export default function HomeBanner() {
             Introducing
           </h3>
 
-          <h2 className="text-5xl md:text-6xl font-extrabold drop-shadow-xl">
+          <h2 className="text-5xl md:text-6xl font-extrabold drop-shadow-xl font-[Playfair_Display]">
             <span className="text-yellow-400 text-6xl">a</span>gri
             <span className="text-green-500 text-6xl">G</span>reen
             <span className="block md:inline text-white text-xl font-normal ml-2">

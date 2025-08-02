@@ -83,7 +83,7 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-merienda">
+          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
             Contact Us
           </h3>
           <ul className="space-y-4">
@@ -108,7 +108,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-merienda">
+          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
             Quick Links
           </h3>
           <ul className="space-y-2">

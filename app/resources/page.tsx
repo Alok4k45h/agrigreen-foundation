@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <main>
       <PageBanner
-        pageHeader={"Welocome to Our Resource Hub"}
-        descOne={"Explore our comprehensive resources for sustainable agriculture."}
-        descTwo={"Empowering farmers with knowledge and tools."}
+        pageHeader={"Our Resource Hub"}
+        descOne={"Wanna learn more about agroforestry?"}
+        descTwo={"Explore our resources!"}
       />
       <ResourceSection />
       {/* Add other resource sections here */}

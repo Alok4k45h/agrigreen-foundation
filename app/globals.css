@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Merienda&family=Protest+Revolution&family=Roboto:wght@400;500;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Merienda&family=Protest+Revolution&family=Roboto:wght@400;500;700&display=swap"); */
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -47,8 +47,12 @@
 
 :root {
   --font-sans: "Roboto", sans-serif;
-  --font-serif: "Merienda", cursive;
+  --font-serif: "Merienda", serif;
   --font-display: "Protest Revolution", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
 
   /* Colors - Premium Nature Theme */
   --color-primary: #4caf50; /* Agriculture green */
@@ -145,6 +149,10 @@
   }
 
   body {
+    font-family: var(--font-inter);
+  }
+
+  body {
     @apply font-[Roboto] text-base leading-relaxed;
   }
 
@@ -156,9 +164,9 @@
     font-family: "Roboto", sans-serif;
   }
 
-  .font-merienda {
+  /* .font-merienda {
     font-family: "Merienda", cursive;
-  }
+  } */
 
   .text-display {
     font-family: "Protest Revolution", cursive;

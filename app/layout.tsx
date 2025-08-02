@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
-import { Protest_Revolution, Roboto, Merienda } from "next/font/google";
+import { Poppins, Roboto, Lato, Inter, Playfair_Display, Protest_Revolution,Merienda } from 'next/font/google';
 import "./globals.css";
 
 // importing layout components
@@ -17,6 +17,32 @@ import ScrollProgressBar from "@/components/layouts/ScrollProgressBar";
 const protest = Protest_Revolution({ subsets: ["latin"], weight: "400", variable: "--font-display" });
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-sans" });
 const merienda = Merienda({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-serif" });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], // Adjust based on your needs
+  variable: '--font-poppins',    // Optional for Tailwind
+  display: 'swap',
+});
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lato',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // adjust as needed
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 // Defining metadata
 export const metadata: Metadata = {
@@ -45,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${protest.variable} ${roboto.variable} ${merienda.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${lato.variable}${inter.variable} ${playfair.variable} ${protest.variable}`}>
       <body className="bg-[var(--color-background)] text-[var(--color-foreground)] font-sans">
         <SplashScreen />
         <ScrollProgressBar />

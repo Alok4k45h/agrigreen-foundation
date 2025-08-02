@@ -112,11 +112,11 @@ export default function HomeResult() {
         >
           {results.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="backdrop-blur-md text-white flex flex-col justify-between h-80 transition-transform hover:-translate-y-2 hover:shadow-yellow-400 bg-green-50 rounded-xl shadow-lg p-6 text-justify hover:shadow-2xl duration-300 border border-green-400">
+              <div className="backdrop-blur-md text-white flex flex-col justify-between h-fit md:h-72 transition-transform hover:-translate-y-2 hover:shadow-yellow-400 bg-green-50 rounded-xl shadow-lg p-6 text-justify hover:shadow-2xl duration-300 border border-green-400">
                 <h3 className="text-xl font-bold text-green-800 mb-4">
                   {item.heading}
                 </h3>
-                <p className="text-sm text-gray-700 flex-1 mb-2">
+                <p className="text-sm text-gray-700 flex-1 mb-1">
                   <strong className="text-green-800">Result:</strong> {item.result}
                 </p>
                 <p className="text-sm text-gray-700">

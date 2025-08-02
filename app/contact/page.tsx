@@ -10,8 +10,8 @@ export default function ContactPage() {
     <>
     <PageBanner
       pageHeader={"Contact Us"}
-      descOne={"We'd love to hear from you!"}
-      descTwo={"Reach out for inquiries, feedback, or just to say hello."}
+      descOne={"Contact with Nature!"}
+      descTwo={"Contact with Us!"}
     />
     <div className="min-h-screen py-16 px-4 md:px-12">
       <div className="max-w-7xl mx-auto">

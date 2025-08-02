@@ -23,7 +23,7 @@ export default function HomeIntro() {
             href="/about"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-green-700 text-green-700 hover:bg-yellow-400 hover:text-green-900 rounded-lg transition-transform hover:scale-105 font-semibold"
           >
-            Learn More
+             Know More
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"

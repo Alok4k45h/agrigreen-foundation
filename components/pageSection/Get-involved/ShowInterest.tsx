@@ -103,7 +103,7 @@ export default function ShowInterest() {
         </button>
       </form>
 
-      <p className="mt-4 text-s text-gray-600 max-w-sm mx-auto">
+      <p className="text-sm text-gray-600">
         We respect your privacy. Your email will never be shared.
       </p>
     </div>

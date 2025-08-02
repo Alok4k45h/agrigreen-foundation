@@ -46,7 +46,7 @@ export default function Navbar() {
             priority
             className="rounded-full"
           />
-          <span className="text-white text-lg sm:text-xl font-bold tracking-wide">
+          <span className="text-white text-lg sm:text-xl font-bold tracking-wide font-[Merienda]">
             AGRIGREEN FOUNDATION
           </span>
         </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
             <Link
               key={path}
               href={path}
-              className={`text-white font-semibold hover:text-yellow-400 transition duration-200 ${
+              className={`text-white font-[Lato] font-semibold hover:text-yellow-400 transition duration-200 ${
                 pathname === path
                   ? "underline underline-offset-4 text-yellow-400"
                   : ""

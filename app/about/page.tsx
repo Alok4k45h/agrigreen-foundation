@@ -12,7 +12,7 @@ export default function Home() {
        <PageBanner
         pageHeader={"About Agreegreen"}
         descOne={"Agrigreen is a nonprofit organization."}
-        descTwo={"We are committed to promoting sustainable agriculture and environmental conservation."}
+        descTwo={"Promoting sustainable agriculture and environmental conservation."}
       />
       <AboutIntro />
       <MissionVisionCore />
