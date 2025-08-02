@@ -135,7 +135,7 @@ export default function WhatWeAreDoing() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {/* Large Card */}
           <motion.div
-            className="col-span-1 md:col-span-2 bg-white backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-white/20 h-[220px] w-full"
+            className="col-span-1 md:col-span-2 bg-white backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-white/20 h-[fit-content] md:h-[220px] w-full"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -160,12 +160,13 @@ export default function WhatWeAreDoing() {
             <Swiper
               direction="vertical"
               spaceBetween={20}
-              slidesPerView={3}
+              slidesPerView={2}
               loop={true}
               autoplay={{ delay: 3000 }}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-              className="h-[520px] w-full"
+              className="h-[220px] w-full"
+  
             >
               {data.map((item, index) => (
                 <SwiperSlide key={index}>
