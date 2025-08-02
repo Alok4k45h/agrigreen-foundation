@@ -8,7 +8,7 @@ export default function ContactSection() {
       className="py-16 px-4 flex justify-center items-center bg-fixed bg-center"
       style={{
         backgroundImage:
-          "url('https://img.freepik.com/premium-photo/natural-green-gradient-background-with-grainy-texture_476363-11448.jpg')",
+          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/FooterBg_vgbflq.jpg')",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
@@ -47,7 +47,7 @@ export default function ContactSection() {
         {/* Image Section */}
         <div className="flex justify-center">
           <Image
-            src="/ContactIcon.png"
+            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/ContactIcon_rputka.jpg"
             alt="Illustration of Contacting AgriGreen Team"
             width={420}
             height={300}

@@ -61,7 +61,7 @@ export default function Stories() {
             <SwiperSlide key={story.id}>
               <div className="relative rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.03] group">
                 {/* Background with overlay */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517873569652-f231d7134909?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d3JpdGluZyUyMGhhbmR8ZW58MHx8MHx8fDA%3D')] bg-cover bg-center z-0" />
+                <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/StoriesBG_myznym.jpg')] bg-cover bg-center z-0" />
                 <div className="absolute inset-0 bg-black/50 z-10" />
 
                 {/* Content */}

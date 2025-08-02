@@ -68,7 +68,7 @@ export default function MissionVisionCore() {
             className="rounded-2xl shadow-md p-8 w-full max-w-xl text-white bg-cover bg-center backdrop-blur"
             style={{
               backgroundImage:
-                "url('https://img.freepik.com/premium-photo/natural-green-gradient-background-with-grainy-texture_476363-11448.jpg')",
+                "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/FooterBg_vgbflq.jpg')",
             }}
           >
             <h2 className="text-3xl font-bold text-yellow-300 mb-4">🌍 Our Vision</h2>

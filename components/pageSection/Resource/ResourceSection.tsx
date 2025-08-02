@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 
 const resources = [
   {
-    title: "Agroforestry Manual",
-    desc: "An in-depth guide on sustainable agroforestry practices.",
+    title: "Natural Farming",
+    desc: "An in-depth guide on natural farming techniques.",
     icon: <FaBook className="text-green-700 text-3xl" />,
-    link: "https://drive.google.com/file/d/EXAMPLE_1/view?usp=sharing",
+    link: "https://drive.google.com/file/d/101C2ZC9tnGWD5Dr0C2DQIGZ4hdTopEQN/view?usp=sharing",
   },
   {
-    title: "Soil Health Guide",
-    desc: "Best practices to monitor and improve soil health.",
+    title: "Waste Management",
+    desc: "2nd National Conference on Technology Advancements in Waste Management: Challenges and Opportunities-2025 at IIT (ISM) Dhanbad",
     icon: <FaFilePdf className="text-green-700 text-3xl" />,
-    link: "https://drive.google.com/file/d/EXAMPLE_2/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1PdwWsXntW-j74hderkn05kEo0B8ZRFYl/view?usp=sharing",
   },
   {
-    title: "Climate-Smart Agriculture",
-    desc: "Techniques to make agriculture climate-resilient.",
+    title: "Felling of Trees in Agriculture Land",
+    desc: "Model Rules for Felling of Trees in Agriculture Land",
     icon: <FaFilePdf className="text-green-700 text-3xl" />,
-    link: "https://drive.google.com/file/d/EXAMPLE_3/view?usp=sharing",
+    link: "https://drive.google.com/file/d/11X6wO-06Vk_s2eN06br7gA5fceDL-yg4/view?usp=sharing",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function ResourceSection() {
 
         <div className="pt-8">
           <a
-            href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID_HERE"
+            href="https://drive.google.com/drive/folders/1UrV6cO-4yWSrLd0bdvJe8r2S1m_MrKF3?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-green-700 text-white font-medium py-3 px-6 rounded-lg shadow hover:bg-green-800 transition"

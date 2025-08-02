@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="https://res.cloudinary.com/alokkumar07/image/upload/v1737283184/Agrigreen/onlyLogoAgri_mrnnfw.png"
+            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png"
             alt="AgriGreen Logo"
             width={40}
             height={40}

@@ -28,7 +28,7 @@ export default function SplashScreen() {
             transition={{ duration: 1 }}
           >
             <img
-              src="https://res.cloudinary.com/alokkumar07/image/upload/v1737283184/Agrigreen/onlyLogoAgri_mrnnfw.png"
+              src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/agriLogoFull_xa4u0r.png"
               alt="AgriGreen Logo"
               className="mx-auto w-60 h-60 mb-4"
             />

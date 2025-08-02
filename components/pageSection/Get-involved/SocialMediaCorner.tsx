@@ -48,7 +48,7 @@ export default function SocialMediaCorner() {
   return (
     <section className="py-12 px-4" style={{
         backgroundImage:
-          "url('https://img.freepik.com/premium-photo/natural-green-gradient-background-with-grainy-texture_476363-11448.jpg')",
+          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/FooterBg_vgbflq.jpg')",
         backgroundSize: "cover",
       }}>
       <h2 className="text-3xl font-bold text-center text-yellow-400 mb-8 font-playfair" >

@@ -24,9 +24,9 @@ export default function HomeBanner() {
   );
 
   const images = [
-    "https://res.cloudinary.com/alokkumar07/image/upload/v1740508588/Agrigreen/DALL_E_2025-02-26_00.02.30_-_A_stunning_homepage_background_for_a_professional_agriculture_nature_and_climate_website._The_image_features_a_lush_green_landscape_with_a_golden_su_ds1pam.webp",
-    "https://res.cloudinary.com/alokkumar07/image/upload/v1740912417/Agrigreen/a2040f46-7c1a-47c5-b438-e1bfd43af6d1.png",
-    "https://res.cloudinary.com/alokkumar07/image/upload/v1740912716/Agrigreen/065e3bc5-e55e-4e0b-b267-e77d62f3501b.png",
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/HomeBanner1_gwvgm6.webp",
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146025/HomeBanner2_megxac.png",
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146025/HomeBanner3_dgzila.png",
   ];
 
   return (

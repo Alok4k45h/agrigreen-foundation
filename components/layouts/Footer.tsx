@@ -45,7 +45,7 @@ export default function Footer() {
       className="px-6 md:px-12 py-12 font-roboto text-base md:text-lg text-white"
       style={{
         backgroundImage:
-          "url('https://img.freepik.com/premium-photo/natural-green-gradient-background-with-grainy-texture_476363-11448.jpg')",
+          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/FooterBg_vgbflq.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -55,7 +55,7 @@ export default function Footer() {
         {/* Brand & Social */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <Image
-            src="https://res.cloudinary.com/alokkumar07/image/upload/v1737282958/Agrigreen/agriLogo_pkorzp.png"
+            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/agriLogoFull_xa4u0r.png"
             alt="Agrigreen Logo"
             width={160}
             height={160}

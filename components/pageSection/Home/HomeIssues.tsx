@@ -109,7 +109,7 @@ export default function HomeIssues() {
       className="relative py-20 bg-fixed bg-cover bg-center text-white backdrop-blur-xl"
       style={{
         backgroundImage:
-          "url('https://miro.medium.com/v2/resize:fit:1400/1*8N-A6T0wpTZPVsOqTAhDKg.jpeg')",
+          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/IssueBG_ie9u8x.jpg')",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-10">
