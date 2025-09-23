@@ -24,9 +24,10 @@ export default function HomeBanner() {
   );
 
   const images = [
-    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/HomeBanner1_gwvgm6.webp",
-    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146025/HomeBanner2_megxac.png",
-    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146025/HomeBanner3_dgzila.png",
+    
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1756060473/HomeBanner_p2vmfk.jpg",
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1756060905/HomeBanner1_wedumx.jpg",
+    "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1756387278/HomeBanner6_hdua27.jpg",
   ];
 
   return (
@@ -53,14 +54,14 @@ export default function HomeBanner() {
       </div>
 
       {/* Text Overlay */}
-      <div className="absolute top-1/2 left-1/2 z-30 transform -translate-x-1/2 -translate-y-1/2 w-[92%] md:w-[45%] text-white">
-        <div className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-white/30 transition-all animate-fade-in space-y-4">
-          <h3 className="text-lg md:text-xl font-semibold flex items-center font-poppins">
+      <div className="absolute top-1/2 left-1/2 md:left-1/3 z-30 transform -translate-x-1/2 -translate-y-1/2 w-[92%] md:w-[45%] text-white">
+        <div className="space-y-4">
+          <h3 className="text-md md:text-xl font-semibold flex items-center font-poppins">
             <FaGlobe className="text-green-300 mr-2" />
             Uniting Nature, Climate & Agriculture
           </h3>
 
-          <h1 className="text-3xl md:text-4xl font-bold drop-shadow-lg text-white font-[Protest]">
+          <h1 className="text-2xl md:text-4xl font-bold drop-shadow-lg text-white ml-4">
             <Typewriter
               options={{
                 strings: [
@@ -75,21 +76,20 @@ export default function HomeBanner() {
             />
           </h1>
 
-          <h3 className="text-lg md:text-xl font-semibold flex items-center font-poppins">
+          <h3 className="text-md md:text-xl font-semibold flex items-center font-poppins">
             <FaSeedling className="text-green-400 mr-2" />
-            Introducing
+            Introducing the world of 
           </h3>
 
-          <h2 className="text-5xl md:text-6xl font-extrabold drop-shadow-xl font-[Playfair_Display]">
-            <span className="text-yellow-400 text-6xl">a</span>gri
-            <span className="text-green-500 text-6xl">G</span>reen
-            <span className="block md:inline text-white text-xl font-normal ml-2">
-              Foundation
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg text-white ml-4">
+            <span className="text-yellow-400 text-5xl md:text-6xl">a</span>gri🌾
+            {" "}
+            <span className="text-green-500 text-5xl md:text-6xl">G</span>reen
+            <FaSeedling className="text-green-400 ml-2 inline-block" />
           </h2>
 
           <p className="italic text-sm md:text-base text-white/90">
-            The future of farming lies in sustainability. Join the revolution 🌾
+            The future of farming lies in sustainability.<br /> Join the revolution 🌾
           </p>
 
           <a

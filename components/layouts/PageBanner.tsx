@@ -13,7 +13,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
       className="relative h-[50vh] md:h-[40vh] w-full flex items-center justify-center bg-center bg-cover"
       style={{
         backgroundImage:
-          "url('https://img.koreatimes.co.kr/upload/newsV2/images/startupCEOs_03_nthing_45be5613d3ccc.gif')",
+          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758550944/PageBanner_ewdgyi.gif')",
       }}
       role="banner"
       aria-label="Page banner section"
@@ -27,7 +27,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
           {pageHeader}
         </div>
 
-        <h1 className="text-3xl md:text-4xl  font-bold text-white font-[Playfair] leading-tight">
+        <h1 className="text-3xl md:text-4xl  font-bold text-white leading-tight">
           <Typewriter
             options={{
               strings: [descOne, descTwo],

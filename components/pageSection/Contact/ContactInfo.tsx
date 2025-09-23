@@ -18,8 +18,6 @@ export default function ContactInfo() {
       </header>
 
       <address className="not-italic text-center space-y-1 mb-6">
-        <p className="font-semibold text-green-900">Phone: <a href="tel:+917424927160" className="hover:underline">+91-7424927160</a>
-        <a href="tel:+917903758833" className="hover:underline">+91-7903758833</a></p>
         <p className="font-semibold text-green-900">Email: <a href="mailto:agrigreen@gmail.com" className="hover:underline">agrigreen.agf@gmail.com</a></p>
       </address>
 
@@ -49,7 +47,7 @@ export default function ContactInfo() {
             className="w-full h-48 border-0"
             allowFullScreen
             loading="lazy"
-            title="AgriGreen Office Location"
+            title="Agri Green Office Location"
           />
         </div>
       </div>

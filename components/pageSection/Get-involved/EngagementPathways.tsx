@@ -50,14 +50,14 @@ export default function EngagementPathways() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <p className="text-green-600 text-lg md:text-xl font-medium tracking-wide font-[serif]">
+          <p className="text-green-600 text-lg md:text-xl font-medium tracking-wide">
             Get Involved
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-2">
             Engagement Pathways
           </h2>
           <p className="text-gray-600 mt-4 max-w-xl mx-auto text-base">
-            Join AgriGreen in building a sustainable future through volunteerism,
+            Join Agri Green in building a sustainable future through volunteerism,
             partnership, or donations.
           </p>
         </motion.div>

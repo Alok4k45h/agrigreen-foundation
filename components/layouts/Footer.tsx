@@ -50,20 +50,20 @@ export default function Footer() {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
 
         {/* Brand & Social */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <Image
             src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/agriLogoFull_xa4u0r.png"
-            alt="Agrigreen Logo"
+            alt="Agri Green Logo"
             width={160}
             height={160}
             className="bg-white rounded-full hover:scale-105 transition-transform duration-300"
             priority
           />
           <p className="mt-4 max-w-sm leading-relaxed">
-            Agrigreen Foundation empowers communities and ecosystems through regenerative agriculture and education.
+            Agri Green Foundation empowers communities and ecosystems through regenerative agriculture and education.
           </p>
           <div className="flex gap-4 mt-5">
             {socialLinks.map(({ href, icon: Icon, label, color }) => (
@@ -91,10 +91,7 @@ export default function Footer() {
               <FaMailBulk className="mt-1" />
               <span>agrigreen.agf@gmail.com</span>
             </li>
-            <li className="flex items-start gap-3">
-              <FaPhoneAlt className="mt-1" />
-              <span>+91-7424927160, +91-7903758833</span>
-            </li>
+            
             <li className="flex items-start gap-3">
               <FaMapMarkedAlt className="mt-1 text-xl" />
               <span>
@@ -129,12 +126,26 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+
+        {/* Career Option */}
+        <div>
+          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
+            Career at Agri Green
+          </h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="#" className="hover:text-green-300 transition-colors">
+                Will be Communicated soon
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Footer Bottom */}
       <div className="mt-12 pt-6 border-t border-yellow-400 text-center text-sm sm:text-base">
-        <p>&copy; {new Date().getFullYear()} Agrigreen. All rights reserved.</p>
-        <p className="mt-1">Agrigreen is a nonprofit organization.</p>
+        <p>&copy; {new Date().getFullYear()} Agri Green. All rights reserved.</p>
+        <p className="mt-1">Agri Green is a nonprofit organization.</p>
       </div>
     </footer>
   );

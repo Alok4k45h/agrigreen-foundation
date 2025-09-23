@@ -29,7 +29,7 @@ export default function InitiativesSpotlight() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center text-2xl md:text-3xl font-bold text-green-800 mb-8 font-[Protest Revolution]"
+        className="text-center text-2xl md:text-3xl font-bold text-green-800 mb-8"
       >
         Current Initiatives Spotlight
       </motion.h2>

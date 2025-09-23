@@ -31,24 +31,22 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 px-4 md:px-8 py-3 ${
-        scrolled ? "bg-green-900/80 shadow-md" : "bg-transparent"
-      } backdrop-blur-md`}
+        scrolled ? " bg-amber-50 shadow-md border-b-4 border-green-600" : "backdrop-blur-md"
+      }`}
       
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png"
-            alt="AgriGreen Logo"
-            width={40}
-            height={40}
+            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1756390535/AgriLogo_fvvdai.png"
+            alt="Agri Green Logo"
+            width={200}
+            height={200}
             priority
-            className="rounded-full"
+            className="rounded hover:scale-105 transition-transform duration-300 object-cover"
           />
-          <span className="text-white text-lg sm:text-xl font-bold tracking-wide font-[Merienda]">
-            AGRIGREEN FOUNDATION
-          </span>
+          
         </Link>
 
         {/* Desktop Navigation */}
@@ -57,9 +55,9 @@ export default function Navbar() {
             <Link
               key={path}
               href={path}
-              className={`text-white font-[Lato] font-semibold hover:text-yellow-400 transition duration-200 ${
+              className={`text-black font-semibold hover:text-green-500 transition duration-200 ${
                 pathname === path
-                  ? "underline underline-offset-4 text-yellow-400"
+                  ? "underline underline-offset-4 text-green-500"
                   : ""
               }`}
             >
@@ -67,7 +65,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link href="/get-involved#DonationBankDetails">
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
+            <Button className="bg-green-500 text-black hover:bg-green-600">
               Donate
             </Button>
           </Link>
@@ -77,23 +75,23 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="text-white text-xl">
+              <Button variant="ghost" className="text-black text-xl">
                 ☰
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-green-900/95 p-6">
+            <SheetContent side="right" className="bg-amber-50 p-6">
               <div className="flex flex-col items-start space-y-6 mt-10">
                 {navLinks.map(({ path, label }) => (
                   <Link
                     key={path}
                     href={path}
-                    className="text-white text-lg font-medium hover:text-yellow-400 transition"
+                    className="text-black text-lg font-medium hover:text-green-500 transition"
                   >
                     {label}
                   </Link>
                 ))}
                 <Link href="/get-involved#DonationBankDetails" >
-                  <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
+                  <Button className="bg-green-500 text-black hover:bg-green-600">
                     Donate
                   </Button>
                 </Link>
@@ -105,3 +103,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+

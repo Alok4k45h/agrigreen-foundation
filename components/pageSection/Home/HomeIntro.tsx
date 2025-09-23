@@ -7,15 +7,14 @@ export default function HomeIntro() {
   return (
     <section className="w-full py-16">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-green-700 flex justify-center items-center gap-3">
+        <h1 className="text-4xl md:text-5xl font-bold Playfair_Display] text-green-700 flex justify-center items-center gap-3">
           <FaLeaf className="text-green-700 animate-bounce" />
           Who We Are?
         </h1>
 
-        <p className="mt-6 text-gray-700 text-lg md:text-xl leading-relaxed text-justify md:text-center font-[Roboto]">
-          We are a passionate team on a mission to create a sustainable future through
-          youth-driven agroforestry. By blending traditional wisdom with modern technology,
-          we restore ecosystems, combat climate change, and promote sustainable farming.
+        <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-10 text-justify font-light mt-5">
+          Agri Green Foundation is a pioneering non-governmental organization committed to cultivating a sustainable future through its integrated work in agroforestry, livelihood enhancement, and climate change action. Established in the year 2015, with the core belief that environmental stewardship and human well-being are intrinsically linked, the foundation operates at the nexus of ecological restoration and community empowerment
+
         </p>
 
         <div className="mt-8">

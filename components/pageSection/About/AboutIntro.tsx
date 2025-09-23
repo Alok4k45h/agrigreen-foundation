@@ -13,7 +13,7 @@ export default function AboutIntro() {
           viewport={{ once: true }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-green-700 mb-8 text-center">
-            We are AgriGreen
+            In the World of Agri Green
           </h1>
 
           <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-10 text-justify font-light">
@@ -41,7 +41,7 @@ export default function AboutIntro() {
           <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
             <iframe
               src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="AgriGreen Mission Video"
+              title="Agri Green Mission Video"
               allowFullScreen
               className="w-full h-75 rounded-lg"
             ></iframe>

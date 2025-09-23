@@ -80,7 +80,7 @@ export default function NewsletterSubscribe() {
     >
       <div className="max-w-xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-green-700 dark:text-green-100">
-          Join Our Green Newsletter 🌿
+          Join Our Agri Green Newsletter 🌿
         </h2>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
           Stay updated with our sustainable efforts and climate-smart farming.

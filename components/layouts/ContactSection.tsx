@@ -16,8 +16,10 @@ export default function ContactSection() {
       <div className="max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center">
         {/* Text Section */}
         <div className="space-y-6 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 font-serif drop-shadow-md">
-            Get in Touch with <span className="text-green-400">Nature</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 drop-shadow-md">
+            Get in Touch with <br /> 
+            <span className="text-green-400 mt-5">Natural(Nature+Rural) India</span> 
+            
           </h2>
           <p className="text-white text-lg leading-relaxed font-sans">
             Have questions or want to collaborate? We’re here to help! Let’s build a greener future together.
@@ -48,7 +50,7 @@ export default function ContactSection() {
         <div className="flex justify-center">
           <Image
             src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/ContactIcon_rputka.jpg"
-            alt="Illustration of Contacting AgriGreen Team"
+            alt="Illustration of Contacting Agri Green Team"
             width={420}
             height={300}
             priority

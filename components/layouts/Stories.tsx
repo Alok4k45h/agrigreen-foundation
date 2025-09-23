@@ -9,24 +9,31 @@ import Image from "next/image";
 const stories = [
   {
     id: 1,
-    name: "Name, Designation if any",
+    name: "Dr. Vandana Shiva (Environmental activist and author)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Empowering communities to reconnect with nature for a better future.",
-    image: "https://cdn-icons-png.flaticon.com/256/3001/3001758.png",
+      "Harmony with nature should not be considered a luxury but a necessity.",
+    image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756994866/VandanaShiva_dffjwj.webp",
   },
   {
     id: 2,
-    name: "Name & Designation if any",
+    name: "Mahatma Gandhi",
     description:
-      "Sustainability starts with awareness. We are inspiring change through real action and stories of impact.",
-    image: "https://cdn-icons-png.flaticon.com/256/3001/3001758.png",
+      "The earth provides enough to satisfy every man's needs, but not every man's greed.",
+    image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756995360/Mahatma_mhhxna.jpg",
   },
   {
     id: 3,
-    name: "Name & Designation if any",
+    name: "Wangari Maathai (Nobel Peace Prize Laureate & Environmentalist)",
     description:
-      "From the fields to the forests, our mission is rooted in protecting the planet through every small effort.",
-    image: "https://cdn-icons-png.flaticon.com/256/3001/3001758.png",
+      "When we plant trees, we plant the seeds of peace and hope.",
+    image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756996433/Wangar%C4%A9_Maathai_glzzcp.png",
+  },
+  {
+    id: 4,
+    name: "Chinese Proverb",
+    description:
+      "The best time to plant a tree was 20 years ago. The second-best time is now.",
+    image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1758551457/Proverbs_1_1200_800_80_dqiwk7.jpg",
   },
 ];
 
@@ -69,8 +76,8 @@ export default function Stories() {
                   <Image
                     src={story.image}
                     alt={`Photo of ${story.name}`}
-                    width={100}
-                    height={100}
+                    width={120}
+                    height={120}
                     className="rounded-full object-cover mb-4 border-4 border-green-300 shadow-md bg-white"
                   />
                   <p className="text-base md:text-lg leading-relaxed font-sans mb-4">

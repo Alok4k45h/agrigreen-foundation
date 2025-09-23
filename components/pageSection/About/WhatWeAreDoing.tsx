@@ -142,15 +142,15 @@ export default function WhatWeAreDoing() {
           >
             <div className="flex items-center space-x-4 mb-4">
               <div className="text-5xl"><Icon /></div>
-              <h3 className="text-2xl font-bold text-green-500 font-[Playfair]">
+              <h3 className="text-2xl font-bold text-green-500">
                 {data[activeIndex].title}
               </h3>
             </div>
-            <p className="text-black mb-4 font-[Roboto] leading-relaxed">
+            <p className="text-black mb-4  leading-relaxed">
               <strong className="text-green-500">Issue:</strong> {data[activeIndex].practice}
             </p>
             
-            <p className="text-black font-[Roboto] leading-relaxed">
+            <p className="text-black  leading-relaxed">
               <strong className="text-green-500">Impact:</strong> {data[activeIndex].impact}
             </p>
           </motion.div>

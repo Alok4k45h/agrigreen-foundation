@@ -1,38 +1,46 @@
 "use client";
 
-
 import PersonCard from "@/components/common/PersonCard";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import PersonModal from "@/components/common/PersonModal";
 
 const AgriTeamData = [
   {
     id: 1,
-    image:
-      "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754162596/NS_ProfilePic_wjecyf.jpg",
-      name: "Nitish Shankar",
-    position: "Founding member of  AgriGreen Foundation | Founding Member & Head- Bihar Operations at KiVi",
-    linkedInLink: "https://www.linkedin.com/in/nitish-shankar-36454819?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    imgLink:
+      "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758638863/Kamal-web_zkqpih.jpg",
+    name: "Kamal Krishna Singh",
+    position: "Founder & Secretary",
+    linkedInLink: "https://www.linkedin.com/in/dr-kamal-krishna-singh-942071109",
+    description: `A seasoned professional with hands-on experience of building agri-tech start-ups, innovative farming solutions and market linkages for rural communities
+    Holds a Doctorate in Biotechnology, GATE IIT Kharagpur and further from IIM, Indore`,
   },
   {
     id: 2,
-    image:
-      "https://media.glamour.com/photos/5696d35bfbaa9ddf58554452/master/w_1600%2Cc_limit/weddings-blogs-save-the-date-0515mark-zuckerberg-hoodiegate_fa.jpg",
-    name: "Mark Zuckerberg",
-    position: "CEO, Meta",
-    linkedInLink: "https://www.linkedin.com/in/markzuckerberg/",
+    imgLink:
+      "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758639094/Nitish_kkschi.jpg",
+    name: "Nitish Shankar",
+    position:
+      "Member - President",
+    linkedInLink:
+      "https://www.linkedin.com/in/nitish-shankar-36454819",
+    description: `An NRLM Fellow - Govt. of India and expert in promoting livelihood enhancement programs for rural youth, farm-based plantations & digitization of agriculture. Holds Post Graduate Diploma in Forestry Management from IIFM, Bhopal`,
   },
   {
     id: 3,
-    image:
-      "https://assets.entrepreneur.com/content/3x2/2000/1680813141-GettyImages-850154658copy.jpg?format=pjeg&auto=webp&crop=1:1",
-    name: "Bill Gates",
-    position: "Founder, Microsoft",
-    linkedInLink: "https://www.linkedin.com/in/williamhgates/",
+    imgLink:
+"",
+    name: "Dhananjay Kumar",
+    position: "Member - Treasurer",
+    linkedInLink: "",
+    description: `An expert in rural development and management of information system. Hands-on experience in project management & stakeholders’ engagement.Holds a Doctorate in Biotechnology, BIT- Mesra`,
   },
 ];
 
-
 export default function AgriTeam() {
+  const [selectedPerson, setSelectedPerson] = useState<typeof AgriTeamData[0] | null>(null);
+
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -44,24 +52,31 @@ export default function AgriTeam() {
           className="text-center mb-12"
         >
           <p className="text-green-600 text-lg md:text-xl font-medium tracking-wide font-serif">
-            Team Agrigreen
+            Team Agri Green
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-green-800 mt-2">
             People Who Dreamt the Vision
           </h2>
         </motion.div>
 
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {AgriTeamData.map((person) => (
             <PersonCard
               key={person.id}
-              imgLink={person.image}
-              name={person.name}
-              position={person.position}
-              linkedInLink={person.linkedInLink}
+              {...person}
+              onViewBio={() => setSelectedPerson(person)}
             />
           ))}
         </div>
+
+        {/* Modal */}
+        {selectedPerson && (
+          <PersonModal
+            person={selectedPerson}
+            onClose={() => setSelectedPerson(null)}
+          />
+        )}
       </div>
     </section>
   );

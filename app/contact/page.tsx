@@ -17,7 +17,7 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-green-900 mt-2">
-            Get in Touch with Nature 🌿
+            Get in Touch with Natural(Nature+Rural) India 🌿
           </h1>
           <p className="text-gray-600 mt-4 max-w-xl mx-auto text-base">
             Whether you have a question or just want to say hi, our inbox is always open. We’ll try our best to get back to you within 24 hours.

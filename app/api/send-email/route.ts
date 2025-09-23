@@ -36,8 +36,8 @@ Query: ${query}
   const autoReplyMessage = {
     from: process.env.GMAIL_USER,
     to: email,
-    subject: "Thank you for contacting AgriGreen Foundation!",
-    text: `Dear ${name},\n\nThank you for reaching out. We have received your message and will get back to you within 24 hours.\n\nRegards,\nAgriGreen Foundation`,
+    subject: "Thank you for contacting Agri Green Foundation!",
+    text: `Dear ${name},\n\nThank you for reaching out. We have received your message and will get back to you within 24 hours.\n\nRegards,\nAgri Green Foundation`,
   };
 
   try {

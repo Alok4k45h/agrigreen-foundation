@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main>
        <PageBanner
-        pageHeader={"About Agreegreen"}
-        descOne={"Agrigreen is a nonprofit organization."}
+        pageHeader={"About Agri Green"}
+        descOne={"Agri Green is a nonprofit organization."}
         descTwo={"Promoting sustainable agriculture and environmental conservation."}
       />
       <AboutIntro />

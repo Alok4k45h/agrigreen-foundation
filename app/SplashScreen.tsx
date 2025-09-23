@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaSeedling } from "react-icons/fa";
 
 export default function SplashScreen() {
   const [showSplash, setShowSplash] = useState(true);
@@ -36,15 +37,17 @@ export default function SplashScreen() {
           >
             <img
               src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/agriLogoFull_xa4u0r.png"
-              alt="AgriGreen Logo"
+              alt="Agri Green Logo"
               className="mx-auto w-60 h-60 mb-4 bg-white rounded-full shadow-lg"
             />
-            <h1 className="text-5xl  text-white font-bold mb-4 drop-shadow-xl font-[Playfair_Display]"> Welcome to 
-            <span className="text-yellow-400 pl-2 text-6xl">a</span>gri
+            <h1 className="text-5xl  text-white font-bold mb-4 drop-shadow-xl"> Introducing the world of 
+              <br />
+            <span className="text-yellow-400 pl-2 text-6xl">a</span>gri🌾 {" "}
             <span className="text-green-500 text-6xl">G</span>reen
+            <FaSeedling className="text-green-400 ml-2 inline-block" />
           </h1>
-            <p className="text-white mt-2 font-[Roboto] text-2xl">
-              Uniting Nature, Climate & Agriculture
+            <p className="text-white mt-2 text-2xl">
+              Uniting Nature, Climate & Agriculture for Sustainable Tomorrow
             </p>
           </motion.div>
         </motion.div>

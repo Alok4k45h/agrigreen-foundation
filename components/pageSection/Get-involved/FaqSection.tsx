@@ -39,7 +39,7 @@ export default function FaqSection() {
         {/* Left Image */}
         <div className="flex justify-center" data-aos="zoom-in-up">
           <Image
-            src="/Images/FaqIcon.png"
+            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754395532/FaqIcon_gydxrr.png"
             alt="FAQ Image"
             width={500}
             height={400}
@@ -49,7 +49,7 @@ export default function FaqSection() {
 
         {/* Right FAQs */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-6 text-center md:text-left font-[Protest Revolution]">
+          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-6 text-center md:text-left">
             Frequently Asked Questions
           </h2>
 

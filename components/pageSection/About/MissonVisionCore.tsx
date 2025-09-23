@@ -1,6 +1,6 @@
 "use client";
 
-import { FaLeaf, FaSeedling, FaGlobe, FaUsers } from "react-icons/fa";
+import { FaLeaf, FaSeedling, FaGlobe, FaUsers, FaMountain, FaShieldAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const coreValues = [
@@ -22,12 +22,12 @@ const coreValues = [
   {
     title: "Resilience",
     text: "We build climate-resilient farming systems helping communities adapt and thrive amidst environmental changes.",
-    icon: FaGlobe,
+    icon: FaMountain,
   },
   {
     title: "Integrity",
     text: "We maintain the highest standards of transparency, ethics, and accountability in all our actions.",
-    icon: FaGlobe,
+    icon: FaShieldAlt,
   },
 ];
 
@@ -80,7 +80,6 @@ export default function MissionVisionCore() {
           </motion.article>
         </div>
 
-        {/* Core Values */}
         {/* Core Values */}
 <motion.div
   initial={{ opacity: 0, y: 30 }}

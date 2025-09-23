@@ -27,7 +27,7 @@ export default function DonationBankDetails() {
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-green-800">Support Our Mission</h2>
           <p className="mt-4 text-lg text-gray-700">
-            You can support <strong>AgriGreen Foundation</strong> by making a donation to our verified bank account.
+            You can support <strong>Agri Green Foundation</strong> by making a donation to our verified bank account.
             Your contribution helps us in our sustainable and climate-resilient agricultural mission.
           </p>
         </div>
