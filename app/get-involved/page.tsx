@@ -3,7 +3,6 @@ import PageBanner from "@/components/layouts/PageBanner";
 import DonationBankDetails from "@/components/pageSection/Get-involved/DonationBankDetails";
 import EngagementPathways from "@/components/pageSection/Get-involved/EngagementPathways";
 import FaqSection from "@/components/pageSection/Get-involved/FaqSection";
-import ShowInterest from "@/components/pageSection/Get-involved/ShowInterest";
 import SocialMediaCorner from "@/components/pageSection/Get-involved/SocialMediaCorner";
 
 export default function Home() {
@@ -16,8 +15,7 @@ export default function Home() {
             />
       <EngagementPathways />
       <DonationBankDetails />
-      <ShowInterest />
-      <SocialMediaCorner />
+<SocialMediaCorner />
       <FaqSection />
       
     </main>

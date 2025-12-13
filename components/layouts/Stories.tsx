@@ -1,96 +1,261 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import type { Swiper as SwiperClass } from "swiper";
+import { Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
-const stories = [
+import "swiper/css";
+
+const STORIES = [
   {
     id: 1,
-    name: "Dr. Vandana Shiva (Environmental activist and author)",
-    description:
-      "Harmony with nature should not be considered a luxury but a necessity.",
+    name: "Dr. Vandana Shiva",
+    role: "Environmental Activist",
+    description: "Harmony with nature should not be considered a luxury but a necessity. The time to act for our soil and future is now.",
     image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756994866/VandanaShiva_dffjwj.webp",
+    theme: "nature" // Green
   },
   {
     id: 2,
     name: "Mahatma Gandhi",
-    description:
-      "The earth provides enough to satisfy every man's needs, but not every man's greed.",
+    role: "Leader & Philosopher",
+    description: "The earth provides enough to satisfy every man's needs, but not every man's greed. We must learn to live simply.",
     image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756995360/Mahatma_mhhxna.jpg",
+    theme: "agri" // Yellow/Gold
   },
   {
     id: 3,
-    name: "Wangari Maathai (Nobel Peace Prize Laureate & Environmentalist)",
-    description:
-      "When we plant trees, we plant the seeds of peace and hope.",
+    name: "Wangari Maathai",
+    role: "Nobel Peace Prize Laureate",
+    description: "When we plant trees, we plant the seeds of peace and hope. It is the little things citizens do that will make the difference.",
     image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1756996433/Wangar%C4%A9_Maathai_glzzcp.png",
+    theme: "climate" // Blue (using climate color for variety)
   },
   {
     id: 4,
-    name: "Chinese Proverb",
-    description:
-      "The best time to plant a tree was 20 years ago. The second-best time is now.",
+    name: "Ancient Proverb",
+    role: "Wisdom",
+    description: "The best time to plant a tree was 20 years ago. The second-best time is now. Nature is not a place to visit, it is home.",
     image: "https://res.cloudinary.com/dbp1kbs0g/image/upload/c_crop,ar_1:1,e_improve,e_sharpen/v1758551457/Proverbs_1_1200_800_80_dqiwk7.jpg",
+    theme: "nature" // Green
   },
 ];
 
+// Helper to get styles based on theme
+const getThemeClasses = (theme: string) => {
+  switch (theme) {
+    case "nature": return { 
+      text: "text-nature", 
+      border: "border-nature/30", 
+      bg: "bg-nature/5",
+      iconBg: "bg-nature/20",
+      glow: "shadow-nature/10"
+    };
+    case "agri": return { 
+      text: "text-agri", 
+      border: "border-agri/30", 
+      bg: "bg-agri/5",
+      iconBg: "bg-agri/20",
+      glow: "shadow-agri/10"
+    };
+    case "climate": return { 
+      text: "text-climate", 
+      border: "border-climate/30", 
+      bg: "bg-climate/5",
+      iconBg: "bg-climate/20",
+      glow: "shadow-climate/10"
+    };
+    default: return { 
+      text: "text-white", 
+      border: "border-white/20", 
+      bg: "bg-white/5",
+      iconBg: "bg-white/10",
+      glow: "shadow-white/5"
+    };
+  }
+};
+
 export default function Stories() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperClass | null>(null);
+
+  const activeTheme = STORIES[activeIndex].theme;
+  const activeStyles = getThemeClasses(activeTheme);
+
   return (
-    <section id="stories" className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h3 className="text-green-600 text-lg md:text-xl font-medium tracking-wide font-serif">
-            Latest Stories
-          </h3>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mt-2 leading-snug">
-            People & Ideas Making a Difference
-          </h2>
-        </div>
+    <section
+      id="stories"
+      className="relative py-24 overflow-hidden bg-background"
+      aria-labelledby="stories-heading"
+    >
+      {/* --- Background Ambience --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 h-96 w-96 rounded-full bg-nature/10 blur-[120px] animate-pulse" />
+        <div className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-agri/10 blur-[100px] animate-pulse delay-700" />
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
+      </div>
 
-        {/* Swiper Carousel */}
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={24}
-          slidesPerView={1}
-          navigation
-          autoplay={{ delay: 5000 }}
-          loop
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* --- Heading --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 md:mb-20 text-center"
         >
-          {stories.map((story) => (
-            <SwiperSlide key={story.id}>
-              <div className="relative rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.03] group">
-                {/* Background with overlay */}
-                <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/StoriesBG_myznym.jpg')] bg-cover bg-center z-0" />
-                <div className="absolute inset-0 bg-black/50 z-10" />
+          <span className={`text-sm font-bold uppercase tracking-widest font-outfit ${activeStyles.text} transition-colors duration-500`}>
+            Voices of Change
+          </span>
+          <h2
+            id="stories-heading"
+            className="mt-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl font-serif"
+          >
+            Inspiration that <br />
+            <span className="bg-gradient-to-r from-nature via-agri to-climate bg-clip-text text-transparent">
+              Roots Our Mission
+            </span>
+          </h2>
+        </motion.div>
 
-                {/* Content */}
-                <div className="relative z-20 p-6 flex flex-col items-center justify-between min-h-[380px] text-white text-center">
-                  <Image
-                    src={story.image}
-                    alt={`Photo of ${story.name}`}
-                    width={120}
-                    height={120}
-                    className="rounded-full object-cover mb-4 border-4 border-green-300 shadow-md bg-white"
+        {/* --- Swiper Carousel --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative"
+        >
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={32}
+            slidesPerView={1}
+            loop
+            autoplay={{
+              delay: 6000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="!pb-12"
+          >
+            {STORIES.map((story, index) => {
+              const styles = getThemeClasses(story.theme);
+              
+              return (
+                <SwiperSlide key={story.id} className="h-auto">
+                  {({ isActive }) => (
+                    <motion.article
+                      initial={{ opacity: 0.8, scale: 0.95 }}
+                      animate={{
+                        opacity: isActive ? 1 : 0.8,
+                        scale: isActive ? 1 : 0.95,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className={`group relative flex h-full min-h-[420px] flex-col rounded-3xl border border-white/5 backdrop-blur-xl p-8 shadow-2xl transition-all duration-500 
+                        ${isActive ? `${styles.border} ${styles.bg} shadow-lg ${styles.glow}` : "bg-secondary/40 hover:bg-secondary/60 hover:border-white/10"}`}
+                    >
+                      {/* Top Quote Icon */}
+                      <div className="mb-6 flex justify-start">
+                        <div className={`p-3 rounded-xl ${styles.iconBg} ${styles.text}`}>
+                          <Quote size={24} className="fill-current" />
+                        </div>
+                      </div>
+
+                      {/* Profile */}
+                      <div className="mb-6 flex items-center gap-4">
+                        <div className="relative h-14 w-14">
+                          <div className={`relative h-full w-full overflow-hidden rounded-full border-2 shadow-lg transition-colors duration-300 ${isActive ? styles.border : "border-white/20"}`}>
+                            <Image
+                              src={story.image}
+                              alt={story.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className={`text-lg font-bold transition-colors duration-300 ${isActive ? "text-white" : "text-gray-300 group-hover:text-white"}`}>
+                            {story.name}
+                          </h3>
+                          <p className={`text-sm font-medium ${styles.text}`}>
+                            {story.role}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Quote Text */}
+                      <blockquote className="flex-grow text-lg leading-relaxed text-gray-300 font-serif italic relative z-10">
+                        {story.description}
+                      </blockquote>
+
+                      {/* Bottom Decoration */}
+                      <div className="mt-8 flex justify-end">
+                        <div className={`h-1 w-12 rounded-full transition-all duration-500 ${isActive ? `bg-current ${styles.text}` : "bg-white/10"}`} />
+                      </div>
+
+                      {/* Background Gradient for Active Card */}
+                      {isActive && (
+                        <div className={`absolute inset-0 rounded-3xl opacity-10 bg-gradient-to-b from-current to-transparent pointer-events-none ${styles.text}`} />
+                      )}
+                    </motion.article>
+                  )}
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+
+          {/* --- Custom Controls --- */}
+          <div className="mt-12 flex items-center justify-center gap-8">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:scale-110 ${activeStyles.text} hover:bg-white/10 hover:border-current`}
+              aria-label="Previous"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {/* Pagination Indicators */}
+            <div className="flex items-center gap-2">
+              {STORIES.map((story, index) => {
+                const styles = getThemeClasses(story.theme);
+                const isActive = activeIndex === index;
+                
+                return (
+                  <button
+                    key={index}
+                    onClick={() => swiperRef.current?.slideToLoop(index)}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      isActive
+                        ? `w-8 ${styles.bg.replace('/5', '')} bg-current ${styles.text}` // Hack to get solid color
+                        : "w-2 bg-white/20 hover:bg-white/40"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
                   />
-                  <p className="text-base md:text-lg leading-relaxed font-sans mb-4">
-                    {story.description}
-                  </p>
-                  <p className="text-yellow-400 font-semibold font-serif text-lg">
-                    - {story.name}
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:scale-110 ${activeStyles.text} hover:bg-white/10 hover:border-current`}
+              aria-label="Next"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

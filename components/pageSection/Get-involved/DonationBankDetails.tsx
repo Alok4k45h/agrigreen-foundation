@@ -1,73 +1,333 @@
 "use client";
 
-import { FaUniversity, FaCopy} from "react-icons/fa";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast, Toaster } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  FaUser, FaEnvelope, FaCommentAlt, FaCopy, 
+  FaCheckCircle, FaHandHoldingHeart 
+} from "react-icons/fa";
+import { FiUploadCloud } from "react-icons/fi";
 
-const bankDetails = [
-  { label: "Account Name", value: "" },
+// --- Validation Schema ---
+const formSchema = z.object({
+  name: z.string().min(2, "Name is too short"),
+  email: z.string().email("Please enter a valid email"),
+  interest: z.enum(["volunteer", "partner", "donate"], {
+    errorMap: () => ({ message: "Please select your interest" }),
+  }),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+  honey: z.string().optional(), // Anti-spam field
+  file: z.any().optional(),     // Unified file field for Resume or Screenshot
+});
+
+type FormData = z.infer<typeof formSchema>;
+
+// --- Data ---
+const BANK_DETAILS = [
+  // { label: "Account Name", value: "Agri Green Foundation" },
   { label: "Bank Name", value: "Canara Bank" },
   { label: "Account Number", value: "4569201000036" },
   { label: "IFSC Code", value: "CNRB0004569" },
-  { label: "Branch", value: "" },
-  { label: "UPI ID", value: "" },
+  // { label: "Branch", value: "Patna Main Branch" },
+  // { label: "UPI ID", value: "agrigreen@cnrb" },
 ];
 
-export default function DonationBankDetails() {
-  const [copied, setCopied] = useState<string | null>(null);
+export default function ContactSection() {
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
 
-  const copyToClipboard = async (text: string, label: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(label);
-    setTimeout(() => setCopied(null), 2000);
+  // Watch the interest field to toggle inputs dynamically
+  const selectedInterest = watch("interest");
+
+  // --- Actions ---
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(label);
+    toast.success(`${label} copied!`, {
+      style: { background: "#10B981", color: "#fff" },
+      iconTheme: { primary: "#fff", secondary: "#10B981" },
+    });
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    if (data.honey) return; // spam detected
+
+    try {
+      const formData = new FormData();
+
+      // Attach normal fields
+   Object.entries(data).forEach(([key, value]) => {
+  if (value && key !== "file" && !(value instanceof FileList)) {
+    formData.append(key, value as string);
+  }
+});
+
+
+      // Handle file validations
+     if (data.file && data.file[0]) {
+  const uploadedFile = data.file[0];
+
+  // Size validation
+  if (data.interest === "volunteer" && uploadedFile.size > 1024 * 1024) {
+    toast.error("❌ Resume must be less than 1MB.");
+    return;
+  }
+
+  if (data.interest === "donate" && uploadedFile.size > 500 * 1024) {
+    toast.error("❌ Screenshot must be less than 500KB.");
+    return;
+  }
+
+  // IMPORTANT: backend expects "resume" or "screenshot"
+  const fieldName =
+    data.interest === "volunteer" ? "resume" : "screenshot";
+
+  formData.append(fieldName, uploadedFile);
+}
+
+      // Send request
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        toast.success("Message sent successfully! A confirmation email has been sent to your inbox.");
+        reset();
+      } else {
+        const { error } = await res.json();
+        toast.error(error || "❌ Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("❌ Network error. Please try again.");
+    }
   };
 
   return (
-    <section id="DonationBankDetails" className="bg-green-50 py-12 px-6 md:px-16 text-gray-800">
-      <div className="max-w-5xl mx-auto text-center space-y-10">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800">Support Our Mission</h2>
-          <p className="mt-4 text-lg text-gray-700">
-            You can support <strong>Agri Green Foundation</strong> by making a donation to our verified bank account.
-            Your contribution helps us in our sustainable and climate-resilient agricultural mission.
-          </p>
+    <section className="relative py-24 overflow-hidden bg-gray-950" id="contact">
+      <Toaster position="bottom-right" />
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* --- Section Header --- */}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+          >
+            Support our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-400">Mission</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-lg leading-relaxed"
+          >
+            Whether you want to volunteer, donate, or partner with us—we are ready to listen. 
+            Together, we grow a sustainable future.
+          </motion.p>
+          
         </div>
 
-        <div className="bg-white border border-green-200 shadow-md rounded-xl p-6 md:p-10 space-y-6 text-left">
-          <h3 className="text-2xl font-semibold text-green-700 flex items-center gap-2">
-            <FaUniversity className="text-green-600" /> Bank Account Details
-          </h3>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          {/* --- Left Column: Form --- */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
+          >
+            {/* Glow Effect */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-amber-500 to-emerald-500" />
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {bankDetails.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center bg-green-100 rounded-lg p-4 group">
-                <div>
-                  <p className="text-sm text-gray-600">{item.label}</p>
-                  <p className="font-semibold text-green-900">{item.value}</p>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <input type="text" {...register("honey")} className="hidden" tabIndex={-1} autoComplete="off" />
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Name */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-400 flex items-center gap-2">
+                    <FaUser className="text-emerald-500" /> Name
+                  </label>
+                  <input
+                    {...register("name")}
+                    className={`w-full bg-gray-950 border ${errors.name ? 'border-red-500' : 'border-gray-800'} rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 outline-none transition-all placeholder:text-gray-600`}
+                    placeholder="John Doe"
+                  />
+                  {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
                 </div>
-                <button
-                  onClick={() => copyToClipboard(item.value, item.label)}
-                  className="text-green-700 hover:text-green-900 transition"
-                  title={`Copy ${item.label}`}
-                >
-                  <FaCopy />
-                </button>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-400 flex items-center gap-2">
+                    <FaEnvelope className="text-emerald-500" /> Email
+                  </label>
+                  <input
+                    {...register("email")}
+                    className={`w-full bg-gray-950 border ${errors.email ? 'border-red-500' : 'border-gray-800'} rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 outline-none transition-all placeholder:text-gray-600`}
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
+                </div>
               </div>
-            ))}
-          </div>
 
-          {copied && (
-            <p className="text-sm text-green-600 font-medium mt-2">
-              ✅ <strong>{copied}</strong> copied to clipboard!
-            </p>
-          )}
-        </div>
+              {/* Interest Selector */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-400">I am interested in...</label>
+                <div className="grid grid-cols-3 gap-3">
+                  {["volunteer", "partner", "donate"].map((val) => (
+                    <label key={val} className="cursor-pointer relative">
+                      <input 
+                        type="radio" 
+                        value={val} 
+                        {...register("interest")} 
+                        className="peer sr-only" 
+                      />
+                      <div className="w-full text-center py-3 rounded-xl border border-gray-800 bg-gray-950 text-gray-500 capitalize transition-all peer-checked:bg-emerald-600 peer-checked:text-white peer-checked:border-emerald-500 peer-checked:shadow-lg hover:bg-gray-800">
+                        {val}
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                {errors.interest && <p className="text-xs text-red-400">{errors.interest.message}</p>}
+              </div>
 
-        <div className="text-sm text-gray-600">
-          For any queries or confirmation, contact us at{" "}
-          <a href="mailto:agrigreen.agf@gmail.com" className="text-green-700 font-medium underline">
-            agrigreen.agf@gmail.com
-          </a>
-          {" "} or fill out our below contact form. we will get back to you as soon as possible.
+              {/* Dynamic Upload Fields (Animated) */}
+              <AnimatePresence>
+                {(selectedInterest === "volunteer" || selectedInterest === "donate") && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border border-dashed border-gray-700 bg-gray-950/50 rounded-xl p-6 text-center group hover:border-emerald-500/50 transition-colors">
+                      <FiUploadCloud className="mx-auto text-3xl text-gray-500 group-hover:text-emerald-400 mb-2 transition-colors" />
+                      <p className="text-sm text-gray-400 mb-2">
+                        {selectedInterest === "volunteer" ? "Upload your CV / Resume" : "Upload Payment Screenshot"}
+                      </p>
+                      <input 
+                        type="file" 
+                        accept={selectedInterest === "volunteer" ? ".pdf,.doc,.docx" : "image/*"}
+                        {...register("file")}
+                        className="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20 cursor-pointer"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Message */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-400 flex items-center gap-2">
+                  <FaCommentAlt className="text-emerald-500" /> Message
+                </label>
+                <textarea
+                  {...register("message")}
+                  rows={4}
+                  className={`w-full bg-gray-950 border ${errors.message ? 'border-red-500' : 'border-gray-800'} rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 outline-none transition-all placeholder:text-gray-600 resize-none`}
+                  placeholder="Tell us a bit more..."
+                />
+                {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-900/20 transform active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                   <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  "Send Message"
+                )}
+              </button>
+            </form>
+            {/* Simple Info */}
+             <div className="text-center p-4 md:text-left">
+                <p className="text-gray-500 text-sm">
+                   We respect your privacy. Your information will be used solely to respond to your inquiry.your email will not be shared.
+                </p>
+             </div>
+          </motion.div>
+
+          {/* --- Right Column: Bank Details --- */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+             {/* Info Card */}
+             <div className="bg-gradient-to-br from-emerald-900/20 to-gray-900/40 border border-emerald-500/20 p-8 rounded-3xl relative">
+                <div className="absolute top-4 right-4 text-emerald-500/20 text-6xl">
+                  <FaHandHoldingHeart />
+                </div>
+                
+                <p className="text-gray-400 leading-relaxed mb-6">
+                  Directly support <span className="text-emerald-400 font-semibold">Agri Green Foundation</span>. Your contribution empowers rural youth and restores ecosystems.
+                </p>
+
+                <div className="space-y-3">
+                  {BANK_DETAILS.map((detail, idx) => (
+                    <div 
+                      key={idx} 
+                      className="group flex items-center justify-between p-4 bg-gray-900 border border-gray-800 rounded-xl hover:border-emerald-500/30 transition-all"
+                    >
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{detail.label}</p>
+                        <p className="text-white font-mono font-medium">{detail.value}</p>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard(detail.value, detail.label)}
+                        className="p-2 text-gray-600 hover:text-emerald-400 hover:bg-emerald-500/10 rounded-lg transition-all"
+                        aria-label={`Copy ${detail.label}`}
+                      >
+                         {copiedField === detail.label ? <FaCheckCircle className="text-emerald-500" /> : <FaCopy />}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-start gap-3 p-4 bg-amber-900/10 border border-amber-500/20 rounded-xl">
+                   <div className="text-amber-500 mt-1">💡</div>
+                   <p className="text-sm text-amber-200/80 leading-relaxed">
+                    Tip: After making a donation, please select &quot;Donate&quot; in the form and attach a screenshot for faster confirmation.
+                   </p>
+                </div>
+             </div>
+          </motion.div>
+
+          
+
         </div>
       </div>
     </section>

@@ -11,7 +11,6 @@ export default function Home() {
         descTwo={"Explore our resources!"}
       />
       <ResourceSection />
-      {/* Add other resource sections here */}
     
     </main>
   );

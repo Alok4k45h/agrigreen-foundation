@@ -1,0 +1,25 @@
+# robots.txt for Agri Green Foundation
+# Website: https://agrigreenindia.org/
+# Last Updated: 2025-10-16
+# Purpose: Control search engine crawling and indexing behavior
+
+User-agent: *
+# Allow full site access for all bots
+Allow: /
+
+# Disallow sensitive or internal paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /static/
+
+# Specify sitemap location
+Sitemap: https://agrigreenindia.org/sitemap.xml
+
+# Crawling rate control
+Crawl-delay: 10
+
+# Additional security: disallow temporary or beta environments
+Disallow: /beta/

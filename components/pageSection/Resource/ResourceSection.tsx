@@ -1,72 +1,187 @@
 "use client";
 
-import { FaFilePdf, FaBook, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { BookOpen, FileText, ExternalLink, ArrowRight, Library } from "lucide-react";
 
-const resources = [
+// --- Data Configuration ---
+const RESOURCES = [
   {
-    title: "Natural Farming",
-    desc: "An in-depth guide on natural farming techniques.",
-    icon: <FaBook className="text-green-700 text-3xl" />,
+    id: 1,
+    title: "Natural Farming Guide",
+    desc: "A comprehensive manual on soil preparation, organic fertilizers, and yield optimization techniques.",
+    icon: BookOpen,
+    type: "Guide",
     link: "https://drive.google.com/file/d/101C2ZC9tnGWD5Dr0C2DQIGZ4hdTopEQN/view?usp=sharing",
+    theme: "nature", // Green
   },
   {
-    title: "Waste Management",
-    desc: "2nd National Conference on Technology Advancements in Waste Management: Challenges and Opportunities-2025 at IIT (ISM) Dhanbad",
-    icon: <FaFilePdf className="text-green-700 text-3xl" />,
+    id: 2,
+    title: "Waste Management Report",
+    desc: "Insights from the 2nd National Conference on Technology Advancements in Waste Management.",
+    icon: FileText,
+    type: "Conference Paper",
     link: "https://drive.google.com/file/d/1PdwWsXntW-j74hderkn05kEo0B8ZRFYl/view?usp=sharing",
+    theme: "agri", // Yellow
   },
   {
-    title: "Felling of Trees in Agriculture Land",
-    desc: "Model Rules for Felling of Trees in Agriculture Land",
-    icon: <FaFilePdf className="text-green-700 text-3xl" />,
+    id: 3,
+    title: "Agricultural Land Policies",
+    desc: "Official Model Rules and legal frameworks regarding tree felling on agricultural land.",
+    icon: FileText,
+    type: "Policy Document",
     link: "https://drive.google.com/file/d/11X6wO-06Vk_s2eN06br7gA5fceDL-yg4/view?usp=sharing",
+    theme: "climate", // Blue
   },
 ];
 
+// Helper to get theme colors
+const getThemeStyles = (theme: string) => {
+  switch (theme) {
+    case "nature": return { text: "text-nature", bg: "bg-nature/10", border: "border-nature/20", hoverBorder: "hover:border-nature/50", glow: "shadow-nature/10" };
+    case "agri": return { text: "text-agri", bg: "bg-agri/10", border: "border-agri/20", hoverBorder: "hover:border-agri/50", glow: "shadow-agri/10" };
+    case "climate": return { text: "text-climate", bg: "bg-climate/10", border: "border-climate/20", hoverBorder: "hover:border-climate/50", glow: "shadow-climate/10" };
+    default: return { text: "text-white", bg: "bg-white/10", border: "border-white/20", hoverBorder: "hover:border-white/50", glow: "shadow-white/5" };
+  }
+};
+
+// --- Animation Variants ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 export default function ResourceSection() {
   return (
-    <section className="bg-green-50 min-h-screen py-14 px-6 md:px-16 text-gray-800">
-      <div className="max-w-6xl mx-auto space-y-12 text-center">
-        <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">📚 Our Resources</h1>
-          <p className="text-lg text-gray-700">
-            Download curated knowledge guides, reports, and manuals that help you participate in sustainable agricultural development.
-          </p>
+    <section className="relative py-24 px-4 sm:px-6 md:px-16 bg-[#070e0b] overflow-hidden" id="resources">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-nature/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-20 left-0 w-[500px] h-[500px] bg-agri/10 rounded-full blur-[100px] animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto space-y-16">
+        
+        {/* --- Header --- */}
+        <div className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-agri text-sm font-bold mb-6 backdrop-blur-md"
+          >
+            <Library size={16} /> <span>Knowledge Hub</span>
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif"
+          >
+            Empower Yourself with <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+              Knowledge
+            </span>
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-400 leading-relaxed"
+          >
+            Download curated guides, reports, and manuals to help you participate in sustainable agricultural development.
+          </motion.p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {resources.map((res, i) => (
-            <motion.a
-              key={i}
-              href={res.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              className="bg-white border border-green-200 rounded-xl shadow-md p-6 text-left flex flex-col gap-4 transition hover:shadow-lg"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  {res.icon}
-                  <h3 className="text-xl font-semibold text-green-900">{res.title}</h3>
+        {/* --- Resources Grid --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {RESOURCES.map((res) => {
+            const styles = getThemeStyles(res.theme);
+            
+            return (
+              <motion.a
+                key={res.id}
+                href={res.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -8 }}
+                className={`group relative flex flex-col bg-[#122b22]/40 backdrop-blur-xl border ${styles.border} rounded-3xl p-8 transition-all duration-300 shadow-xl hover:shadow-2xl ${styles.hoverBorder} ${styles.glow}`}
+              >
+                {/* Top Section: Icon & Type */}
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${styles.bg} ${styles.text}`}>
+                    <res.icon size={24} />
+                  </div>
+                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border bg-black/20 ${styles.text} ${styles.border}`}>
+                    {res.type}
+                  </span>
                 </div>
-                <FaExternalLinkAlt className="text-green-500 text-sm" />
-              </div>
-              <p className="text-sm text-gray-600">{res.desc}</p>
-            </motion.a>
-          ))}
-        </div>
 
-        <div className="pt-8">
+                {/* Content */}
+                <div className="flex-grow relative z-10 space-y-3">
+                  <h3 className={`text-xl font-bold text-white transition-colors group-hover:${styles.text}`}>
+                    {res.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {res.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Action */}
+                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+                  <span className="text-sm font-medium text-gray-500 group-hover:text-white transition-colors">
+                    Access Document
+                  </span>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white text-gray-400 group-hover:text-black`}>
+                    <ExternalLink size={16} />
+                  </div>
+                </div>
+              </motion.a>
+            );
+          })}
+        </motion.div>
+
+        {/* --- View All Button --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="flex justify-center pt-8"
+        >
           <a
             href="https://drive.google.com/drive/folders/1UrV6cO-4yWSrLd0bdvJe8r2S1m_MrKF3?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-green-700 text-white font-medium py-3 px-6 rounded-lg shadow hover:bg-green-800 transition"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 hover:border-nature hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]"
           >
-            📁 View All Resources on Google Drive
+            <div className="text-nature group-hover:scale-110 transition-transform">
+              <BookOpen size={20} />
+            </div>
+            <span>Access Full Drive Folder</span>
+            <ArrowRight size={16} className="opacity-50 group-hover:translate-x-1 group-hover:opacity-100 transition-all text-nature" />
           </a>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -1,4 +1,7 @@
 "use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 
 interface PageBannerProps {
@@ -10,34 +13,85 @@ interface PageBannerProps {
 export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerProps) {
   return (
     <section
-      className="relative h-[50vh] md:h-[40vh] w-full flex items-center justify-center bg-center bg-cover"
-      style={{
-        backgroundImage:
-          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758550944/PageBanner_ewdgyi.gif')",
-      }}
+      className="relative w-full h-[45vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-950"
       role="banner"
-      aria-label="Page banner section"
+      aria-label={`${pageHeader} - Page Banner`}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70 z-0" />
+      {/* =========================================
+          BACKGROUND LAYER (The Diffused GIF)
+         ========================================= */}
+      <div className="absolute inset-0 z-0">
+        {/* 1. The Raw GIF - slightly blurred to hide artifacts */}
+        <Image
+          src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758550944/PageBanner_ewdgyi.gif"
+          alt="Ambient agriculture background"
+          fill
+          priority // Crucial for LCP (Largest Contentful Paint)
+          className="object-cover blur-[2px] opacity-60 scale-105" // scale-105 prevents blur edges from showing
+        />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-2xl w-full mx-auto">
-        <div className="inline-block bg-white text-gray-800 px-5 py-2 rounded-md shadow-md mb-5 text-sm font-semibold uppercase tracking-wide">
-          {pageHeader}
-        </div>
+        {/* 2. The Diffusion Layer (Darkens the GIF) */}
+        <div className="absolute inset-0 bg-gray-950/80 mix-blend-multiply" />
+        
+        {/* 3. The Atmosphere Layer (Adds depth) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-transparent to-transparent" />
 
-        <h1 className="text-3xl md:text-4xl  font-bold text-white leading-tight">
-          <Typewriter
-            options={{
-              strings: [descOne, descTwo],
-              autoStart: true,
-              loop: true,
-              delay: 60,
-              deleteSpeed: 30,
-            }}
+        {/* 4. Grain Texture (Adds premium feel) */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-soft-light"></div>
+      </div>
+
+      {/* =========================================
+          CONTENT LAYER
+         ========================================= */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 text-center">
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center"
+        >
+          {/* Glassmorphic Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-md mb-8 shadow-lg shadow-emerald-900/10">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-emerald-300 text-xs md:text-sm font-bold uppercase tracking-widest">
+              {pageHeader}
+            </span>
+          </div>
+
+          {/* Heading with Typewriter */}
+          <h1 className="relative text-3xl md:text-3xl lg:text-3xl font-bold text-white leading-tight">
+            {/* Glow behind text */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-20 bg-emerald-500/20 blur-[50px] -z-10 rounded-full" />
+            
+            <div className="min-h-[4rem] md:min-h-[5rem] flex items-center justify-center">
+              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent drop-shadow-sm">
+                <Typewriter
+                  options={{
+                    strings: [descOne, descTwo],
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 30,
+                    wrapperClassName: "bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent" 
+                  }}
+                />
+              </span>
+            </div>
+          </h1>
+
+          {/* Decorative Divider */}
+          <motion.div 
+            initial={{ width: 0, opacity: 0 }}
+            animate={{ width: "120px", opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mt-8 rounded-full"
           />
-        </h1>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,79 +1,176 @@
 "use client";
 
-
-import PathCard from "@/components/common/PathCard";
 import { motion } from "framer-motion";
-import { FaHandsHelping, FaHandshake, FaChartLine } from "react-icons/fa";
+import { FaHandsHelping, FaHandshake, FaChartLine, FaCheck } from "react-icons/fa";
+import { GiSprout } from "react-icons/gi";
 
-const engagementPaths = [
+// --- Data Configuration ---
+const ENGAGEMENT_PATHS = [
   {
     id: 1,
     title: "Volunteer",
-    icon: FaHandsHelping,
+    subtitle: "Boots on the Ground",
+    description: "Join our active community and make a tangible difference through direct action.",
     points: [
       "Agroforestry field programs",
       "Youth mentorship initiatives",
       "Tech innovation projects",
-    ], // Optional for routing
+    ],
+    icon: FaHandsHelping,
+    accent: "from-emerald-400 to-green-600",
   },
   {
     id: 2,
     title: "Partner",
-    icon: FaHandshake,
+    subtitle: "Collaborate for Impact",
+    description: "Scale your organization's sustainability goals by partnering with our network.",
     points: [
-      "Corporate sustainability programs",
+      "Corporate sustainability (CSR)",
       "Research collaborations",
-      "School/University partnerships",
+      "School & University ties",
     ],
-    
+    icon: FaHandshake,
+    accent: "from-amber-400 to-orange-500",
   },
   {
     id: 3,
     title: "Donate",
-    icon: FaChartLine,
+    subtitle: "Fuel the Change",
+    description: "Your financial contribution directly funds saplings and farmer education.",
     points: [
-      "₹500 = 5 saplings planted",
-      "₹2000 = Trains 1 farmer",
+      "₹500 plants 5 saplings",
+      "₹2000 trains 1 farmer",
+      "Tax benefits available",
     ],
-    
+    icon: FaChartLine,
+    accent: "from-blue-400 to-indigo-500",
   },
 ];
 
 export default function EngagementPathways() {
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-5 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gray-950">
+      
+      {/* --- Background Ambience --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-emerald-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+        {/* Grain Texture */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* --- Header Section --- */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16 md:mb-20"
         >
-          <p className="text-green-600 text-lg md:text-xl font-medium tracking-wide">
-            Get Involved
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-green-900 mt-2">
-            Engagement Pathways
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
+            <GiSprout /> <span>Engagement Pathways</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Be the Change <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+              You Wish to See.
+            </span>
           </h2>
-          <p className="text-gray-600 mt-4 max-w-xl mx-auto text-base">
-            Join Agri Green in building a sustainable future through volunteerism,
-            partnership, or donations.
+          
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            Join Agri Green in building a sustainable future. Whether through time, 
+            partnership, or funding, your contribution plants the seeds of tomorrow.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-8">
-          {engagementPaths.map((path) => (
-            <PathCard
+        {/* --- Cards Grid --- */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {ENGAGEMENT_PATHS.map((path, index) => (
+            <motion.div
               key={path.id}
-              title={path.title}
-              points={path.points}
-              icon={path.icon}
-              
-            />
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <PathCard {...path} />
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+// --- Path Card Component ---
+interface PathCardProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  points: string[];
+  icon: React.ComponentType<{ className?: string }>;
+  accent: string;
+}
+
+function PathCard({ title, subtitle, description, points, icon: Icon, accent }: PathCardProps) {
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="relative group h-full"
+    >
+      {/* 1. Gradient Glow Border Effect */}
+      <div className={`absolute -inset-0.5 bg-gradient-to-br ${accent} rounded-[2rem] opacity-30 group-hover:opacity-100 blur transition duration-500`}></div>
+      
+      {/* 2. Card Content */}
+      <div className="relative h-full bg-gray-900/90 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 border border-gray-800 flex flex-col overflow-hidden">
+        
+        {/* Top Icon Area */}
+        <div className="flex justify-between items-start mb-6">
+          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accent} p-[1px]`}>
+            <div className="w-full h-full bg-gray-900 rounded-2xl flex items-center justify-center">
+              <Icon className="w-7 h-7 text-white" />
+            </div>
+          </div>
+          
+          {/* Subtle ID number */}
+          <span className="text-gray-800 text-6xl font-bold opacity-20 group-hover:opacity-10 transition-opacity select-none">
+            0{title === "Volunteer" ? 1 : title === "Partner" ? 2 : 3}
+          </span>
+        </div>
+
+        {/* Titles */}
+        <div className="mb-4">
+          <span className={`text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${accent} bg-clip-text text-transparent mb-2 block`}>
+            {subtitle}
+          </span>
+          <h3 className="text-2xl font-bold text-white group-hover:text-gray-100 transition-colors">
+            {title}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-400 text-sm leading-relaxed mb-8 border-b border-gray-800 pb-6">
+          {description}
+        </p>
+
+        {/* Bullet Points */}
+        <ul className="space-y-3 mb-8 flex-grow">
+          {points.map((point, idx) => (
+            <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
+              <div className={`mt-1 min-w-[16px] h-4 rounded-full flex items-center justify-center bg-gray-800 border border-gray-700`}>
+                <FaCheck className="w-2 h-2 text-emerald-400" />
+              </div>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Hover Inner Glow */}
+        <div className={`absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br ${accent} blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`}></div>
+      </div>
+    </motion.div>
   );
 }

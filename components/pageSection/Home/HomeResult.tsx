@@ -1,10 +1,16 @@
+
 "use client";
 
+import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import type { Swiper as SwiperClass } from "swiper";
+import { Autoplay, Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import { motion } from "framer-motion";
+import { Leaf, ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 
 const results = [
     {
@@ -90,42 +96,192 @@ const results = [
   ];
 
 export default function HomeResult() {
-  return (
-    <section className="relative py-20 bg-fixed bg-cover bg-center backdrop-blur-xl">
-      <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-green-700 text-center mb-12 drop-shadow-lg">
-          Results We Aim For
-        </h2>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
-        <Swiper
-          modules={[Pagination, Navigation, Autoplay]}
-          spaceBetween={20}
-          slidesPerView={1}
-          loop={true}
-          pagination={{ clickable: true }}
-          navigation={true}
-          autoplay={{ delay: 4000 }}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
+  return (
+    <section
+      id="results"
+      className="relative py-20 overflow-hidden bg-gray-950"
+    >
+      {/* Decorative Background Elements */}
+     <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 md:mb-20"
         >
-          {results.map((item) => (
-            <SwiperSlide key={item.id}>
-              <div className="backdrop-blur-md text-white flex flex-col justify-between h-fit md:h-72 transition-transform hover:-translate-y-2 hover:shadow-yellow-400 bg-green-50 rounded-xl shadow-lg p-6 text-justify hover:shadow-2xl duration-300 border border-green-400">
-                <h3 className="text-xl font-bold text-green-800 mb-4">
-                  {item.heading}
-                </h3>
-                <p className="text-sm text-gray-700 flex-1 mb-1">
-                  <strong className="text-green-800">Result:</strong> {item.result}
-                </p>
-                <p className="text-sm text-gray-700">
-                  <strong className="text-green-800">Impact:</strong> {item.impact}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <span className="text-amber-400 font-semibold tracking-wider uppercase text-sm">
+            Results & Impact
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
+            Our Results will Create a <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+              Real Impact
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* Swiper Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <Swiper
+            modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
+            }}
+            autoplay={{ 
+              delay: 5000, 
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true 
+            }}
+            pagination={{ 
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="!pb-16"
+          >
+            {results.map((item, index) => (
+              <SwiperSlide key={item.id}>
+                {({ isActive }) => (
+                  <motion.div
+                    initial={{ opacity: 0.7, scale: 0.9 }}
+                    animate={{ 
+                      opacity: isActive ? 1 : 0.7, 
+                      scale: isActive ? 1 : 0.9 
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className="h-full"
+                  >
+                    <div className={`bg-gradient-to-br ${
+                      index % 3 === 0 
+                        ? 'from-emerald-600/90 to-emerald-700/90' 
+                        : index % 3 === 1 
+                        ? 'from-amber-600/90 to-amber-700/90' 
+                        : 'from-blue-600/90 to-blue-700/90'
+                    } backdrop-blur-xl rounded-3xl border-2 ${
+                      isActive ? 'border-white/50' : 'border-white/20'
+                    } shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 flex flex-col min-h-[450px] group`}>
+                      
+                      {/* Icon Badge */}
+                      <div className="flex items-center justify-between mb-6">
+                        <div className={`w-14 h-14 rounded-2xl ${
+                          index % 3 === 0 
+                            ? 'bg-blue-500' 
+                            : index % 3 === 1 
+                            ? 'bg-indigo-500' 
+                            : 'bg-cyan-500'
+                        } flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                          <Leaf className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="text-white/70 text-sm font-mono">
+                          0{item.id}
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight">
+                        {item.heading}
+                      </h3>
+
+                      {/* Content */}
+                      <div className="space-y-4 flex-grow">
+                        <div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                            <p className="text-sm font-semibold text-white uppercase tracking-wide">
+                              Result
+                            </p>
+                          </div>
+                          <p className="text-blue-100 text-sm md:text-base leading-relaxed pl-4">
+                            {item.result}
+                          </p>
+                        </div>
+
+                        <div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                            <p className="text-sm font-semibold text-white uppercase tracking-wide">
+                              Impact
+                            </p>
+                          </div>
+                          <p className="text-blue-100 text-sm md:text-base leading-relaxed pl-4">
+                            {item.impact}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bottom Accent Line */}
+                      <div className={`mt-6 h-1 w-20 rounded-full ${
+                        index % 3 === 0 
+                          ? 'bg-blue-300' 
+                          : index % 3 === 1 
+                          ? 'bg-indigo-300' 
+                          : 'bg-cyan-300'
+                      } group-hover:w-full transition-all duration-500`}></div>
+                    </div>
+                  </motion.div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="group w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-6 h-6 text-white group-hover:text-blue-300 transition-colors" />
+            </button>
+            
+            <div className="text-white/70 text-sm font-medium">
+              {activeIndex + 1} / {results.length}
+            </div>
+
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              className="group w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-6 h-6 text-white group-hover:text-blue-300 transition-colors" />
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

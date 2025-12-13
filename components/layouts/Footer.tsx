@@ -2,150 +2,258 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  FaFacebook,
+  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaMailBulk,
-  FaMapMarkedAlt,
-  FaPhoneAlt,
   FaYoutube,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaBriefcase,
+  FaChevronRight,
+  FaLeaf,
 } from "react-icons/fa";
 
-const socialLinks = [
+// --- Data Configuration ---
+const SOCIAL_LINKS = [
   {
     href: "https://www.facebook.com/share/19ExxsA9Ze/",
-    icon: FaFacebook,
+    icon: FaFacebookF,
     label: "Facebook",
-    color: "text-[#1877f2]",
+    hoverColor: "hover:bg-[#1877f2] hover:border-[#1877f2]",
   },
   {
-    href: "#",
+    href: "https://www.instagram.com/agrigreenfoundation",
     icon: FaInstagram,
     label: "Instagram",
-    color: "text-[#e1306c]",
+    hoverColor: "hover:bg-[#e1306c] hover:border-[#e1306c]",
   },
   {
     href: "https://www.linkedin.com/company/agrigreen-foundation",
     icon: FaLinkedinIn,
     label: "LinkedIn",
-    color: "text-[#0077b5]",
+    hoverColor: "hover:bg-[#0077b5] hover:border-[#0077b5]",
   },
   {
     href: "https://www.youtube.com/@AGRIGREENFOUNDATION",
     icon: FaYoutube,
     label: "YouTube",
-    color: "text-[#ff0000]",
+    hoverColor: "hover:bg-[#ff0000] hover:border-[#ff0000]",
   },
 ];
 
+const QUICK_LINKS = [
+  { href: "#", label: "Partner With Us" },
+  { href: "#", label: "Our Impact" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Use" },
+];
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer
-      className="px-6 md:px-12 py-12 font-roboto text-base md:text-lg text-white"
-      style={{
-        backgroundImage:
-          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/FooterBg_vgbflq.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative overflow-hidden bg-gray-950 pb-10 pt-20 text-gray-100"
+      aria-label="Footer"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+      {/* --- Background Layer --- */}
+     <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
 
-        {/* Brand & Social */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <Image
-            src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/agriLogoFull_xa4u0r.png"
-            alt="Agri Green Logo"
-            width={160}
-            height={160}
-            className="bg-white rounded-full hover:scale-105 transition-transform duration-300"
-            priority
-          />
-          <p className="mt-4 max-w-sm leading-relaxed">
-            Agri Green Foundation empowers communities and ecosystems through regenerative agriculture and education.
-          </p>
-          <div className="flex gap-4 mt-5">
-            {socialLinks.map(({ href, icon: Icon, label, color }) => (
-              <Link
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className={`text-2xl md:text-3xl ${color} hover:scale-110 transition-transform`}
-              >
-                <Icon />
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Contact Info */}
-        <div>
-          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
-            Contact Us
-          </h3>
-          <ul className="space-y-4">
-            <li className="flex items-start gap-3">
-              <FaMailBulk className="mt-1" />
-              <span>agrigreen.agf@gmail.com</span>
-            </li>
-            
-            <li className="flex items-start gap-3">
-              <FaMapMarkedAlt className="mt-1 text-xl" />
-              <span>
-                <strong>HQ:</strong> 4424/A1, Rita Hari Niwas, Indrapuri Colony Near C-3, P.O. BV College, Ashiyana Ramnagari, Near Sita Ram General Store, Patna, Bihar-800014
-                <br />
-                <strong>Registered:</strong> Vill.: Katari, P.O.: Goraur, P.S.: Chhabilapur, Anchal: Rajgir, Dist.: Nalanda-803116
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
-            Quick Links
-          </h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#" className="hover:text-green-300 transition-colors">
-                External Website Link
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy-policy" className="hover:text-green-300 transition-colors">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-green-300 transition-colors">
-                Terms of Use
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Career Option */}
-        <div>
-          <h3 className="text-xl md:text-2xl text-yellow-400 font-semibold mb-4 font-Playfair_Display">
-            Career at Agri Green
-          </h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#" className="hover:text-green-300 transition-colors">
-                Will be Communicated soon
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
       </div>
 
-      {/* Footer Bottom */}
-      <div className="mt-12 pt-6 border-t border-yellow-400 text-center text-sm sm:text-base">
-        <p>&copy; {new Date().getFullYear()} Agri Green. All rights reserved.</p>
-        <p className="mt-1">Agri Green is a nonprofit organization.</p>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        {/* --- Top Grid Section --- */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, staggerChildren: 0.12 },
+            },
+          }}
+          className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8"
+        >
+          {/* Column 1: Brand & Bio */}
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="space-y-3 lg:col-span-4"
+          >
+            <Link href="/" className="inline-block" aria-label="Go to homepage">
+              <div className="relative">
+                <Image
+                  src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9,e_improve,e_sharpen/v1765222388/Agrigreen/AgriLogoremovebg_nee5jk.png"
+                  alt="Agri Green Logo"
+                  width={200}
+                  height={100}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </Link>
+
+            <p className="max-w-sm text-md text-justify text-gray-400">
+              Empowering communities and restoring ecosystems through regenerative
+              agriculture, youth education, and sustainable innovation.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex gap-3 pt-1">
+              {SOCIAL_LINKS.map(({ href, icon: Icon, label, hoverColor }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  whileHover={{ y: -3 }}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 transition-all duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 ${hoverColor}`}
+                >
+                  <Icon className="text-lg" />
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Column 2: Contact Info */}
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="space-y-6 lg:col-span-4"
+          >
+            <h3 className="flex items-center gap-2 text-lg font-bold text-white">
+              <span className="h-1 w-8 rounded-full bg-gradient-to-r from-emerald-500 to-amber-500" />
+              Contact Us
+            </h3>
+
+            <ul className="space-y-4 text-md">
+              <li className="group flex items-start gap-4">
+                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-emerald-500 transition-colors group-hover:border-emerald-500/60">
+                  <FaEnvelope />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Email Us
+                  </span>
+                  <a
+                    href="mailto:agrigreen.agf@gmail.com"
+                    className="block text-gray-300 transition-colors hover:text-white"
+                  >
+                    agrigreen.agf@gmail.com
+                  </a>
+                </div>
+              </li>
+
+              <li className="group flex items-start gap-4">
+                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-amber-500 transition-colors group-hover:border-amber-500/60">
+                  <FaMapMarkerAlt />
+                </div>
+                <div>
+                  <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Headquarters
+                  </span>
+                  <p className="max-w-xs leading-relaxed text-gray-400">
+                    424/A1, Rita Hari Niwas, Indrapuri Colony Near C-3, P.O. BV College, Ashiyana Ramnagari, Near Sita Ram General Store, Patna, Bihar-800014
+                  </p>
+                </div>
+              </li>
+
+              <li className="group flex items-start gap-4">
+                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-emerald-400 transition-colors group-hover:border-emerald-400/60">
+                  <FaLeaf />
+                </div>
+                <div>
+                  <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Registered Office
+                  </span>
+                  <p className="max-w-xs leading-relaxed text-gray-400">
+                    Vill.: Katari, P.O.: Goraur, P.S.: Chhabilapur, Anchal: Rajgir, Dist.: Nalanda-803116
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Column 3: Links & Careers */}
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-4 lg:block lg:space-y-8"
+          >
+            {/* Quick Links */}
+            <div>
+              <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-white">
+                <span className="h-1 w-8 rounded-full bg-gradient-to-r from-amber-500 to-emerald-500" />
+                Quick Links
+              </h3>
+              <ul className="space-y-3 text-sm">
+                {QUICK_LINKS.map(({ href, label }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      className="group flex items-center gap-2 text-gray-400 transition-colors hover:text-emerald-400"
+                    >
+                      <FaChevronRight className="text-xs text-gray-600 transition-colors group-hover:text-emerald-500" />
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Careers Box */}
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gradient-to-br from-gray-900 to-gray-800 p-5"
+            >
+              <div className="pointer-events-none absolute right-0 top-0 p-3 opacity-10 transition-opacity duration-300 group-hover:opacity-20">
+                <FaBriefcase className="text-6xl text-white" />
+              </div>
+              <h4 className="mb-2 flex items-center gap-2 font-semibold text-white">
+                <FaBriefcase className="text-amber-500" />
+                Join Our Team
+              </h4>
+              <p className="mb-3 text-xs leading-relaxed text-gray-400">
+                Passionate about sustainability? Opportunities will be announced soon.
+              </p>
+              <span className="inline-block rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                Stay Tuned
+              </span>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* --- Bottom Footer Bar --- */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-sm text-gray-500 md:flex-row">
+          <div className="text-center md:text-left">
+            <p>
+              &copy; {currentYear}{" "}
+              <span className="font-medium text-emerald-400">Agri Green Foundation</span>. All
+              rights reserved.
+            </p>
+            <p className="mt-1 opacity-70">
+              A non-profit organization dedicated to a greener future.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <Link href="/privacy-policy" className="transition-colors hover:text-gray-300">
+              Privacy
+            </Link>
+            <Link href="#" className="transition-colors hover:text-gray-300">
+              Cookies
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-gray-300">
+              Terms
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

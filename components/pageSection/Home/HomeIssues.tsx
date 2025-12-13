@@ -1,194 +1,306 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperClass } from "swiper";
-import { motion } from "framer-motion";
-import "swiper/css";
-import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  FaArrowLeft, FaArrowRight, FaExclamationTriangle, FaLeaf
+} from "react-icons/fa";
 
-const data = [
+  const ISSUES = [
     {
+      id: 1,
       icon: "🌍",
       title: "Climate Change and Its Impact on Agriculture",
+      theme: "climate", // Blue
       issue:
         "Climate change poses significant challenges to agriculture, including altered rainfall patterns, extreme weather events, and rising temperatures that negatively affect crop yields and food security.",
       approach:
         "We promote climate-smart agriculture and agroforestry practices that enhance resilience to climate change by improving soil health, increasing biodiversity, and diversifying crop production systems.",
     },
     {
+      id: 2,
       icon: "🌱",
       title: "Soil Degradation and Erosion",
+      theme: "nature", // Green
       issue:
         "Unsustainable farming practices, such as excessive tilling and monoculture, lead to soil degradation and erosion, reducing agricultural productivity.",
       approach:
         "We advocate for soil conservation techniques such as cover cropping, crop rotation, and agroforestry to restore soil health and prevent erosion.",
     },
     {
+      id: 3,
       icon: "🌳",
       title: "Deforestation and Loss of Biodiversity",
+      theme: "nature",
       issue:
         "Deforestation and the loss of biodiversity due to agricultural expansion and unsustainable land-use practices are major contributors to environmental degradation.",
       approach:
         "Through agroforestry and tree-based farming systems, we encourage the restoration of degraded lands and the promotion of biodiversity, supporting ecosystems while improving agricultural productivity.",
     },
     {
+      id: 4,
       icon: "💧",
       title: "Pollution from Agricultural Practices",
+      theme: "climate",
       issue:
         "The use of synthetic fertilizers, pesticides, and improper waste disposal contributes to soil and water pollution, adversely affecting the environment and human health.",
       approach:
         "We promote organic farming, integrated pest management, and waste recycling practices to reduce pollution and minimize the use of harmful chemicals in agriculture.",
     },
     {
+      id: 5,
       icon: "♻️",
       title: "Waste Management and Pollution",
+      theme: "climate", // Yellow
       issue:
         "Improper waste disposal in rural and agricultural areas leads to environmental pollution, including plastic waste and the burning of crop residues, which contribute to air pollution.",
       approach:
         "We advocate for sustainable waste management solutions, including recycling, composting, and using agricultural waste for energy production, reducing both pollution and waste in farming communities.",
     },
     {
+      id: 6,
       icon: "⚡",
       title: "Energy Inefficiency and Dependence on Fossil Fuels",
+      theme: "climate",
       issue:
         "Rural communities often rely on traditional, inefficient energy sources, such as wood and fossil fuels, leading to deforestation, health problems, and greenhouse gas emissions.",
       approach:
         "We promote the adoption of clean, renewable energy solutions, such as solar energy for irrigation and biogas plants for cooking and lighting, reducing reliance on polluting energy sources.",
     },
     {
+      id: 7,
       icon: "🚜",
       title: "Lack of Access to Sustainable Agricultural Technologies",
+      theme: "agri",
       issue:
         "Many farmers, particularly in rural areas, lack access to modern technologies and knowledge that could help improve productivity and sustainability.",
       approach:
         "We work to provide farmers with access to the latest agricultural technologies, such as precision farming tools, soil sensors, and climate-resilient crop varieties, enabling them to make informed decisions and improve their yields sustainably.",
     },
     {
+      id: 8,
       icon: "💰",
       title: "Rural Poverty and Limited Economic Opportunities",
+      theme: "agri",
       issue:
         "Many rural communities face economic hardship, with limited access to markets, financial resources, and business opportunities, especially for women and youth.",
       approach:
         "By organizing farmers into self-help groups and producer companies, we help create opportunities for economic growth, access to markets, and financial support, empowering rural youth and women to become leaders in sustainable farming.",
     },
     {
+      id: 9,
       icon: "♀️",
       title: "Gender Inequality in Agriculture",
+      theme: "agri",
       issue:
         "Women, particularly in rural communities, often face barriers to land ownership, access to resources, and decision-making power in agriculture.",
       approach:
         "We focus on gender inclusion by supporting women’s self-help groups, ensuring women have access to resources, training, and opportunities to take leadership roles in sustainable agricultural practices.",
     },
     {
+      id: 10,
       icon: "🤝",
       title: "Fragmented Farming Communities and Lack of Collective Action",
+      theme: "agri",
       issue:
         "Fragmented farming communities often lack the ability to collaborate and share resources, limiting their impact and access to larger markets or technological advancements.",
       approach:
         "We facilitate the formation of community organizations such as farmer producer companies and cooperatives, enabling farmers to work together, share knowledge, and access better resources, services, and markets.",
     },
-  ]
+  ];
+
+// Helper to get color classes based on theme
+const getThemeColor = (theme: string) => {
+  switch (theme) {
+    case "nature": return "text-nature border-nature bg-nature/10";
+    case "agri": return "text-agri border-agri bg-agri/10";
+    case "climate": return "text-climate border-climate bg-climate/10";
+    default: return "text-white border-white bg-white/10";
+  }
+};
+
+const getThemeHex = (theme: string) => {
+  switch (theme) {
+    case "nature": return "#22c55e";
+    case "agri": return "#eab308";
+    case "climate": return "#0ea5e9";
+    default: return "#ffffff";
+  }
+};
 
 export default function HomeIssues() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<SwiperClass | null>(null);
+  const [direction, setDirection] = useState(0); 
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-
-  const handlePrev = () => {
-    if (swiperRef.current) swiperRef.current.slidePrev();
+  const handleJump = (index: number) => {
+    setDirection(index > activeIndex ? 1 : -1);
+    setActiveIndex(index);
   };
 
   const handleNext = () => {
-    if (swiperRef.current) swiperRef.current.slideNext();
+    setDirection(1);
+    setActiveIndex((prev) => (prev + 1) % ISSUES.length);
   };
 
+  const handlePrev = () => {
+    setDirection(-1);
+    setActiveIndex((prev) => (prev === 0 ? ISSUES.length - 1 : prev - 1));
+  };
+
+  // Auto-play logic... (same as before)
+  useEffect(() => {
+    autoPlayRef.current = setInterval(handleNext, 6000);
+    return () => { if (autoPlayRef.current) clearInterval(autoPlayRef.current); };
+  }, [activeIndex]);
+
+  const activeThemeHex = getThemeHex(ISSUES[activeIndex].theme);
+
   return (
-    <section
-      id="issueSection"
-      className="relative py-20 bg-fixed bg-cover bg-center text-white backdrop-blur-xl"
-      style={{
-        backgroundImage:
-          "url('https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146023/IssueBG_ie9u8x.jpg')",
-      }}
+    <section 
+      className="relative py-24 overflow-hidden bg-background"
+      aria-label="Issues we address"
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 ">
-          Issues We Address
-        </h2>
+      {/* Dynamic Background Glow based on active theme */}
+      <div className="absolute inset-0 pointer-events-none transition-colors duration-1000">
+        <motion.div 
+          animate={{ backgroundColor: activeThemeHex }}
+          className="absolute top-20 left-0 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10" 
+        />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {/* Large Card */}
-          <motion.div
-            className="col-span-1 md:col-span-2 bg-white backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-white/20 h-[fit-content] md:h-[320px] w-full"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="text-5xl">{data[activeIndex].icon}</div>
-              <h3 className="text-2xl font-bold text-green-500 ">
-                {data[activeIndex].title}
-              </h3>
-            </div>
-            <p className="text-black mb-4  leading-relaxed">
-              <strong className="text-green-500">Issue:</strong> {data[activeIndex].issue}
-            </p>
-            <p className="text-black mb-4 leading-relaxed">
-              <strong className="text-green-500">Our Approach:</strong> {data[activeIndex].approach}
-            </p>
-          </motion.div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 md:mb-20"
+        >
+          <span className="text-nature  bg-naturefont-semibold tracking-wider uppercase text-sm font-outfit">
+            Challenges & Approach
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 font-serif">
+            Turning Challenges into <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-nature via-agri to-climate">
+              Sustainable Opportunities
+            </span>
+          </h2>
+        </motion.div>
 
-          {/* Carousel with Arrows Below */}
-          <div className="col-span-1 flex flex-col items-center justify-between">
-            <Swiper
-              direction="vertical"
-              spaceBetween={20}
-              slidesPerView={2}
-              loop={true}
-              autoplay={{ delay: 3000 }}
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-              className="h-[320px] w-full"
-  
-            >
-              {data.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className={`transition-all duration-300 p-4 rounded-xl shadow-md border border-white/10 bg-white hover:bg-white/20 ${
-                      index === activeIndex
-                        ? "scale-105 ring-2 ring-green-500"
-                        : "opacity-80"
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          
+          {/* --- Left: Navigation List --- */}
+          <div className="hidden lg:block lg:col-span-5 space-y-2">
+            <div className="max-h-[500px] overflow-y-auto custom-scrollbar pr-2 space-y-2">
+              {ISSUES.map((item, idx) => {
+                const isActive = activeIndex === idx;
+                const themeHex = getThemeHex(item.theme);
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleJump(idx)}
+                    className={`w-full text-left p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group ${
+                      isActive ? "bg-white/5 border border-white/10" : "hover:bg-white/5 border border-transparent"
                     }`}
+                    style={{ borderColor: isActive ? themeHex : 'transparent' }}
                   >
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="text-xl">{item.icon}</div>
-                      <h4 className="text-md font-semibold text-green-500">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <p className="text-xs text-black line-clamp-3">
-                      {item.issue}
-                    </p>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                    <span className="text-2xl">{item.icon}</span>
+                    <span className={`font-medium text-lg ${isActive ? "text-white" : "text-gray-400 group-hover:text-gray-200"}`}>
+                      {item.title}
+                    </span>
+                    {isActive && (
+                       <motion.div 
+                         layoutId="active-indicator" 
+                         className="ml-auto w-2 h-2 rounded-full shadow-[0_0_10px]"
+                         style={{ backgroundColor: themeHex, boxShadow: `0 0 10px ${themeHex}` }}
+                       />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
-            {/* Arrows Below Carousel */}
-            <div className="mt-6 flex gap-4">
-              <button
-                onClick={handlePrev}
-                className="text-green-800 bg-white hover:bg-white/60 rounded-full p-2 transition"
-              >
-                <FaArrowCircleLeft className="text-4xl" />
-              </button>
-              <button
-                onClick={handleNext} className="text-green-800 bg-white hover:bg-white/60 rounded-full p-2 transition"
-                
-              >
-                <FaArrowCircleRight className="text-4xl" />
-              </button>
+          {/* --- Right: Active Card --- */}
+          <div className="col-span-12 lg:col-span-7">
+            <div className="relative min-h-[500px] md:min-h-[450px]">
+              <AnimatePresence mode="wait" initial={false} custom={direction}>
+                <motion.div
+                  key={activeIndex}
+                  custom={direction}
+                  initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="relative bg-secondary/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl overflow-hidden"
+                  style={{ borderColor: `${activeThemeHex}33` }} // 20% opacity border of theme color
+                >
+                  {/* Decorative Gradient Background */}
+                  <div 
+                    className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-20"
+                    style={{ backgroundColor: activeThemeHex }}
+                  ></div>
+
+                  {/* Header */}
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 mb-8 border-b border-white/10 pb-8">
+                    <div 
+                      className="w-20 h-20 bg-black/40 rounded-2xl flex items-center justify-center text-5xl shadow-inner border border-white/5"
+                    >
+                      {ISSUES[activeIndex].icon}
+                    </div>
+                    <div>
+                      <span 
+                        className="font-mono text-sm tracking-wider uppercase"
+                        style={{ color: activeThemeHex }}
+                      >
+                        {ISSUES[activeIndex].theme} ISSUE
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mt-1 leading-tight">
+                        {ISSUES[activeIndex].title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="grid gap-6 relative z-10">
+                    <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-5">
+                      <div className="flex items-center gap-2 text-red-400 font-bold mb-2">
+                        <FaExclamationTriangle />
+                        <h4>The Challenge</h4>
+                      </div>
+                      <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                        {ISSUES[activeIndex].issue}
+                      </p>
+                    </div>
+
+                    <div 
+                      className="rounded-2xl p-5 border"
+                      style={{ 
+                        backgroundColor: `${activeThemeHex}10`, // 10% opacity
+                        borderColor: `${activeThemeHex}30`     // 30% opacity
+                      }}
+                    >
+                      <div className="flex items-center gap-2 font-bold mb-2" style={{ color: activeThemeHex }}>
+                        <FaLeaf />
+                        <h4>Agri Green Approach</h4>
+                      </div>
+                      <p className="text-gray-200 leading-relaxed text-sm md:text-base">
+                        {ISSUES[activeIndex].approach}
+                      </p>
+                    </div>
+                  </div>
+
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            
+            {/* Mobile Nav */}
+            <div className="flex lg:hidden items-center justify-between mt-8 px-2">
+               <button onClick={handlePrev} className="p-4 rounded-full bg-white/10 text-white"><FaArrowLeft /></button>
+               <button onClick={handleNext} className="p-4 rounded-full text-black font-bold" style={{ backgroundColor: activeThemeHex }}><FaArrowRight /></button>
             </div>
           </div>
         </div>
@@ -196,4 +308,3 @@ export default function HomeIssues() {
     </section>
   );
 }
-
