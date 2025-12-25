@@ -11,8 +11,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn-icons-png.flaticon.com',
-        pathname: '/**', // Allow all icons from flaticon
+        hostname: 'drive.google.com',
       },
     ],
   }

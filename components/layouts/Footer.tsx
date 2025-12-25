@@ -4,40 +4,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaBriefcase,
-  FaChevronRight,
-  FaLeaf,
-} from "react-icons/fa";
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  MapPin,
+  Mail,
+  Briefcase,
+  ChevronRight,
+  Leaf,
+} from "lucide-react";
 
 // --- Data Configuration ---
 const SOCIAL_LINKS = [
   {
     href: "https://www.facebook.com/share/19ExxsA9Ze/",
-    icon: FaFacebookF,
+    icon: Facebook,
     label: "Facebook",
     hoverColor: "hover:bg-[#1877f2] hover:border-[#1877f2]",
   },
   {
     href: "https://www.instagram.com/agrigreenfoundation",
-    icon: FaInstagram,
+    icon: Instagram,
     label: "Instagram",
     hoverColor: "hover:bg-[#e1306c] hover:border-[#e1306c]",
   },
   {
     href: "https://www.linkedin.com/company/agrigreen-foundation",
-    icon: FaLinkedinIn,
+    icon: Linkedin,
     label: "LinkedIn",
     hoverColor: "hover:bg-[#0077b5] hover:border-[#0077b5]",
   },
   {
     href: "https://www.youtube.com/@AGRIGREENFOUNDATION",
-    icon: FaYoutube,
+    icon: Youtube,
     label: "YouTube",
     hoverColor: "hover:bg-[#ff0000] hover:border-[#ff0000]",
   },
@@ -117,7 +117,7 @@ export default function Footer() {
                   whileHover={{ y: -3 }}
                   className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 bg-gray-900 text-gray-400 transition-all duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 ${hoverColor}`}
                 >
-                  <Icon className="text-lg" />
+                  <Icon className="w-5 h-5" /> {/* Adjusted size class */}
                 </motion.a>
               ))}
             </div>
@@ -136,7 +136,7 @@ export default function Footer() {
             <ul className="space-y-4 text-md">
               <li className="group flex items-start gap-4">
                 <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-emerald-500 transition-colors group-hover:border-emerald-500/60">
-                  <FaEnvelope />
+                  <Mail className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -153,7 +153,7 @@ export default function Footer() {
 
               <li className="group flex items-start gap-4">
                 <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-amber-500 transition-colors group-hover:border-amber-500/60">
-                  <FaMapMarkerAlt />
+                  <MapPin className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -167,7 +167,7 @@ export default function Footer() {
 
               <li className="group flex items-start gap-4">
                 <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-emerald-400 transition-colors group-hover:border-emerald-400/60">
-                  <FaLeaf />
+                  <Leaf className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -199,7 +199,7 @@ export default function Footer() {
                       href={href}
                       className="group flex items-center gap-2 text-gray-400 transition-colors hover:text-emerald-400"
                     >
-                      <FaChevronRight className="text-xs text-gray-600 transition-colors group-hover:text-emerald-500" />
+                      <ChevronRight className="w-3 h-3 text-gray-600 transition-colors group-hover:text-emerald-500" />
                       {label}
                     </Link>
                   </li>
@@ -213,10 +213,10 @@ export default function Footer() {
               className="relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gradient-to-br from-gray-900 to-gray-800 p-5"
             >
               <div className="pointer-events-none absolute right-0 top-0 p-3 opacity-10 transition-opacity duration-300 group-hover:opacity-20">
-                <FaBriefcase className="text-6xl text-white" />
+                <Briefcase className="w-12 h-12 text-white" />
               </div>
               <h4 className="mb-2 flex items-center gap-2 font-semibold text-white">
-                <FaBriefcase className="text-amber-500" />
+                <Briefcase className="w-5 h-5 text-amber-500" />
                 Join Our Team
               </h4>
               <p className="mb-3 text-xs leading-relaxed text-gray-400">

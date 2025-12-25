@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // To detect page changes
+import { usePathname } from "next/navigation"; 
 import { Toaster } from "sonner";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, LazyMotion } from "framer-motion";
 
 // Components
 import Navbar from "@/components/layouts/Navbar";
@@ -13,6 +13,11 @@ import ScrollProgressBar from "@/components/layouts/ScrollProgressBar";
 import BackToTop from "@/components/layouts/BackToTop";
 import ContactSection from "@/components/layouts/ContactSection";
 import Stories from "@/components/layouts/Stories";
+import SkipLink from "@/components/layouts/SkipLink";
+
+// Helper to load animation features
+const loadFeatures = () =>
+  import("@/components/utils/domAnimation").then((res) => res.default);
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [showSplash, setShowSplash] = useState(true);
@@ -40,13 +45,15 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           className="flex flex-col min-h-screen"
         >
           <ScrollProgressBar /> 
+          <SkipLink />
           <Navbar />
-          
-          {/* Main Content Area */}
-          <main className="flex-grow">
-            {children}
-          </main>
 
+          <LazyMotion features={loadFeatures}>
+             <main className="flex-grow">
+               {children}
+             </main>
+          </LazyMotion>
+          
           {/* Global Components */}
           <ContactSection />
           <Stories />

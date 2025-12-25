@@ -34,7 +34,7 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
           {/* --- Background Layers (Matches Global Theme) --- */}
           <div className="absolute inset-0 z-0">
             {/* Gradient Base */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-[#05110d] to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-[#05110d] to-black" />
             
             {/* Cyber Grid */}
             <div className="absolute inset-0 bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-30" />
@@ -44,14 +44,14 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
           </div>
 
           {/* --- Central Content --- */}
-          <div className="relative z-10 flex flex-col items-center px-4">
+          <div className="relative z-10 flex flex-col items-center px-2">
             
             {/* SVG Growing Tree Animation */}
             <svg
               width="200"
               height="250"
               viewBox="0 0 200 250"
-              className="mb-8 overflow-visible"
+              className="overflow-visible"
             >
               {/* 1. The Seed (Solar Gold Accent) */}
               <motion.circle
@@ -134,10 +134,10 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
             <motion.div
               initial="hidden"
               animate="visible"
-              className="text-center space-y-6"
+              className="text-center"
             >
-              <div className="relative w-60 h-60 mx-auto mb-2">
-                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
+              <div className="relative w-100 h-100 mx-auto mb-2">
+                <div className="absolute inset-0 rounded-full" />
                 <Image
                   src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9,e_improve,e_sharpen/v1765222388/Agrigreen/AgriLogoremovebg_nee5jk.png"
                   alt="Agri Green Logo"
@@ -146,21 +146,6 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
                   priority
                 />
               </div>
-            
-              <h1
-              id="home-banner-heading"
-              className="text-3xl font-bold leading-tight text-white md:text-4xl drop-shadow-lg"
-            >
-              Introducing the world of
-              <br />
-              <span className="bg-gradient-to-r from-amber-300 to-emerald-400 bg-clip-text text-4xl text-transparent md:text-6xl drop-shadow-2xl">
-                agri🌾Green
-              </span>
-            </h1>
-              
-              <p className="max-w-md mx-auto text-sm md:text-base font-sans text-gray-400 uppercase tracking-widest leading-relaxed border-t border-white/10 pt-4">
-                Uniting Nature, Climate & Agriculture <br/> for a Sustainable Tomorrow
-              </p>
             </motion.div>
           </div>
         </motion.div>

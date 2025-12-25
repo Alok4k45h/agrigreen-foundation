@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { FiArrowRight, FiMail, FiUsers } from "react-icons/fi";
+import { ArrowRight, Mail, Users } from "lucide-react"; 
 
 // --- Configuration ---
 const SLIDES = [
@@ -59,7 +59,7 @@ export default function HomeBanner() {
 
   return (
     <section
-      className="relative flex w-full min-h-screen items-center overflow-hidden bg-gray-900 pt-5"
+      className="relative flex w-full min-h-screen items-center overflow-hidden bg-gray-900 pt-10"
       aria-labelledby="home-banner-heading"
     >
       {/* --- Background Image Slider --- */}
@@ -80,14 +80,14 @@ export default function HomeBanner() {
               priority={currentSlide === 0}
               sizes="100vw"
               className="object-cover"
-              quality={90}
+              quality={85}
             />
           </motion.div>
         </AnimatePresence>
         
         {/* Gradient Overlays for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/80" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" /> */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-black/30 to-black/80" />
       </div>
 
       {/* --- Background Ambience (Additional Effects) --- */}
@@ -133,7 +133,7 @@ export default function HomeBanner() {
                     </AnimatePresence>
 
                     {/* Floating Badge inside Image */}
-                    <motion.div
+                    {/* <motion.div
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{
@@ -146,7 +146,7 @@ export default function HomeBanner() {
                       className="absolute bottom-4 left-4 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg sm:text-base"
                     >
                       Agri Green
-                    </motion.div>
+                    </motion.div> */}
                   </div>
 
                   {/* Device Bottom Bar */}
@@ -246,14 +246,14 @@ export default function HomeBanner() {
                 className="group inline-flex items-center gap-3 rounded-xl bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/50 md:text-base"
               >
                 Our Mission
-                <FiArrowRight className="transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="transition-transform group-hover:translate-x-1" />
               </Link>
 
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-3 rounded-xl border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700/70 md:text-base"
               >
-                <FiMail />
+                <Mail />
                 Get in Touch
               </Link>
             </div>
@@ -266,7 +266,7 @@ export default function HomeBanner() {
                     key={i}
                     className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-900 bg-gray-700/70 backdrop-blur-sm text-xs text-gray-300"
                   >
-                    <FiUsers />
+                    <Users />
                   </div>
                 ))}
               </div>

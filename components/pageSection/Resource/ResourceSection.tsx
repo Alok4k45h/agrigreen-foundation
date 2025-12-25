@@ -12,7 +12,7 @@ const RESOURCES = [
     icon: BookOpen,
     type: "Guide",
     link: "https://drive.google.com/file/d/101C2ZC9tnGWD5Dr0C2DQIGZ4hdTopEQN/view?usp=sharing",
-    theme: "nature", // Green
+    theme: "nature",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const RESOURCES = [
     icon: FileText,
     type: "Conference Paper",
     link: "https://drive.google.com/file/d/1PdwWsXntW-j74hderkn05kEo0B8ZRFYl/view?usp=sharing",
-    theme: "agri", // Yellow
+    theme: "agri",
   },
   {
     id: 3,
@@ -30,17 +30,17 @@ const RESOURCES = [
     icon: FileText,
     type: "Policy Document",
     link: "https://drive.google.com/file/d/11X6wO-06Vk_s2eN06br7gA5fceDL-yg4/view?usp=sharing",
-    theme: "climate", // Blue
+    theme: "climate",
   },
 ];
 
-// Helper to get theme colors
+// Helper to get theme colors (Adaptive)
 const getThemeStyles = (theme: string) => {
   switch (theme) {
     case "nature": return { text: "text-nature", bg: "bg-nature/10", border: "border-nature/20", hoverBorder: "hover:border-nature/50", glow: "shadow-nature/10" };
     case "agri": return { text: "text-agri", bg: "bg-agri/10", border: "border-agri/20", hoverBorder: "hover:border-agri/50", glow: "shadow-agri/10" };
     case "climate": return { text: "text-climate", bg: "bg-climate/10", border: "border-climate/20", hoverBorder: "hover:border-climate/50", glow: "shadow-climate/10" };
-    default: return { text: "text-white", bg: "bg-white/10", border: "border-white/20", hoverBorder: "hover:border-white/50", glow: "shadow-white/5" };
+    default: return { text: "text-foreground", bg: "bg-secondary", border: "border-border", hoverBorder: "hover:border-foreground/50", glow: "shadow-none" };
   }
 };
 
@@ -53,20 +53,15 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
 export default function ResourceSection() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 md:px-16 bg-[#070e0b] overflow-hidden" id="resources">
+    <section className="relative py-24 px-4 sm:px-6 md:px-16 bg-background overflow-hidden transition-colors duration-300" id="resources">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-nature/10 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-20 left-0 w-[500px] h-[500px] bg-agri/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
@@ -77,7 +72,7 @@ export default function ResourceSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-agri text-sm font-bold mb-6 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-agri text-sm font-bold mb-6 backdrop-blur-md"
           >
             <Library size={16} /> <span>Knowledge Hub</span>
           </motion.div>
@@ -87,7 +82,7 @@ export default function ResourceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif"
+            className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif"
           >
             Empower Yourself with <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
@@ -100,7 +95,7 @@ export default function ResourceSection() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-lg text-gray-400 leading-relaxed"
+            className="text-lg text-muted-foreground leading-relaxed"
           >
             Download curated guides, reports, and manuals to help you participate in sustainable agricultural development.
           </motion.p>
@@ -124,34 +119,34 @@ export default function ResourceSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -8 }}
-                className={`group relative flex flex-col bg-[#122b22]/40 backdrop-blur-xl border ${styles.border} rounded-3xl p-8 transition-all duration-300 shadow-xl hover:shadow-2xl ${styles.hoverBorder} ${styles.glow}`}
+                className={`group relative flex flex-col bg-card backdrop-blur-xl border ${styles.border} rounded-3xl p-8 transition-all duration-300 shadow-lg hover:shadow-2xl ${styles.hoverBorder} ${styles.glow}`}
               >
                 {/* Top Section: Icon & Type */}
                 <div className="flex justify-between items-start mb-6 relative z-10">
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${styles.bg} ${styles.text}`}>
                     <res.icon size={24} />
                   </div>
-                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border bg-black/20 ${styles.text} ${styles.border}`}>
+                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border bg-secondary ${styles.text} ${styles.border}`}>
                     {res.type}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="flex-grow relative z-10 space-y-3">
-                  <h3 className={`text-xl font-bold text-white transition-colors group-hover:${styles.text}`}>
+                  <h3 className={`text-xl font-bold text-foreground transition-colors group-hover:${styles.text}`}>
                     {res.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {res.desc}
                   </p>
                 </div>
 
                 {/* Bottom Action */}
-                <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
-                  <span className="text-sm font-medium text-gray-500 group-hover:text-white transition-colors">
+                <div className="mt-8 pt-6 border-t border-border flex items-center justify-between relative z-10">
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                     Access Document
                   </span>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all bg-white/5 group-hover:bg-white text-gray-400 group-hover:text-black`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all bg-secondary group-hover:bg-foreground text-muted-foreground group-hover:text-background`}>
                     <ExternalLink size={16} />
                   </div>
                 </div>
@@ -172,7 +167,7 @@ export default function ResourceSection() {
             href="https://drive.google.com/drive/folders/1UrV6cO-4yWSrLd0bdvJe8r2S1m_MrKF3?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 hover:border-nature hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-card hover:bg-secondary border border-border text-foreground rounded-xl font-semibold transition-all duration-300 hover:border-nature hover:shadow-lg hover:shadow-nature/20"
           >
             <div className="text-nature group-hover:scale-110 transition-transform">
               <BookOpen size={20} />

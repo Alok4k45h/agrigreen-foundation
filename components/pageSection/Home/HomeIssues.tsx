@@ -2,11 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FaArrowLeft, FaArrowRight, FaExclamationTriangle, FaLeaf
-} from "react-icons/fa";
+import { ArrowLeft, ArrowRight, AlertTriangle, Leaf } from "lucide-react";
 
-  const ISSUES = [
+const ISSUES = [
     {
       id: 1,
       icon: "🌍",
@@ -109,21 +107,11 @@ import {
     },
   ];
 
-// Helper to get color classes based on theme
-const getThemeColor = (theme: string) => {
-  switch (theme) {
-    case "nature": return "text-nature border-nature bg-nature/10";
-    case "agri": return "text-agri border-agri bg-agri/10";
-    case "climate": return "text-climate border-climate bg-climate/10";
-    default: return "text-white border-white bg-white/10";
-  }
-};
-
 const getThemeHex = (theme: string) => {
   switch (theme) {
-    case "nature": return "#22c55e";
-    case "agri": return "#eab308";
-    case "climate": return "#0ea5e9";
+    case "nature": return "#22c55e"; // var(--nature)
+    case "agri": return "#eab308";   // var(--agri)
+    case "climate": return "#0ea5e9"; // var(--climate)
     default: return "#ffffff";
   }
 };
@@ -148,7 +136,7 @@ export default function HomeIssues() {
     setActiveIndex((prev) => (prev === 0 ? ISSUES.length - 1 : prev - 1));
   };
 
-  // Auto-play logic... (same as before)
+  // Auto-play logic
   useEffect(() => {
     autoPlayRef.current = setInterval(handleNext, 6000);
     return () => { if (autoPlayRef.current) clearInterval(autoPlayRef.current); };
@@ -161,11 +149,11 @@ export default function HomeIssues() {
       className="relative py-24 overflow-hidden bg-background"
       aria-label="Issues we address"
     >
-      {/* Dynamic Background Glow based on active theme */}
+      {/* Dynamic Background Glow */}
       <div className="absolute inset-0 pointer-events-none transition-colors duration-1000">
         <motion.div 
           animate={{ backgroundColor: activeThemeHex }}
-          className="absolute top-20 left-0 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10" 
+          className="absolute top-20 left-0 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10 dark:opacity-20" 
         />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
       </div>
@@ -179,10 +167,10 @@ export default function HomeIssues() {
           viewport={{ once: true }}
           className="mb-16 md:mb-20"
         >
-          <span className="text-nature  bg-naturefont-semibold tracking-wider uppercase text-sm font-outfit">
+          <span className="text-nature font-semibold tracking-wider uppercase text-sm font-outfit">
             Challenges & Approach
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 font-serif">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 font-serif">
             Turning Challenges into <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-nature via-agri to-climate">
               Sustainable Opportunities
@@ -203,12 +191,12 @@ export default function HomeIssues() {
                     key={item.id}
                     onClick={() => handleJump(idx)}
                     className={`w-full text-left p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group ${
-                      isActive ? "bg-white/5 border border-white/10" : "hover:bg-white/5 border border-transparent"
+                      isActive ? "bg-secondary border border-border" : "hover:bg-secondary/50 border border-transparent"
                     }`}
                     style={{ borderColor: isActive ? themeHex : 'transparent' }}
                   >
                     <span className="text-2xl">{item.icon}</span>
-                    <span className={`font-medium text-lg ${isActive ? "text-white" : "text-gray-400 group-hover:text-gray-200"}`}>
+                    <span className={`font-medium text-lg ${isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}>
                       {item.title}
                     </span>
                     {isActive && (
@@ -235,19 +223,19 @@ export default function HomeIssues() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="relative bg-secondary/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl overflow-hidden"
-                  style={{ borderColor: `${activeThemeHex}33` }} // 20% opacity border of theme color
+                  className="relative bg-secondary/60 backdrop-blur-xl border border-border rounded-3xl p-6 md:p-10 shadow-2xl overflow-hidden"
+                  style={{ borderColor: `${activeThemeHex}40` }}
                 >
-                  {/* Decorative Gradient Background */}
+                  {/* Decorative Gradient Background (Subtle) */}
                   <div 
-                    className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-20"
+                    className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-10 dark:opacity-20"
                     style={{ backgroundColor: activeThemeHex }}
                   ></div>
 
                   {/* Header */}
-                  <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 mb-8 border-b border-white/10 pb-8">
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 mb-8 border-b border-border pb-8">
                     <div 
-                      className="w-20 h-20 bg-black/40 rounded-2xl flex items-center justify-center text-5xl shadow-inner border border-white/5"
+                      className="w-20 h-20 bg-background/50 rounded-2xl flex items-center justify-center text-5xl shadow-sm border border-border"
                     >
                       {ISSUES[activeIndex].icon}
                     </div>
@@ -258,7 +246,7 @@ export default function HomeIssues() {
                       >
                         {ISSUES[activeIndex].theme} ISSUE
                       </span>
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mt-1 leading-tight">
+                      <h3 className="text-2xl md:text-3xl font-bold text-foreground mt-1 leading-tight">
                         {ISSUES[activeIndex].title}
                       </h3>
                     </div>
@@ -266,12 +254,12 @@ export default function HomeIssues() {
 
                   {/* Content */}
                   <div className="grid gap-6 relative z-10">
-                    <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-5">
-                      <div className="flex items-center gap-2 text-red-400 font-bold mb-2">
-                        <FaExclamationTriangle />
+                    <div className="bg-red-500/5 dark:bg-red-900/10 border border-red-500/10 rounded-2xl p-5">
+                      <div className="flex items-center gap-2 text-red-500 font-bold mb-2">
+                        <AlertTriangle className="w-5 h-5" />
                         <h4>The Challenge</h4>
                       </div>
-                      <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                         {ISSUES[activeIndex].issue}
                       </p>
                     </div>
@@ -279,15 +267,15 @@ export default function HomeIssues() {
                     <div 
                       className="rounded-2xl p-5 border"
                       style={{ 
-                        backgroundColor: `${activeThemeHex}10`, // 10% opacity
-                        borderColor: `${activeThemeHex}30`     // 30% opacity
+                        backgroundColor: `${activeThemeHex}08`, 
+                        borderColor: `${activeThemeHex}20` 
                       }}
                     >
                       <div className="flex items-center gap-2 font-bold mb-2" style={{ color: activeThemeHex }}>
-                        <FaLeaf />
+                        <Leaf className="w-5 h-5" />
                         <h4>Agri Green Approach</h4>
                       </div>
-                      <p className="text-gray-200 leading-relaxed text-sm md:text-base">
+                      <p className="text-foreground/90 leading-relaxed text-sm md:text-base">
                         {ISSUES[activeIndex].approach}
                       </p>
                     </div>
@@ -299,8 +287,8 @@ export default function HomeIssues() {
             
             {/* Mobile Nav */}
             <div className="flex lg:hidden items-center justify-between mt-8 px-2">
-               <button onClick={handlePrev} className="p-4 rounded-full bg-white/10 text-white"><FaArrowLeft /></button>
-               <button onClick={handleNext} className="p-4 rounded-full text-black font-bold" style={{ backgroundColor: activeThemeHex }}><FaArrowRight /></button>
+               <button onClick={handlePrev} className="p-4 rounded-full bg-secondary text-foreground border border-border"><ArrowLeft /></button>
+               <button onClick={handleNext} className="p-4 rounded-full text-black font-bold" style={{ backgroundColor: activeThemeHex }}><ArrowRight /></button>
             </div>
           </div>
         </div>

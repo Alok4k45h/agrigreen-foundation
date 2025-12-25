@@ -2,30 +2,33 @@
 
 @theme {
   /* --- 1. The Tri-Color Identity --- */
-  --color-nature: var(--nature); /* Green: Plants, Leaves */
-  --color-agri: var(--agri); /* Yellow: Grain, Sun */
-  --color-climate: var(--climate); /* Blue: Sky, Water */
+  --color-nature: var(--nature);
+  --color-agri: var(--agri);
+  --color-climate: var(--climate);
 
   /* --- Standard Mappings --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-primary: var(--nature); /* Primary Action = Nature Green */
-  --color-primary-foreground: #000000;
+  --color-primary: var(--nature);
+  --color-primary-foreground: #ffffff;
 
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--foreground);
 
-  --color-accent: var(--agri); /* Accents = Agri Yellow */
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+
+  --color-accent: var(--agri);
   --color-accent-foreground: #000000;
 
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--nature);
 
-  --radius-lg: 0.75rem;
-  --radius-md: 0.5rem;
-  --radius-sm: 0.25rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
@@ -36,25 +39,75 @@
 
 @layer base {
   :root {
-    /* --- Base Backgrounds --- */
-    --background: #050a08; /* Deepest Organic Black */
-    --foreground: #eaf5ee; /* Mist White */
+    /* --- LIGHT MODE (Default) --- */
+    --background: #ffffff;
+    --foreground: #0f172a; /* Slate 900 */
 
-    /* --- THE TRI-COLOR PALETTE (High-Tech / Neon inspired) --- */
-    --nature: #22c55e; /* Vivid Leaf Green (Green-500) */
-    --agri: #eab308; /* Golden Grain Yellow (Yellow-500) */
-    --climate: #0ea5e9; /* Sky/Water Blue (Sky-500) */
+    --card: #f8fafc; /* Slate 50 */
+    --card-foreground: #0f172a;
 
-    /* --- UI Shades --- */
-    --secondary: #111c18; /* Dark Moss Card BG */
-    --border: #1f352b; /* Subtle Green Border */
-    --input: #1f352b;
+    --secondary: #f1f5f9; /* Slate 100 */
+    --secondary-foreground: #0f172a;
+
+    /* Primary Colors (Darker for visibility on white) */
+    --nature: #16a34a; /* Green-600 */
+    --agri: #ca8a04; /* Yellow-600 */
+    --climate: #0284c7; /* Sky-600 */
+
+    --border: #e2e8f0; /* Slate 200 */
+    --input: #e2e8f0;
 
     --radius: 0.75rem;
   }
 
+  .dark {
+    /* --- DARK MODE --- */
+    --background: #050a08;
+    --foreground: #eaf5ee;
+
+    --card: #111c18;
+    --card-foreground: #eaf5ee;
+
+    --secondary: #111c18;
+    --secondary-foreground: #eaf5ee;
+
+    /* Primary Colors (Vivid for dark mode) */
+    --nature: #22c55e; /* Green-500 */
+    --agri: #eab308; /* Yellow-500 */
+    --climate: #0ea5e9; /* Sky-500 */
+
+    --border: #1f352b;
+    --input: #1f352b;
+  }
+
+  /* --- 1. Global Document Enhancements --- */
+  html {
+    scroll-behavior: smooth; /* Smooth anchor scrolling */
+    -webkit-tap-highlight-color: transparent; /* Remove blue tap box on mobile */
+    text-rendering: optimizeLegibility; /* Better kerning/ligatures */
+  }
+
+  /* --- 2. Custom Scrollbar (Premium Feel) --- */
+  /* Works in Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full border-2 border-transparent bg-clip-content;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-nature; /* Highlights Green on hover */
+  }
+
   body {
-    @apply bg-background text-foreground antialiased selection:bg-nature selection:text-black;
+    @apply bg-background text-foreground antialiased selection:bg-nature selection:text-white;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
@@ -64,7 +117,7 @@
   h4,
   h5,
   h6 {
-    @apply font-serif tracking-tight text-white;
+    @apply font-serif tracking-tight;
   }
 }
 
@@ -73,14 +126,13 @@
     background-size: 40px 40px;
     background-image: linear-gradient(
         to right,
-        rgba(255, 255, 255, 0.03) 1px,
+        rgba(100, 116, 139, 0.1) 1px,
         transparent 1px
       ),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba(100, 116, 139, 0.1) 1px, transparent 1px);
   }
 
-  /* Glassmorphism that adapts to the section */
   .glass-card {
-    @apply bg-secondary/60 backdrop-blur-xl border border-white/5 shadow-xl;
+    @apply bg-secondary/60 backdrop-blur-xl border border-border shadow-xl;
   }
 }

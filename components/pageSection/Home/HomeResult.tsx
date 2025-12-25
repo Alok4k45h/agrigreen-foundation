@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useRef } from "react";
@@ -102,12 +101,12 @@ export default function HomeResult() {
   return (
     <section
       id="results"
-      className="relative py-20 overflow-hidden bg-gray-950"
+      className="relative py-20 overflow-hidden bg-background"
     >
       {/* Decorative Background Elements */}
      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-nature/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-agri/10 rounded-full blur-[100px]" />
 
         {/* Grain Overlay */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
@@ -122,12 +121,12 @@ export default function HomeResult() {
           viewport={{ once: true }}
           className="mb-16 md:mb-20"
         >
-          <span className="text-amber-400 font-semibold tracking-wider uppercase text-sm">
+          <span className="text-agri font-semibold tracking-wider uppercase text-sm">
             Results & Impact
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2">
             Our Results will Create a <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature to-agri">
               Real Impact
             </span>
           </h2>
@@ -226,7 +225,7 @@ export default function HomeResult() {
                               Result
                             </p>
                           </div>
-                          <p className="text-blue-100 text-sm md:text-base leading-relaxed pl-4">
+                          <p className="text-blue-50 text-sm md:text-base leading-relaxed pl-4">
                             {item.result}
                           </p>
                         </div>
@@ -238,7 +237,7 @@ export default function HomeResult() {
                               Impact
                             </p>
                           </div>
-                          <p className="text-blue-100 text-sm md:text-base leading-relaxed pl-4">
+                          <p className="text-blue-50 text-sm md:text-base leading-relaxed pl-4">
                             {item.impact}
                           </p>
                         </div>
@@ -263,22 +262,22 @@ export default function HomeResult() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
-              className="group w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              className="group w-12 h-12 bg-secondary hover:bg-secondary/80 border border-border rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-6 h-6 text-white group-hover:text-blue-300 transition-colors" />
+              <ChevronLeft className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
             </button>
             
-            <div className="text-white/70 text-sm font-medium">
+            <div className="text-muted-foreground text-sm font-medium">
               {activeIndex + 1} / {results.length}
             </div>
 
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              className="group w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+              className="group w-12 h-12 bg-secondary hover:bg-secondary/80 border border-border rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-6 h-6 text-white group-hover:text-blue-300 transition-colors" />
+              <ChevronRight className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
             </button>
           </div>
         </motion.div>
