@@ -1,4 +1,4 @@
-import { FaLinkedin } from "react-icons/fa";
+import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface PersonCardProps {
@@ -39,7 +39,7 @@ export default function PersonCard({
               rel="noopener noreferrer"
               className="flex items-center gap-1  hover:text-blue-800 transition"
             >
-              <FaLinkedin className="w-5 h-5" />
+              <Linkedin className="w-5 h-5" />
               <span className="text-sm font-medium">LinkedIn</span>
             </a>
           )}

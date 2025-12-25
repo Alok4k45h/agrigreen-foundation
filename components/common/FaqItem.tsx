@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface FaqItemProps {
   question: string;
@@ -19,9 +19,9 @@ export default function FaqItem({ question, answer }: FaqItemProps) {
       >
         {question}
         {isOpen ? (
-          <FaChevronUp className="text-green-600" />
+          <ChevronUp className="text-green-600" />
         ) : (
-          <FaChevronDown className="text-green-600" />
+          <ChevronDown className="text-green-600" />
         )}
       </button>
 
