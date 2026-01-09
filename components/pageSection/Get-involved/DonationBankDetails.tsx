@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   User, Mail, MessageSquare, Copy, 
@@ -115,8 +115,8 @@ export default function ContactSection() {
     <section className="relative py-24 overflow-hidden bg-background transition-colors duration-300" id="contact">
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-nature/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-agri/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-150 h-150 bg-nature/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-125 h-125 bg-agri/10 rounded-full blur-[100px]" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
       </div>
 
@@ -130,7 +130,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-serif"
           >
-            Support our <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature to-agri">Mission</span>
+            Support our <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">Mission</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -155,7 +155,7 @@ export default function ContactSection() {
             className="bg-card backdrop-blur-xl border border-border rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
           >
             {/* Top Glow Border */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-nature via-agri to-nature" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-nature via-agri to-nature" />
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <input type="text" {...register("honey")} className="hidden" tabIndex={-1} autoComplete="off" />
@@ -279,7 +279,7 @@ export default function ContactSection() {
             className="space-y-8"
           >
              {/* Info Card */}
-             <div className="bg-gradient-to-br from-nature/10 to-card border border-nature/20 p-8 rounded-3xl relative overflow-hidden">
+             <div className="bg-linear-to-br from-nature/10 to-card border border-nature/20 p-8 rounded-3xl relative overflow-hidden">
                 <div className="absolute top-4 right-4 text-nature/10">
                   <HeartHandshake size={80} />
                 </div>

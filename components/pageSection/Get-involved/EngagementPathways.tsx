@@ -77,7 +77,7 @@ export default function EngagementPathways() {
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 font-serif">
             Be the Change <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
               You Wish to See.
             </span>
           </h2>
@@ -124,14 +124,14 @@ function PathCard({ title, subtitle, description, points, icon: Icon, accent }: 
       className="relative group h-full"
     >
       {/* 1. Gradient Glow Border Effect */}
-      <div className={`absolute -inset-0.5 bg-gradient-to-br ${accent} rounded-[2rem] opacity-30 group-hover:opacity-100 blur transition duration-500`}></div>
+      <div className={`absolute -inset-0.5 bg-linear-to-br ${accent} rounded-[2rem] opacity-30 group-hover:opacity-100 blur transition duration-500`}></div>
       
       {/* 2. Card Content (Adaptive bg-card) */}
       <div className="relative h-full bg-card backdrop-blur-xl rounded-[2rem] p-8 md:p-10 border border-border flex flex-col overflow-hidden shadow-lg">
         
         {/* Top Icon Area */}
         <div className="flex justify-between items-start mb-6">
-          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accent} p-[1px]`}>
+          <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${accent} p-[1px]`}>
             <div className="w-full h-full bg-card rounded-2xl flex items-center justify-center">
               <Icon className="w-7 h-7 text-foreground" />
             </div>
@@ -145,7 +145,7 @@ function PathCard({ title, subtitle, description, points, icon: Icon, accent }: 
 
         {/* Titles */}
         <div className="mb-4">
-          <span className={`text-xs font-bold tracking-widest uppercase bg-gradient-to-r ${accent} bg-clip-text text-transparent mb-2 block`}>
+          <span className={`text-xs font-bold tracking-widest uppercase bg-linear-to-r ${accent} bg-clip-text text-transparent mb-2 block`}>
             {subtitle}
           </span>
           <h3 className="text-2xl font-bold text-foreground transition-colors">
@@ -171,7 +171,7 @@ function PathCard({ title, subtitle, description, points, icon: Icon, accent }: 
         </ul>
 
         {/* Hover Inner Glow */}
-        <div className={`absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br ${accent} blur-[60px] opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}></div>
+        <div className={`absolute -bottom-20 -right-20 w-40 h-40 bg-linear-to-br ${accent} blur-[60px] opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}></div>
       </div>
     </motion.div>
   );

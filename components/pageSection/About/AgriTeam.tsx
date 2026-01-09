@@ -94,7 +94,7 @@ export default function AgriTeam() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-serif"
           >
-            Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">Agri Team</span>
+            Meet the <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">Agri Team</span>
           </motion.h2>
           
           <motion.p 
@@ -154,7 +154,7 @@ export default function AgriTeam() {
                         <User size={80} className="text-muted-foreground opacity-20" />
                         </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent md:bg-linear-to-r" />
                 </div>
 
                 {/* Right: Content Side */}
@@ -231,7 +231,7 @@ function TeamCard({ member, index, onSelect }: { member: typeof TEAM_MEMBERS[0],
         )}
         
         {/* Gradient Overlay - Always dark at bottom for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-70" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-70" />
       </div>
 
       {/* Content Layer (Always White Text because of dark overlay) */}

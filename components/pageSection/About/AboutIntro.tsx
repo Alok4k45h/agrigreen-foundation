@@ -65,7 +65,7 @@ export default function AboutIntro() {
             <div className="relative overflow-hidden rounded-3xl border border-nature/20 bg-secondary/30 p-8 shadow-xl backdrop-blur-xl md:p-12">
               
               {/* Soft inner glow */}
-              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-nature/5 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-linear-to-br from-nature/5 to-transparent" />
 
               <div className="relative space-y-6">
                 <motion.div 
@@ -79,7 +79,7 @@ export default function AboutIntro() {
                   </span>
                   <h2 className="text-4xl md:text-5xl font-bold text-foreground font-serif">
                     In the World of<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature to-agri">
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-nature to-agri">
                       Agri Green
                     </span>
                   </h2>
@@ -144,7 +144,7 @@ export default function AboutIntro() {
 
                 {/* Floating Tip */}
                 <motion.div
-                  className="absolute -bottom-6 right-0 flex items-center gap-2 rounded-full bg-gradient-to-r from-agri to-orange-600 px-4 py-2 text-xs font-medium text-white shadow-lg md:text-sm"
+                  className="absolute -bottom-6 right-0 flex items-center gap-2 rounded-full bg-linear-to-r from-agri to-orange-600 px-4 py-2 text-xs font-medium text-white shadow-lg md:text-sm"
                 >
                   <Play className="w-4 h-4" />
                   <span>Tip: Play video to explore</span>
@@ -160,7 +160,7 @@ export default function AboutIntro() {
           <motion.div whileHover={{ y: -5 }} className="h-full">
             <div className="relative h-full rounded-3xl border border-nature/30 bg-card p-8 shadow-lg transition-all duration-300 hover:shadow-nature/10 md:p-10">
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-nature to-emerald-600 shadow-lg">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-nature to-emerald-600 shadow-lg">
                   <Target className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-foreground font-serif md:text-4xl">
@@ -181,7 +181,7 @@ export default function AboutIntro() {
           <motion.div whileHover={{ y: -5 }} className="h-full">
             <div className="relative h-full rounded-3xl border border-climate/30 bg-card p-8 shadow-lg transition-all duration-300 hover:shadow-climate/10 md:p-10">
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-climate to-blue-600 shadow-lg">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-climate to-blue-600 shadow-lg">
                   <Eye className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-foreground font-serif md:text-4xl">

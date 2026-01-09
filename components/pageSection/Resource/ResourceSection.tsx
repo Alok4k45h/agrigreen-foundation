@@ -85,7 +85,7 @@ export default function ResourceSection() {
             className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif"
           >
             Empower Yourself with <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
               Knowledge
             </span>
           </motion.h1>

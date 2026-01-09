@@ -43,9 +43,10 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group z-50">
             <div className="relative w-32 h-20 transition-transform group-hover:scale-105">
               <Image
-                src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9,e_improve,e_sharpen/v1765222388/Agrigreen/AgriLogoremovebg_nee5jk.png"
+                src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9/v1767951109/Agrigreen/agfFullLogo_kmqmdu.png"
                 alt="Agri Green Logo"
                 fill
+                sizes="(max-width: 768px) 120px, 140px"
                 className="object-contain"
                 priority
               />

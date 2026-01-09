@@ -98,7 +98,7 @@ export default function ContactSection() {
                   className="text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl font-serif"
                 >
                   Get in Touch with <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
                     Natural India
                   </span>
                 </motion.h2>
@@ -226,7 +226,7 @@ export default function ContactSection() {
                   />
 
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070e0b] via-transparent to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#070e0b] via-transparent to-transparent opacity-90" />
 
                   {/* Content Overlay */}
                   <div className="absolute bottom-6 left-6 right-6 z-20">

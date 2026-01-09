@@ -30,7 +30,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
         />
         
         {/* The Atmosphere Layer (Adds depth) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/50 to-transparent" />
       
 
         {/* Grain Texture (Adds premium feel) */}
@@ -65,7 +65,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-20 bg-emerald-500/20 blur-[50px] -z-10 rounded-full" />
             
             <div className="min-h-[4rem] md:min-h-[5rem] flex items-center justify-center">
-              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent drop-shadow-sm">
+              <span className="bg-linear-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent drop-shadow-sm">
                 <Typewriter
                   options={{
                     strings: [descOne, descTwo],
@@ -73,7 +73,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
                     loop: true,
                     delay: 50,
                     deleteSpeed: 30,
-                    wrapperClassName: "bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent" 
+                    wrapperClassName: "bg-linear-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent" 
                   }}
                 />
               </span>
@@ -85,7 +85,7 @@ export default function PageBanner({ pageHeader, descOne, descTwo }: PageBannerP
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "120px", opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mt-8 rounded-full"
+            className="h-1 bg-linear-to-r from-transparent via-amber-500 to-transparent mt-8 rounded-full"
           />
         </motion.div>
       </div>

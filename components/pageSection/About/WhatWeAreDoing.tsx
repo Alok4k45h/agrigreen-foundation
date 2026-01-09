@@ -175,7 +175,7 @@ export default function WhatWeAreDoing() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 font-serif">
             What We Are <br className="md:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
               Doing
             </span>
           </h2>

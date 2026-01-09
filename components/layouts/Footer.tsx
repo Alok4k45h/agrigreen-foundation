@@ -12,7 +12,6 @@ import {
   Mail,
   Briefcase,
   ChevronRight,
-  Leaf,
 } from "lucide-react";
 
 // --- Data Configuration ---
@@ -60,8 +59,8 @@ export default function Footer() {
     >
       {/* --- Background Layer --- */}
      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-0 w-125 h-125 bg-emerald-900/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-125 h-125 bg-amber-900/10 rounded-full blur-[100px]" />
 
         {/* Grain Overlay */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
@@ -91,7 +90,7 @@ export default function Footer() {
             <Link href="/" className="inline-block" aria-label="Go to homepage">
               <div className="relative">
                 <Image
-                  src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9,e_improve,e_sharpen/v1765222388/Agrigreen/AgriLogoremovebg_nee5jk.png"
+                  src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9/v1767951109/Agrigreen/agfFullLogo_kmqmdu.png"
                   alt="Agri Green Logo"
                   width={200}
                   height={100}
@@ -129,7 +128,7 @@ export default function Footer() {
             className="space-y-6 lg:col-span-4"
           >
             <h3 className="flex items-center gap-2 text-lg font-bold text-white">
-              <span className="h-1 w-8 rounded-full bg-gradient-to-r from-emerald-500 to-amber-500" />
+              <span className="h-1 w-8 rounded-full bg-linear-to-r from-emerald-500 to-amber-500" />
               Contact Us
             </h3>
 
@@ -167,7 +166,7 @@ export default function Footer() {
 
               <li className="group flex items-start gap-4">
                 <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-800 bg-gray-900 text-emerald-400 transition-colors group-hover:border-emerald-400/60">
-                  <Leaf className="w-4 h-4" />
+                  <MapPin className="w-4 h-4" />
                 </div>
                 <div>
                   <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -189,7 +188,7 @@ export default function Footer() {
             {/* Quick Links */}
             <div>
               <h3 className="mb-6 flex items-center gap-2 text-lg font-bold text-white">
-                <span className="h-1 w-8 rounded-full bg-gradient-to-r from-amber-500 to-emerald-500" />
+                <span className="h-1 w-8 rounded-full bg-linear-to-r from-amber-500 to-emerald-500" />
                 Quick Links
               </h3>
               <ul className="space-y-3 text-sm">
@@ -210,7 +209,7 @@ export default function Footer() {
             {/* Careers Box */}
             <motion.div
               whileHover={{ y: -4 }}
-              className="relative overflow-hidden rounded-2xl border border-gray-700/60 bg-gradient-to-br from-gray-900 to-gray-800 p-5"
+              className="relative overflow-hidden rounded-2xl border border-gray-700/60 bg-linear-to-br from-gray-900 to-gray-800 p-5"
             >
               <div className="pointer-events-none absolute right-0 top-0 p-3 opacity-10 transition-opacity duration-300 group-hover:opacity-20">
                 <Briefcase className="w-12 h-12 text-white" />

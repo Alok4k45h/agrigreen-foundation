@@ -86,8 +86,8 @@ export default function HomeBanner() {
         </AnimatePresence>
         
         {/* Gradient Overlays for better text readability */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" /> */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-black/30 to-black/80" />
+        {/* <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/70 to-black/50" /> */}
+        <div className="absolute inset-0 bg-linear-to-t from-transparent via-black/30 to-black/80" />
       </div>
 
       {/* --- Background Ambience (Additional Effects) --- */}
@@ -109,7 +109,7 @@ export default function HomeBanner() {
           >
             <div className="relative w-full max-w-7xl xl:max-w-5xl 2xl:max-w-5xl">
               <div style={{ perspective: 1000 }}>
-                <div className="relative rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm p-4 shadow-2xl sm:p-5">
+                <div className="relative rounded-3xl border border-gray-700/50 bg-linear-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm p-4 shadow-2xl sm:p-5">
                   {/* Screen Container */}
                   <div className="relative w-full overflow-hidden rounded-2xl bg-black/30 backdrop-blur-sm shadow-inner h-[30vh] sm:h-[30vh] md:h-[60vh] lg:h-[60vh] xl:h-[60vh] border border-white/10">
                     <AnimatePresence mode="wait">
@@ -227,20 +227,20 @@ export default function HomeBanner() {
             >
               Introducing the world of
               <br />
-              <span className="bg-gradient-to-r from-amber-300 to-emerald-400 bg-clip-text text-4xl text-transparent md:text-6xl drop-shadow-2xl">
+              <span className="bg-linear-to-r from-amber-300 to-emerald-400 bg-clip-text text-4xl text-transparent md:text-6xl drop-shadow-2xl">
                 agri🌾Green
               </span>
             </h1>
 
             <p className="max-w-xl text-justify text-base leading-relaxed text-gray-200 md:text-lg backdrop-blur-sm bg-black/20 p-4 rounded-xl">
-              a pioneering non-governmental organization dedicated to cultivating a
+              A pioneering Non-Governmental Organization dedicated to cultivating a
               sustainable future through innovative practices in{" "}
               <span className="font-medium text-green-300">agroforestry</span>,{" "}
-              <span className="font-medium text-green-300">livelihood enhancement</span>, and{" "}
+              <span className="font-medium text-green-300">livelihood enhancement</span> and{" "}
               <span className="font-medium text-green-300">climate resilience</span>.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/about#MISSION_VISION"
                 className="group inline-flex items-center gap-3 rounded-xl bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/50 md:text-base"
@@ -271,7 +271,7 @@ export default function HomeBanner() {
                 ))}
               </div>
               <div className="text-sm text-gray-300">
-                <strong className="block text-white">2,000+</strong>
+                <strong className="block text-white">200+</strong>
                 Farmers Impacted
               </div>
             </div>

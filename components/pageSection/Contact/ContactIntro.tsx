@@ -12,7 +12,7 @@ export default function ContactIntro() {
     >
       <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 font-serif">
         Get in Touch with <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature to-agri">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-nature to-agri">
           Agri Green
         </span>
       </h1>

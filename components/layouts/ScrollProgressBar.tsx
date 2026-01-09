@@ -18,7 +18,7 @@ export default function ScrollProgressBar() {
       style={{ scaleX }}
     >
       {/* Tri-Color Gradient Bar */}
-      <div className="h-full w-full bg-gradient-to-r from-nature via-agri to-climate shadow-[0_0_15px_rgba(34,197,94,0.6)]" />
+      <div className="h-full w-full bg-linear-to-r from-nature via-agri to-climate shadow-[0_0_15px_rgba(34,197,94,0.6)]" />
       
       {/* Leading Edge Glow */}
       <div className="absolute top-0 right-0 -mt-0.5 -mr-1 h-2.5 w-10 bg-white/80 blur-[4px] rounded-full opacity-60" />

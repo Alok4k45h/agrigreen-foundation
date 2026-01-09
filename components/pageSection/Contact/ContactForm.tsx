@@ -61,7 +61,7 @@ export default function ContactForm() {
       className="bg-card backdrop-blur-xl border border-border rounded-3xl p-8 shadow-2xl"
     >
       <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-        <span className="w-1.5 h-6 bg-gradient-to-b from-nature to-agri rounded-full"/>
+        <span className="w-1.5 h-6 bg-linear-to-b from-nature to-agri rounded-full"/>
         Send a Message
       </h3>
 

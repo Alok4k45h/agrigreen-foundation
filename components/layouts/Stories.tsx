@@ -117,7 +117,7 @@ export default function Stories() {
             className="mt-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl font-serif"
           >
             Inspiration that <br />
-            <span className="bg-gradient-to-r from-nature via-agri to-climate bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-nature via-agri to-climate bg-clip-text text-transparent">
               Roots Our Mission
             </span>
           </h2>
@@ -211,7 +211,7 @@ export default function Stories() {
 
                       {/* Background Gradient for Active Card */}
                       {isActive && (
-                        <div className={`absolute inset-0 rounded-3xl opacity-[0.03] bg-gradient-to-b from-current to-transparent pointer-events-none ${styles.text}`} />
+                        <div className={`absolute inset-0 rounded-3xl opacity-[0.03] bg-linear-to-b from-current to-transparent pointer-events-none ${styles.text}`} />
                       )}
                     </motion.article>
                   )}

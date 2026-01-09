@@ -172,7 +172,7 @@ export default function HomeIssues() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 font-serif">
             Turning Challenges into <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-nature via-agri to-climate">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-nature via-agri to-climate">
               Sustainable Opportunities
             </span>
           </h2>

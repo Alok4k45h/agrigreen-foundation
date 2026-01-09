@@ -34,7 +34,7 @@ const SOCIAL_TABS = [
     color: "bg-[#0077b5]",
     textColor: "text-[#0077b5]",
     href: "https://www.linkedin.com/company/agrigreen-foundation",
-    posts: ["https://www.linkedin.com/posts/agrigreen-foundation_sustainable-agriculture", ""], // Add real links
+    posts: ["https://www.linkedin.com/posts/agrigreen-foundation_sustainableag-ruralimpact-innovation-activity-7414712330539827200-s7sj?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy", "https://www.linkedin.com/posts/agrigreen-foundation_socialimpact-agriculture-foodsecurity-activity-7414351778349166592-DGkk?utm_source=share&utm_medium=member_android&rcm=ACoAAC8DPEIBfuWGKvZbQT7lPmSLfV7j3Q6warY"], // Add real links
     Component: LinkedInEmbed,
   },
   {
@@ -61,7 +61,7 @@ const SOCIAL_TABS = [
     id: "instagram",
     label: "Instagram",
     icon: Instagram,
-    color: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]",
+    color: "bg-linear-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]",
     textColor: "text-pink-500",
     href: "https://www.instagram.com/agrigreenfoundation",
     posts: ["https://www.instagram.com/p/C-x1y2z3/"], // Add real links
@@ -105,7 +105,7 @@ export default function SocialMediaCorner() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4 font-serif"
           >
-             <span className="text-transparent bg-clip-text bg-gradient-to-r from-nature via-agri to-climate">
+             <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
                Social Media Corner
              </span>
           </motion.h2>

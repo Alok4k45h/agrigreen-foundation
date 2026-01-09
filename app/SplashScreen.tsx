@@ -34,7 +34,7 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
           {/* --- Background Layers (Matches Global Theme) --- */}
           <div className="absolute inset-0 z-0">
             {/* Gradient Base */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-[#05110d] to-black" />
+            <div className="absolute inset-0 bg-linear-to-b from-black via-[#05110d] to-black" />
             
             {/* Cyber Grid */}
             <div className="absolute inset-0 bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-30" />
@@ -139,7 +139,7 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
               <div className="relative w-100 h-100 mx-auto mb-2">
                 <div className="absolute inset-0 rounded-full" />
                 <Image
-                  src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9,e_improve,e_sharpen/v1765222388/Agrigreen/AgriLogoremovebg_nee5jk.png"
+                  src="https://res.cloudinary.com/alokkumar07/image/upload/c_crop,ar_16:9/v1767951109/Agrigreen/agfFullLogo_kmqmdu.png"
                   alt="Agri Green Logo"
                   fill
                   className="object-contain drop-shadow-2xl"
