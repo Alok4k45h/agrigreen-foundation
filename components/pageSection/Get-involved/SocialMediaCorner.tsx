@@ -71,7 +71,7 @@ const SOCIAL_TABS = [
 
 // --- Skeleton Component ---
 const EmbedSkeleton = () => (
-  <div className="w-full h-[400px] bg-white/5 animate-pulse rounded-xl flex items-center justify-center border border-white/10">
+  <div className="w-full h-100 bg-white/5 animate-pulse rounded-xl flex items-center justify-center border border-white/10">
     <span className="text-gray-500 font-medium font-mono text-sm">Loading Feed...</span>
   </div>
 );
@@ -87,8 +87,8 @@ export default function SocialMediaCorner() {
       
       {/* --- Background Ambience --- */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-nature/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-climate/10 rounded-full blur-[120px]" />
+        <div className="absolute top-20 left-0 w-125 h-125 bg-nature/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-100 h-100 bg-climate/10 rounded-full blur-[120px]" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
       </div>
 
@@ -141,7 +141,7 @@ export default function SocialMediaCorner() {
         </div>
 
         {/* Content Area */}
-        <div className="min-h-[500px]">
+        <div className="min-h-125">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

@@ -91,9 +91,9 @@ export default function HomeBanner() {
       </div>
 
       {/* --- Background Ambience (Additional Effects) --- */}
-      <div className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-emerald-900/20 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-amber-900/15 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 z-1">
+        <div className="absolute -top-40 -left-40 h-150 w-150 rounded-full bg-emerald-900/20 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-100 w-100 rounded-full bg-amber-900/15 blur-[120px]" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
       </div>
 

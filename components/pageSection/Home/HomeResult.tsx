@@ -193,7 +193,7 @@ export default function HomeResult() {
                         : 'from-blue-600/90 to-blue-700/90'
                     } backdrop-blur-xl rounded-3xl border-2 ${
                       isActive ? 'border-white/50' : 'border-white/20'
-                    } shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 flex flex-col min-h-[450px] group`}>
+                    } shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 flex flex-col min-h-125 group`}>
                       
                       {/* Icon Badge */}
                       <div className="flex items-center justify-between mb-6">

@@ -150,10 +150,10 @@ export default function WhatWeAreDoing() {
       {/* Background Ambience (Dynamic) */}
       <div className="absolute inset-0 pointer-events-none transition-colors duration-1000">
         <div 
-          className="absolute top-1/2 left-0 w-[600px] h-[600px] rounded-full blur-[120px] -translate-y-1/2 opacity-20 transition-colors duration-1000"
+          className="absolute top-1/2 left-0 w-150 h-150 rounded-full blur-[120px] -translate-y-1/2 opacity-20 transition-colors duration-1000"
           style={{ backgroundColor: activeThemeColor }}
         />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] opacity-10" />
+        <div className="absolute bottom-0 right-0 w-100 h-100 bg-white/5 rounded-full blur-[100px] opacity-10" />
         {/* Grain Texture */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
       </div>
@@ -190,7 +190,7 @@ export default function WhatWeAreDoing() {
               <span>{activeIndex + 1 < 10 ? `0${activeIndex + 1}` : activeIndex + 1} / {ACTIONS.length}</span>
             </div>
             
-            <div className="max-h-[550px] overflow-y-auto custom-scrollbar pr-2 space-y-2">
+            <div className="max-h-125 overflow-y-auto custom-scrollbar pr-2 space-y-2">
               {ACTIONS.map((item, idx) => {
                 const isActive = activeIndex === idx;
                 const themeColor = getThemeColor(item.theme);
@@ -230,7 +230,7 @@ export default function WhatWeAreDoing() {
 
           {/* --- Right Column: Detail Card --- */}
           <div className="col-span-12 lg:col-span-7">
-            <div className="relative min-h-[500px]">
+            <div className="relative min-h-125">
               <AnimatePresence mode="wait" initial={false} custom={direction}>
                 <motion.div
                   key={activeIndex}
