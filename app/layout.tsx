@@ -3,13 +3,15 @@ import { Inter, Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import Script from "next/script"; //
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /* --- Typography Setup --- */
-const inter = Inter({ 
-  subsets: ["latin"], 
+const inter = Inter({
+  subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap" 
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
@@ -18,10 +20,10 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const outfit = Outfit({ 
-  subsets: ["latin"], 
+const outfit = Outfit({
+  subsets: ["latin"],
   variable: "--font-outfit",
-  display: "swap" 
+  display: "swap",
 });
 
 // --- SEO Metadata ---
@@ -29,10 +31,21 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://agrigreenindia.org"),
   title: {
     default: "Agri Green Foundation | Nature, Climate & Agriculture NGO",
-    template: "%s | Agri Green Foundation"
+    template: "%s | Agri Green Foundation",
   },
-  description: "Leading youth-driven agroforestry NGO in India. Empowering farmers, restoring ecosystems, and fighting climate change through sustainable agriculture.",
-  keywords: ["NGO", "Agroforestry", "Climate Change", "Sustainable Agriculture", "India", "Bihar", "Farmers", "Tree Planting", "Rural Development"],
+  description:
+    "Leading youth-driven agroforestry NGO in India. Empowering farmers, restoring ecosystems, and fighting climate change through sustainable agriculture.",
+  keywords: [
+    "NGO",
+    "Agroforestry",
+    "Climate Change",
+    "Sustainable Agriculture",
+    "India",
+    "Bihar",
+    "Farmers",
+    "Tree Planting",
+    "Rural Development",
+  ],
   authors: [{ name: "Agri Green Foundation Team" }],
   creator: "Agri Green Foundation",
   publisher: "Agri Green Foundation",
@@ -43,7 +56,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Agri Green Foundation | Future of Nature, Climate & Agriculture",
-    description: "Cultivating a sustainable future through agroforestry and innovation.",
+    description:
+      "Cultivating a sustainable future through agroforestry and innovation.",
     type: "website",
     url: "https://agrigreenindia.org/",
     siteName: "AgriGreen Foundation",
@@ -61,17 +75,19 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agri Green Foundation",
     description: "Empowering farmers and restoring ecosystems.",
-    images: ["https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png"],
+    images: [
+      "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png",
+    ],
   },
-  robots: { 
-    index: true, 
+  robots: {
+    index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -85,45 +101,49 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   // --- JSON-LD for Organization ---
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NGO",
-    "name": "Agri Green Foundation",
-    "url": "https://agrigreenindia.org",
-    "logo": "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png",
-    "description": "A non-profit organization dedicated to agroforestry, livelihood enhancement, and climate resilience in India.",
-    "address": {
+    name: "Agri Green Foundation",
+    url: "https://agrigreenindia.org",
+    logo: "https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/AgriLogo_zvi0d1.png",
+    description:
+      "A non-profit organization dedicated to agroforestry, livelihood enhancement, and climate resilience in India.",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "424/A1, Rita Hari Niwas, Indrapuri Colony",
-      "addressLocality": "Patna",
-      "addressRegion": "Bihar",
-      "postalCode": "800014",
-      "addressCountry": "IN"
+      streetAddress: "424/A1, Rita Hari Niwas, Indrapuri Colony",
+      addressLocality: "Patna",
+      addressRegion: "Bihar",
+      postalCode: "800014",
+      addressCountry: "IN",
     },
-    "contactPoint": {
+    contactPoint: {
       "@type": "ContactPoint",
-      "email": "agrigreen.agf@gmail.com",
-      "contactType": "customer service",
-      "areaServed": "IN"
+      email: "agrigreen.agf@gmail.com",
+      contactType: "customer service",
+      areaServed: "IN",
     },
-    "sameAs": [
+    sameAs: [
       "https://www.facebook.com/share/19ExxsA9Ze/",
       "https://www.instagram.com/agrigreenfoundation",
       "https://www.linkedin.com/company/agrigreen-foundation",
-      "https://www.youtube.com/@AGRIGREENFOUNDATION"
-    ]
+      "https://www.youtube.com/@AGRIGREENFOUNDATION",
+    ],
   };
 
   return (
-    <html 
-      lang="en" 
+    <html
+      lang="en"
       className={`${inter.variable} ${playfair.variable} ${outfit.variable}`}
       suppressHydrationWarning
     >
       <body className="relative min-h-screen bg-background font-sans text-foreground antialiased selection:bg-nature selection:text-white">
-        
         {/* Inject JSON-LD */}
         <Script
           id="json-ld"
@@ -133,10 +153,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
 
         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
         >
           {/* Background Layers */}
           <div className="fixed inset-0 z-[-1] pointer-events-none">
@@ -149,6 +169,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <ClientLayout>{children}</ClientLayout>
         </ThemeProvider>
+
+        {/* Web Analytics */}
+        <Analytics />
+
+        {/* Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -93,7 +93,7 @@ export default function ContactSection() {
       }
 
       // Send request
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/getinvolvedForm", {
         method: "POST",
         body: formData,
       });
@@ -169,7 +169,7 @@ export default function ContactSection() {
                   <input
                     {...register("name")}
                     className={`w-full bg-secondary border ${errors.name ? 'border-red-500' : 'border-border'} rounded-xl px-4 py-3 text-foreground focus:ring-2 focus:ring-nature/50 focus:border-nature outline-none transition-all placeholder:text-muted-foreground/50`}
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                   />
                   {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
                 </div>
@@ -182,7 +182,7 @@ export default function ContactSection() {
                   <input
                     {...register("email")}
                     className={`w-full bg-secondary border ${errors.email ? 'border-red-500' : 'border-border'} rounded-xl px-4 py-3 text-foreground focus:ring-2 focus:ring-nature/50 focus:border-nature outline-none transition-all placeholder:text-muted-foreground/50`}
-                    placeholder="john@example.com"
+                    placeholder="your.email@example.com"
                   />
                   {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
                 </div>

@@ -31,7 +31,7 @@ export default function ContactInfo() {
               <Mail size={18} />
             </div>
             <a href="mailto:agrigreen.agf@gmail.com" className="hover:text-nature transition-colors">
-              agrigreen.agf@gmail.com
+              contact@agrigreenindia.org
             </a>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function ContactInfo() {
             title="Agri Green Headquarters"
             className="dark:opacity-80 dark:invert-[.9] dark:grayscale" 
           />
-          <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-md p-3 rounded-xl border border-border max-w-[240px] shadow-lg">
+          <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-md p-3 rounded-xl border border-border max-w-60 shadow-lg">
             <p className="text-xs text-muted-foreground flex items-start gap-2">
               <MapPin className="text-nature mt-0.5 shrink-0 w-4 h-4" />
               <span>424/A1, Rita Hari Niwas, Indrapuri Colony, Patna, Bihar-800014</span>

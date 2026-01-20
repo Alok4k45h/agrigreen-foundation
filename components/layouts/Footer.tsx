@@ -58,7 +58,7 @@ export default function Footer() {
       aria-label="Footer"
     >
       {/* --- Background Layer --- */}
-     <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-0 w-125 h-125 bg-emerald-900/20 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-0 w-125 h-125 bg-amber-900/10 rounded-full blur-[100px]" />
 
@@ -84,7 +84,10 @@ export default function Footer() {
         >
           {/* Column 1: Brand & Bio */}
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
             className="space-y-3 lg:col-span-4"
           >
             <Link href="/" className="inline-block" aria-label="Go to homepage">
@@ -100,8 +103,9 @@ export default function Footer() {
             </Link>
 
             <p className="max-w-sm text-md text-justify text-gray-400">
-              Empowering communities and restoring ecosystems through regenerative
-              agriculture, youth education, and sustainable innovation.
+              Empowering communities and restoring ecosystems through
+              regenerative agriculture, youth education, and sustainable
+              innovation.
             </p>
 
             {/* Social Icons */}
@@ -124,7 +128,10 @@ export default function Footer() {
 
           {/* Column 2: Contact Info */}
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
             className="space-y-6 lg:col-span-4"
           >
             <h3 className="flex items-center gap-2 text-lg font-bold text-white">
@@ -145,7 +152,7 @@ export default function Footer() {
                     href="mailto:agrigreen.agf@gmail.com"
                     className="block text-gray-300 transition-colors hover:text-white"
                   >
-                    agrigreen.agf@gmail.com
+                    contact@agrigreenindia.org
                   </a>
                 </div>
               </li>
@@ -159,7 +166,9 @@ export default function Footer() {
                     Headquarters
                   </span>
                   <p className="max-w-xs leading-relaxed text-gray-400">
-                    424/A1, Rita Hari Niwas, Indrapuri Colony Near C-3, P.O. BV College, Ashiyana Ramnagari, Near Sita Ram General Store, Patna, Bihar-800014
+                    424/A1, Rita Hari Niwas, Indrapuri Colony Near C-3, P.O. BV
+                    College, Ashiyana Ramnagari, Near Sita Ram General Store,
+                    Patna, Bihar-800014
                   </p>
                 </div>
               </li>
@@ -173,7 +182,8 @@ export default function Footer() {
                     Registered Office
                   </span>
                   <p className="max-w-xs leading-relaxed text-gray-400">
-                    Vill.: Katari, P.O.: Goraur, P.S.: Chhabilapur, Anchal: Rajgir, Dist.: Nalanda-803116
+                    Vill.: Katari, P.O.: Goraur, P.S.: Chhabilapur, Anchal:
+                    Rajgir, Dist.: Nalanda-803116
                   </p>
                 </div>
               </li>
@@ -182,7 +192,10 @@ export default function Footer() {
 
           {/* Column 3: Links & Careers */}
           <motion.div
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
             className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-4 lg:block lg:space-y-8"
           >
             {/* Quick Links */}
@@ -219,7 +232,8 @@ export default function Footer() {
                 Join Our Team
               </h4>
               <p className="mb-3 text-xs leading-relaxed text-gray-400">
-                Passionate about sustainability? Opportunities will be announced soon.
+                Passionate about sustainability? Opportunities will be announced
+                soon.
               </p>
               <span className="inline-block rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-400">
                 Stay Tuned
@@ -233,26 +247,42 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <p>
               &copy; {currentYear}{" "}
-              <span className="font-medium text-emerald-400">Agri Green Foundation</span>. All
-              rights reserved.
+              <span className="font-medium text-emerald-400">
+                Agri Green Foundation
+              </span>
+              . All rights reserved.
             </p>
-            <p className="mt-1 opacity-70">
-              A non-profit organization dedicated to a greener future.
+            <p>
+              Designed & Developed by {" "}
+              <span className="font-medium text-emerald-400 text-italic">
+                Alok Kumar
+              </span>
+              - an alumnus of {" "}
+              <span className="font-medium text-emerald-400 text-italic">
+                IIT(ISM) Dhanbad 💚
+              </span>
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <Link href="/privacy-policy" className="transition-colors hover:text-gray-300">
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-gray-300"
+            >
               Privacy
             </Link>
             <Link href="#" className="transition-colors hover:text-gray-300">
               Cookies
             </Link>
-            <Link href="/terms" className="transition-colors hover:text-gray-300">
+            <Link
+              href="/terms"
+              className="transition-colors hover:text-gray-300"
+            >
               Terms
             </Link>
           </div>
         </div>
+          
       </div>
     </footer>
   );

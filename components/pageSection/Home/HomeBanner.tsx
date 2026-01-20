@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { ArrowRight, Mail, Users } from "lucide-react"; 
+import { ArrowRight, Mail, Users } from "lucide-react";
 
 // --- Configuration ---
 const SLIDES = [
@@ -41,7 +41,7 @@ export default function HomeBanner() {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(
       () => setCurrentSlide((prev) => (prev + 1) % SLIDES.length),
-      SLIDE_DURATION
+      SLIDE_DURATION,
     );
   };
 
@@ -84,7 +84,7 @@ export default function HomeBanner() {
             />
           </motion.div>
         </AnimatePresence>
-        
+
         {/* Gradient Overlays for better text readability */}
         {/* <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/70 to-black/50" /> */}
         <div className="absolute inset-0 bg-linear-to-t from-transparent via-black/30 to-black/80" />
@@ -131,22 +131,6 @@ export default function HomeBanner() {
                         />
                       </motion.div>
                     </AnimatePresence>
-
-                    {/* Floating Badge inside Image */}
-                    {/* <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{
-                        delay: 0.8,
-                        duration: 0.5,
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 20,
-                      }}
-                      className="absolute bottom-4 left-4 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg sm:text-base"
-                    >
-                      Agri Green
-                    </motion.div> */}
                   </div>
 
                   {/* Device Bottom Bar */}
@@ -233,17 +217,23 @@ export default function HomeBanner() {
             </h1>
 
             <p className="max-w-xl text-justify text-base leading-relaxed text-gray-200 md:text-lg backdrop-blur-sm bg-black/20 p-4 rounded-xl">
-              A pioneering Non-Governmental Organization dedicated to cultivating a
-              sustainable future through innovative practices in{" "}
+              A pioneering Non-Governmental Organization dedicated to
+              cultivating a sustainable future through innovative practices in{" "}
               <span className="font-medium text-green-300">agroforestry</span>,{" "}
-              <span className="font-medium text-green-300">livelihood enhancement</span> and{" "}
-              <span className="font-medium text-green-300">climate resilience</span>.
+              <span className="font-medium text-green-300">
+                livelihood enhancement
+              </span>{" "}
+              and{" "}
+              <span className="font-medium text-green-300">
+                climate resilience
+              </span>
+              .
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/about#MISSION_VISION"
-                className="group inline-flex items-center gap-3 rounded-xl bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/50 md:text-base"
+                className="group inline-flex items-center gap-3 rounded-xl bg-emerald-600 px-4 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/50 md:text-base"
               >
                 Our Mission
                 <ArrowRight className="transition-transform group-hover:translate-x-1" />
@@ -251,7 +241,7 @@ export default function HomeBanner() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 rounded-xl border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700/70 md:text-base"
+                className="inline-flex items-center gap-3 rounded-xl border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm px-4 py-4 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-700/70 md:text-base"
               >
                 <Mail />
                 Get in Touch
