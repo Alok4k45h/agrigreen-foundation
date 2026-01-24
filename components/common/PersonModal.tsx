@@ -41,6 +41,7 @@ export default function PersonModal({ person, onClose }: PersonModalProps) {
             alt={person.name}
             width={128}
             height={128}
+            priority
             className="w-32 h-32 rounded-full object-cover mx-auto shadow-md border-4 border-gray-50 dark:border-gray-800"
           />
           <h3 className="text-2xl font-bold mt-4 text-green-700 dark:text-green-400">

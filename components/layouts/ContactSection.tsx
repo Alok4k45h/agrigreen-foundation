@@ -219,6 +219,7 @@ export default function ContactSection() {
                     src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1754146022/ContactIcon_rputka.jpg"
                     alt="Agri Green community"
                     fill
+                    priority
                     sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                   />

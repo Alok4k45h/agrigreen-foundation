@@ -29,7 +29,7 @@ export default function PageBanner({
           src="https://res.cloudinary.com/dbp1kbs0g/image/upload/v1758550944/PageBanner_ewdgyi.gif"
           alt="Ambient agriculture background"
           fill
-          priority // Crucial for LCP (Largest Contentful Paint)
+          priority
           className="object-cover blur-[2px] opacity-60 scale-105" // scale-105 prevents blur edges from showing
         />
 

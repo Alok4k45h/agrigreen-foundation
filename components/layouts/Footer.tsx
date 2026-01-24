@@ -97,6 +97,7 @@ export default function Footer() {
                   alt="Agri Green Logo"
                   width={200}
                   height={100}
+                  priority
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -149,7 +150,7 @@ export default function Footer() {
                     Email Us
                   </span>
                   <a
-                    href="mailto:agrigreen.agf@gmail.com"
+                    href="mailto:contact@agrigreenindia.org"
                     className="block text-gray-300 transition-colors hover:text-white"
                   >
                     contact@agrigreenindia.org

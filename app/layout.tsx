@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | Agri Green Foundation",
   },
   description:
-    "Leading youth-driven agroforestry NGO in India. Empowering farmers, restoring ecosystems, and fighting climate change through sustainable agriculture.",
+    "Leading youth-driven agroforestry NGO in India. Empowering farmers, restoring ecosystems and fighting climate change through sustainable agriculture.",
   keywords: [
     "NGO",
     "Agroforestry",
@@ -125,7 +125,7 @@ export default function RootLayout({
     },
     contactPoint: {
       "@type": "ContactPoint",
-      email: "agrigreen.agf@gmail.com",
+      email: "contact@agrigreenindia.org",
       contactType: "customer service",
       areaServed: "IN",
     },

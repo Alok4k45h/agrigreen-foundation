@@ -203,6 +203,7 @@ export default function Stories() {
                               src={story.image}
                               alt={story.name}
                               fill
+                              priority
                               className="object-cover"
                             />
                           </div>

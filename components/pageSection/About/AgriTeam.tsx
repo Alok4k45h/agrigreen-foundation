@@ -274,6 +274,7 @@ function TeamCard({
             src={member.image}
             alt={member.name}
             fill
+            priority
             className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
             sizes="(max-width: 768px) 100vw, 33vw"
           />

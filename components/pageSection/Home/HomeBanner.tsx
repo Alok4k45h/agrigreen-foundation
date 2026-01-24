@@ -156,6 +156,7 @@ export default function HomeBanner() {
                     src={SLIDES[(currentSlide + 1) % SLIDES.length].src}
                     alt="Agri Green community collaboration"
                     fill
+                    priority
                     sizes="288px"
                     className="object-cover"
                   />
