@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { X } from "lucide-react"; // Replaced react-icons
 
@@ -35,9 +36,11 @@ export default function PersonModal({ person, onClose }: PersonModalProps) {
 
         {/* Content */}
         <div className="text-center">
-          <img
+          <Image
             src={person.imgLink}
             alt={person.name}
+            width={128}
+            height={128}
             className="w-32 h-32 rounded-full object-cover mx-auto shadow-md border-4 border-gray-50 dark:border-gray-800"
           />
           <h3 className="text-2xl font-bold mt-4 text-green-700 dark:text-green-400">

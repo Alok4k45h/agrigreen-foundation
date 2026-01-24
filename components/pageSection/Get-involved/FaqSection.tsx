@@ -177,7 +177,7 @@ export default function FaqSection() {
                       >
                         <div className="flex items-center gap-4">
                           <div
-                            className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                            className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                               isOpen
                                 ? styles.bg + " " + styles.text
                                 : "bg-secondary text-muted-foreground group-hover:text-foreground"

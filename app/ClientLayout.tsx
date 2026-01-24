@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import { Toaster } from "sonner";
 import { AnimatePresence, motion, LazyMotion } from "framer-motion";
 
@@ -19,7 +19,11 @@ import SkipLink from "@/components/layouts/SkipLink";
 const loadFeatures = () =>
   import("@/components/utils/domAnimation").then((res) => res.default);
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [showSplash, setShowSplash] = useState(true);
   const pathname = usePathname();
 
@@ -32,11 +36,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <AnimatePresence mode="wait">
-        {showSplash && (
-          <SplashScreen onComplete={() => setShowSplash(false)} />
-        )}
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
-      
+
       {!showSplash && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -44,22 +46,24 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           transition={{ duration: 0.5 }}
           className="flex flex-col min-h-screen"
         >
-          <ScrollProgressBar /> 
+          <ScrollProgressBar />
           <SkipLink />
           <Navbar />
 
           <LazyMotion features={loadFeatures}>
-             <main className="flex-grow">
-               {children}
-             </main>
+            <main className="grow">{children}</main>
           </LazyMotion>
-          
+
           {/* Global Components */}
           <ContactSection />
           <Stories />
           <Footer />
           <BackToTop />
-          <Toaster position="top-center" toastOptions={{ duration: 4000 }} richColors />
+          <Toaster
+            position="top-center"
+            toastOptions={{ duration: 3000 }}
+            richColors
+          />
         </motion.div>
       )}
     </>

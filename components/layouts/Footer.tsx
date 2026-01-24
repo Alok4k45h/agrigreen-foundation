@@ -43,8 +43,8 @@ const SOCIAL_LINKS = [
 ];
 
 const QUICK_LINKS = [
-  { href: "#", label: "Partner With Us" },
-  { href: "#", label: "Our Impact" },
+  { href: "/get-involved#ENGAGEMENTPATHWAYS", label: "Partner With Us" },
+  { href: "/#RESULTS-IMPACT", label: "Our Impact" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Use" },
 ];
@@ -253,11 +253,11 @@ export default function Footer() {
               . All rights reserved.
             </p>
             <p>
-              Designed & Developed by {" "}
+              Designed & Developed by{" "}
               <span className="font-medium text-emerald-400 text-italic">
                 Alok Kumar
               </span>
-              - an alumnus of {" "}
+              - an alumnus of{" "}
               <span className="font-medium text-emerald-400 text-italic">
                 IIT(ISM) Dhanbad 💚
               </span>
@@ -282,7 +282,6 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-          
       </div>
     </footer>
   );

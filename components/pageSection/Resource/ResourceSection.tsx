@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, FileText, ExternalLink, ArrowRight, Library } from "lucide-react";
+import {
+  BookOpen,
+  FileText,
+  ExternalLink,
+  ArrowRight,
+  Library,
+} from "lucide-react";
 
 // --- Data Configuration ---
 const RESOURCES = [
@@ -37,10 +43,38 @@ const RESOURCES = [
 // Helper to get theme colors (Adaptive)
 const getThemeStyles = (theme: string) => {
   switch (theme) {
-    case "nature": return { text: "text-nature", bg: "bg-nature/10", border: "border-nature/20", hoverBorder: "hover:border-nature/50", glow: "shadow-nature/10" };
-    case "agri": return { text: "text-agri", bg: "bg-agri/10", border: "border-agri/20", hoverBorder: "hover:border-agri/50", glow: "shadow-agri/10" };
-    case "climate": return { text: "text-climate", bg: "bg-climate/10", border: "border-climate/20", hoverBorder: "hover:border-climate/50", glow: "shadow-climate/10" };
-    default: return { text: "text-foreground", bg: "bg-secondary", border: "border-border", hoverBorder: "hover:border-foreground/50", glow: "shadow-none" };
+    case "nature":
+      return {
+        text: "text-nature",
+        bg: "bg-nature/10",
+        border: "border-nature/20",
+        hoverBorder: "hover:border-nature/50",
+        glow: "shadow-nature/10",
+      };
+    case "agri":
+      return {
+        text: "text-agri",
+        bg: "bg-agri/10",
+        border: "border-agri/20",
+        hoverBorder: "hover:border-agri/50",
+        glow: "shadow-agri/10",
+      };
+    case "climate":
+      return {
+        text: "text-climate",
+        bg: "bg-climate/10",
+        border: "border-climate/20",
+        hoverBorder: "hover:border-climate/50",
+        glow: "shadow-climate/10",
+      };
+    default:
+      return {
+        text: "text-foreground",
+        bg: "bg-secondary",
+        border: "border-border",
+        hoverBorder: "hover:border-foreground/50",
+        glow: "shadow-none",
+      };
   }
 };
 
@@ -55,17 +89,18 @@ const containerVariants = {
 
 export default function ResourceSection() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 md:px-16 bg-background overflow-hidden transition-colors duration-300" id="resources">
-      
+    <section
+      className="relative py-24 px-4 sm:px-6 md:px-16 bg-background overflow-hidden transition-colors duration-300"
+      id="resources"
+    >
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-nature/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-20 left-0 w-[500px] h-[500px] bg-agri/10 rounded-full blur-[100px] animate-pulse delay-1000" />
+        <div className="absolute top-20 right-0 w-150 h-150 bg-nature/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-20 left-0 w-125 h-125 bg-agri/10 rounded-full blur-[100px] animate-pulse delay-1000" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
-        
         {/* --- Header --- */}
         <div className="text-center max-w-3xl mx-auto">
           <motion.div
@@ -77,32 +112,33 @@ export default function ResourceSection() {
             <Library size={16} /> <span>Knowledge Hub</span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-serif"
           >
-            Empower Yourself with <br/>
+            Empower Yourself with <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
               Knowledge
             </span>
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
             className="text-lg text-muted-foreground leading-relaxed"
           >
-            Download curated guides, reports, and manuals to help you participate in sustainable agricultural development.
+            Download curated guides, reports, and manuals to help you
+            participate in sustainable agricultural development.
           </motion.p>
         </div>
 
         {/* --- Resources Grid --- */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -111,7 +147,7 @@ export default function ResourceSection() {
         >
           {RESOURCES.map((res) => {
             const styles = getThemeStyles(res.theme);
-            
+
             return (
               <motion.a
                 key={res.id}
@@ -123,17 +159,23 @@ export default function ResourceSection() {
               >
                 {/* Top Section: Icon & Type */}
                 <div className="flex justify-between items-start mb-6 relative z-10">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${styles.bg} ${styles.text}`}>
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${styles.bg} ${styles.text}`}
+                  >
                     <res.icon size={24} />
                   </div>
-                  <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border bg-secondary ${styles.text} ${styles.border}`}>
+                  <span
+                    className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border bg-secondary ${styles.text} ${styles.border}`}
+                  >
                     {res.type}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div className="flex-grow relative z-10 space-y-3">
-                  <h3 className={`text-xl font-bold text-foreground transition-colors group-hover:${styles.text}`}>
+                <div className="grow relative z-10 space-y-3">
+                  <h3
+                    className={`text-xl font-bold text-foreground transition-colors group-hover:${styles.text}`}
+                  >
                     {res.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -146,7 +188,9 @@ export default function ResourceSection() {
                   <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                     Access Document
                   </span>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all bg-secondary group-hover:bg-foreground text-muted-foreground group-hover:text-background`}>
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all bg-secondary group-hover:bg-foreground text-muted-foreground group-hover:text-background`}
+                  >
                     <ExternalLink size={16} />
                   </div>
                 </div>
@@ -156,7 +200,7 @@ export default function ResourceSection() {
         </motion.div>
 
         {/* --- View All Button --- */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -173,10 +217,12 @@ export default function ResourceSection() {
               <BookOpen size={20} />
             </div>
             <span>Access Full Drive Folder</span>
-            <ArrowRight size={16} className="opacity-50 group-hover:translate-x-1 group-hover:opacity-100 transition-all text-nature" />
+            <ArrowRight
+              size={16}
+              className="opacity-50 group-hover:translate-x-1 group-hover:opacity-100 transition-all text-nature"
+            />
           </a>
         </motion.div>
-
       </div>
     </section>
   );

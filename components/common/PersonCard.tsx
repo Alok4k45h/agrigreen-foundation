@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -22,9 +23,11 @@ export default function PersonCard({
       transition={{ type: "spring", stiffness: 300 }}
       className="relative rounded-lg overflow-hidden shadow-lg group bg-white"
     >
-      <img
+      <Image
         src={imgLink}
         alt={name}
+        width={400}
+        height={400}
         className="object-cover w-full h-100 group-hover:brightness-75 transition duration-300"
       />
       <div className="absolute bottom-0 w-full bg-black/60 group-hover:bg-white/90 text-white group-hover:text-green-900 px-4 py-3 transition duration-300 text-center">

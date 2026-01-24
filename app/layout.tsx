@@ -161,18 +161,16 @@ export default function RootLayout({
           {/* Background Layers */}
           <div className="fixed inset-0 z-[-1] pointer-events-none">
             <div className="absolute inset-0 bg-background transition-colors duration-500" />
-            <div className="absolute inset-0 bg-grid-pattern [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40" />
-            <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-nature/20 rounded-full blur-[120px] opacity-40 animate-pulse" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-agri/10 rounded-full blur-[120px] opacity-30" />
+            <div className="absolute inset-0 bg-grid-pattern mask-[linear-gradient(to_bottom,white,transparent)] opacity-40" />
+            <div className="absolute top-[-10%] left-[-10%] w-125 h-125 bg-nature/20 rounded-full blur-[120px] opacity-40 animate-pulse" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-150 h-150 bg-agri/10 rounded-full blur-[120px] opacity-30" />
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light" />
           </div>
 
           <ClientLayout>{children}</ClientLayout>
         </ThemeProvider>
-
         {/* Web Analytics */}
         <Analytics />
-
         {/* Speed Insights */}
         <SpeedInsights />
       </body>

@@ -39,11 +39,11 @@ export default function BackToTop() {
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
           aria-label="Scroll back to top"
-          className="fixed bottom-8 right-8 z-[100] p-4 rounded-full bg-nature text-black shadow-lg shadow-nature/30 border border-white/20 backdrop-blur-md group hover:bg-white hover:text-nature transition-all"
+          className="fixed bottom-8 right-8 z-100 p-4 rounded-full bg-nature text-black shadow-lg shadow-nature/30 border border-white/20 backdrop-blur-md group hover:bg-white hover:text-nature transition-all"
         >
           {/* Icon */}
           <ArrowUp className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" />
-          
+
           {/* Pulse Ring */}
           <span className="absolute inset-0 rounded-full border border-white/40 animate-ping opacity-30 pointer-events-none"></span>
         </motion.button>

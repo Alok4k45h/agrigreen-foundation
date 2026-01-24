@@ -19,46 +19,45 @@ export default function ContactSection() {
   const [error, setError] = useState("");
 
   const handleSubscribe = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setError("");
+    e.preventDefault();
+    setError("");
 
-  if (!email.trim()) {
-    setError("Email is required");
-    return;
-  }
-
-  if (!isValidEmail(email)) {
-    setError("Please enter a valid email address");
-    return;
-  }
-
-  setLoading(true);
-  const toastId = toast.loading("Subscribing...");
-
-  try {
-    const res = await fetch("/api/newsletter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.success) {
-      throw new Error(data.error || "Subscription failed");
+    if (!email.trim()) {
+      setError("Email is required");
+      return;
     }
 
-    toast.success("🎉 Successfully subscribed!", { id: toastId });
-    setEmail("");
-  } catch (err) {
-    toast.error("❌ Subscription failed. Please try again.", { id: toastId });
-  } finally {
-    setLoading(false);
-  }
-};
+    if (!isValidEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
 
+    setLoading(true);
+    const toastId = toast.loading("Subscribing...");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Subscription failed");
+      }
+
+      toast.success("🎉 Successfully subscribed!", { id: toastId });
+      setEmail("");
+    } catch {
+      toast.error("❌ Subscription failed. Please try again.", { id: toastId });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -67,8 +66,8 @@ export default function ContactSection() {
     >
       {/* --- Background Ambience --- */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-emerald-900/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-0 w-125 h-125 bg-emerald-900/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-125 h-125 bg-amber-900/10 rounded-full blur-[100px]" />
 
         {/* Grain Overlay */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
@@ -77,9 +76,7 @@ export default function ContactSection() {
       {/* --- Main Container --- */}
       <div className="relative z-10 w-full max-w-7xl">
         <div className="overflow-hidden rounded-3xl border border-white/5 bg-emerald-900/20 shadow-2xl backdrop-blur-xl">
-
           <div className="grid items-center gap-12 p-8 md:p-12 lg:p-16 lg:grid-cols-2 lg:gap-16">
-            
             {/* --- Left: Text and Form Section --- */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -114,11 +111,15 @@ export default function ContactSection() {
                     <div className="rounded-lg bg-[#1dcc5b]/10 p-2 border border-[#1dcc5b]/20">
                       <Mail size={20} />
                     </div>
-                    <h3 className="font-outfit">Join Our Agri Green Newsletter</h3>
+                    <h3 className="font-outfit">
+                      Join Our Agri Green Newsletter
+                    </h3>
                   </div>
 
                   <p className="text-base leading-relaxed text-gray-400 md:text-lg">
-                    Receive the latest updates on sustainable farming, climate action initiatives, and community impact stories directly to your inbox.
+                    Receive the latest updates on sustainable farming, climate
+                    action initiatives, and community impact stories directly to
+                    your inbox.
                   </p>
                 </motion.div>
               </div>
@@ -194,10 +195,7 @@ export default function ContactSection() {
                   href="/contact"
                   className="group inline-flex items-center gap-2 font-semibold text-[#f5b70a]  hover:text-white rounded-mdborder border-yellow-400/30 p-2 transition-colors group-hover:bg-yellow-400/10"
                 >
-                  
-<span>Contact Us Directly</span>
-                 
-                  
+                  <span>Contact Us Directly</span>
                 </Link>
               </motion.div>
             </motion.div>
@@ -213,7 +211,7 @@ export default function ContactSection() {
               <motion.div
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.4 }}
-                className="relative aspect-[4/3] w-full max-w-md group"
+                className="relative aspect-4/3 w-full max-w-md group"
               >
                 {/* Image Card */}
                 <div className="absolute inset-0 z-10 overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-[#070e0b]">
@@ -234,7 +232,7 @@ export default function ContactSection() {
                       Community
                     </span>
                     <p className="text-lg font-medium leading-tight text-white mt-2">
-                      Building a greener future together.
+                      Join to build a greener future together.
                     </p>
                   </div>
                 </div>

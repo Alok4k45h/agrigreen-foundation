@@ -11,11 +11,16 @@ type Props = {
   date?: string;
 };
 
-export default function SpotlightCard({ title, subtitle, progress, date }: Props) {
+export default function SpotlightCard({
+  title,
+  subtitle,
+  progress,
+  date,
+}: Props) {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
-      className="bg-white rounded-xl shadow-md p-5 min-w-[240px] flex flex-col justify-between transition-all border border-green-100"
+      className="bg-white rounded-xl shadow-md p-5 min-w-60 flex flex-col justify-between transition-all border border-green-100"
     >
       <div>
         <h4 className="text-lg font-bold text-green-700 mb-2">{title}</h4>

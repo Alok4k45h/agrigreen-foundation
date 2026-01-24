@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-export default function SplashScreen({ onComplete }: { onComplete?: () => void }) {
+export default function SplashScreen({
+  onComplete,
+}: {
+  onComplete?: () => void;
+}) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -35,17 +39,16 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
           <div className="absolute inset-0 z-0">
             {/* Gradient Base */}
             <div className="absolute inset-0 bg-linear-to-b from-black via-[#05110d] to-black" />
-            
+
             {/* Cyber Grid */}
-            <div className="absolute inset-0 bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-30" />
-            
+            <div className="absolute inset-0 bg-grid-pattern mask-[radial-gradient(ellipse_at_center,white,transparent_70%)] opacity-30" />
+
             {/* Grain Texture */}
             <div className="absolute inset-0 bg-grain-overlay opacity-20 mix-blend-overlay" />
           </div>
 
           {/* --- Central Content --- */}
           <div className="relative z-10 flex flex-col items-center px-2">
-            
             {/* SVG Growing Tree Animation */}
             <svg
               width="200"
@@ -73,7 +76,11 @@ export default function SplashScreen({ onComplete }: { onComplete?: () => void }
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                transition={{
+                  duration: 1.5,
+                  delay: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
               />
 
               {/* 3. Left Branch */}

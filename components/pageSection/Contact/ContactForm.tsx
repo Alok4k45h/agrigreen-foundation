@@ -45,12 +45,13 @@ export default function ContactForm() {
       } else {
         toast.error(result.message || "Something went wrong");
       }
-    } catch (err) {
+    } catch {
       toast.error("Server error. Try again later.");
     }
   };
 
-  const inputStyles = "w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-nature/50 focus:border-nature transition-all";
+  const inputStyles =
+    "w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-nature/50 focus:border-nature transition-all";
 
   return (
     <motion.div
@@ -61,56 +62,101 @@ export default function ContactForm() {
       className="bg-card backdrop-blur-xl border border-border rounded-3xl p-8 shadow-2xl"
     >
       <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-        <span className="w-1.5 h-6 bg-linear-to-b from-nature to-agri rounded-full"/>
+        <span className="w-1.5 h-6 bg-linear-to-b from-nature to-agri rounded-full" />
         Send a Message
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-        
         {/* Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <input {...register("name")} placeholder="Your Name" className={inputStyles} />
-            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+            <input
+              {...register("name")}
+              placeholder="Your Name"
+              className={inputStyles}
+            />
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+            )}
           </div>
           <div>
-            <input {...register("position")} placeholder="Position / Title" className={inputStyles} />
-            {errors.position && <p className="text-red-500 text-xs mt-1">{errors.position.message}</p>}
+            <input
+              {...register("position")}
+              placeholder="Position / Title"
+              className={inputStyles}
+            />
+            {errors.position && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.position.message}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <input {...register("email")} type="email" placeholder="Email Address" className={inputStyles} />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+            <input
+              {...register("email")}
+              type="email"
+              placeholder="Email Address"
+              className={inputStyles}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div>
-            <input {...register("phone")} type="tel" placeholder="Phone Number" className={inputStyles} />
-            {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+            <input
+              {...register("phone")}
+              type="tel"
+              placeholder="Phone Number"
+              className={inputStyles}
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.phone.message}
+              </p>
+            )}
           </div>
         </div>
 
         {/* Address */}
         <div>
-          <input {...register("address")} placeholder="Your Address / Location" className={inputStyles} />
-          {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address.message}</p>}
+          <input
+            {...register("address")}
+            placeholder="Your Address / Location"
+            className={inputStyles}
+          />
+          {errors.address && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.address.message}
+            </p>
+          )}
         </div>
 
         {/* Best Time */}
         <div>
-           <input {...register("bestTime")} placeholder="Best time to call (Optional)" className={inputStyles} />
+          <input
+            {...register("bestTime")}
+            placeholder="Best time to call (Optional)"
+            className={inputStyles}
+          />
         </div>
 
         {/* Query */}
         <div>
-          <textarea 
-            {...register("query")} 
-            placeholder="Tell us about your query..." 
-            rows={4} 
-            className={`${inputStyles} resize-none`} 
+          <textarea
+            {...register("query")}
+            placeholder="Tell us about your query..."
+            rows={4}
+            className={`${inputStyles} resize-none`}
           />
-          {errors.query && <p className="text-red-500 text-xs mt-1">{errors.query.message}</p>}
+          {errors.query && (
+            <p className="text-red-500 text-xs mt-1">{errors.query.message}</p>
+          )}
         </div>
 
         {/* Submit Button */}

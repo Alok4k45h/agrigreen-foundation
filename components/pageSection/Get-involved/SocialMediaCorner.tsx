@@ -3,26 +3,30 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Linkedin, Facebook, Instagram, Youtube, ExternalLink 
+import {
+  Linkedin,
+  Facebook,
+  Instagram,
+  Youtube,
+  ExternalLink,
 } from "lucide-react";
 
 // --- Dynamic Imports (Critical for Performance) ---
 const LinkedInEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.LinkedInEmbed),
-  { ssr: false, loading: () => <EmbedSkeleton /> }
+  { ssr: false, loading: () => <EmbedSkeleton /> },
 );
 const FacebookEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.FacebookEmbed),
-  { ssr: false, loading: () => <EmbedSkeleton /> }
+  { ssr: false, loading: () => <EmbedSkeleton /> },
 );
 const InstagramEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
-  { ssr: false, loading: () => <EmbedSkeleton /> }
+  { ssr: false, loading: () => <EmbedSkeleton /> },
 );
 const YouTubeEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.YouTubeEmbed),
-  { ssr: false, loading: () => <EmbedSkeleton /> }
+  { ssr: false, loading: () => <EmbedSkeleton /> },
 );
 
 // --- Configuration ---
@@ -34,7 +38,10 @@ const SOCIAL_TABS = [
     color: "bg-[#0077b5]",
     textColor: "text-[#0077b5]",
     href: "https://www.linkedin.com/company/agrigreen-foundation",
-    posts: ["https://www.linkedin.com/posts/agrigreen-foundation_sustainableag-ruralimpact-innovation-activity-7414712330539827200-s7sj?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy", "https://www.linkedin.com/posts/agrigreen-foundation_socialimpact-agriculture-foodsecurity-activity-7414351778349166592-DGkk?utm_source=share&utm_medium=member_android&rcm=ACoAAC8DPEIBfuWGKvZbQT7lPmSLfV7j3Q6warY"], // Add real links
+    posts: [
+      "https://www.linkedin.com/posts/agrigreen-foundation_sustainableag-ruralimpact-innovation-activity-7414712330539827200-s7sj?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy",
+      "https://www.linkedin.com/posts/agrigreen-foundation_socialimpact-agriculture-foodsecurity-activity-7414351778349166592-DGkk?utm_source=share&utm_medium=member_android&rcm=ACoAAC8DPEIBfuWGKvZbQT7lPmSLfV7j3Q6warY",
+    ],
     Component: LinkedInEmbed,
   },
   {
@@ -44,7 +51,7 @@ const SOCIAL_TABS = [
     color: "bg-[#1877f2]",
     textColor: "text-[#1877f2]",
     href: "https://www.facebook.com/share/19ExxsA9Ze/",
-    posts: ["https://www.facebook.com/share/p/17CcoQJLf6/"],
+    posts: [""],
     Component: FacebookEmbed,
   },
   {
@@ -54,7 +61,7 @@ const SOCIAL_TABS = [
     color: "bg-[#ff0000]",
     textColor: "text-[#ff0000]",
     href: "https://www.youtube.com/@AGRIGREENFOUNDATION",
-    posts: ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"], // Add real links
+    posts: [""],
     Component: YouTubeEmbed,
   },
   {
@@ -64,7 +71,7 @@ const SOCIAL_TABS = [
     color: "bg-linear-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]",
     textColor: "text-pink-500",
     href: "https://www.instagram.com/agrigreenfoundation",
-    posts: ["https://www.instagram.com/p/C-x1y2z3/"], // Add real links
+    posts: [""],
     Component: InstagramEmbed,
   },
 ];
@@ -72,19 +79,21 @@ const SOCIAL_TABS = [
 // --- Skeleton Component ---
 const EmbedSkeleton = () => (
   <div className="w-full h-100 bg-white/5 animate-pulse rounded-xl flex items-center justify-center border border-white/10">
-    <span className="text-gray-500 font-medium font-mono text-sm">Loading Feed...</span>
+    <span className="text-gray-500 font-medium font-mono text-sm">
+      Loading Feed...
+    </span>
   </div>
 );
 
 export default function SocialMediaCorner() {
   const [activeTab, setActiveTab] = useState("linkedin");
 
-  const currentSocial = SOCIAL_TABS.find((tab) => tab.id === activeTab) || SOCIAL_TABS[0];
+  const currentSocial =
+    SOCIAL_TABS.find((tab) => tab.id === activeTab) || SOCIAL_TABS[0];
   const EmbedComponent = currentSocial.Component;
 
   return (
     <section className="relative py-24 bg-[#070e0b] overflow-hidden">
-      
       {/* --- Background Ambience --- */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-0 w-125 h-125 bg-nature/10 rounded-full blur-[120px]" />
@@ -93,24 +102,24 @@ export default function SocialMediaCorner() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-agri font-bold tracking-wider uppercase text-sm font-outfit">
             Connect With Us
           </span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4 font-serif"
           >
-             <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
-               Social Media Corner
-             </span>
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-nature via-agri to-climate">
+              Social Media Corner
+            </span>
           </motion.h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Follow our journey, watch our stories, and join the conversation on your favorite platforms.
+            Follow our journey, watch our stories, and join the conversation on
+            your favorite platforms.
           </p>
         </div>
 
@@ -153,17 +162,17 @@ export default function SocialMediaCorner() {
             >
               <div className="grid md:grid-cols-2 gap-8 items-start justify-center max-w-5xl mx-auto">
                 {currentSocial.posts.map((postUrl, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="bg-[#122b22]/40 backdrop-blur-xl border border-white/5 p-3 rounded-3xl shadow-2xl overflow-hidden"
                   >
                     <div className="rounded-2xl overflow-hidden bg-black/20">
                       {/* Render the specific embed component dynamically */}
                       {postUrl ? (
-                        <EmbedComponent 
-                          url={postUrl} 
-                          width="100%" 
-                          style={{ borderRadius: '16px', overflow: 'hidden' }}
+                        <EmbedComponent
+                          url={postUrl}
+                          width="100%"
+                          style={{ borderRadius: "16px", overflow: "hidden" }}
                         />
                       ) : (
                         <div className="h-64 flex items-center justify-center text-gray-500">
@@ -183,9 +192,15 @@ export default function SocialMediaCorner() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold transition-all hover:scale-105 border border-white/10 group"
                 >
-                  <currentSocial.icon size={18} className={`${currentSocial.textColor} group-hover:text-white transition-colors`} />
+                  <currentSocial.icon
+                    size={18}
+                    className={`${currentSocial.textColor} group-hover:text-white transition-colors`}
+                  />
                   <span>View more on {currentSocial.label}</span>
-                  <ExternalLink size={14} className="text-gray-500 group-hover:text-white transition-colors" />
+                  <ExternalLink
+                    size={14}
+                    className="text-gray-500 group-hover:text-white transition-colors"
+                  />
                 </a>
               </div>
             </motion.div>

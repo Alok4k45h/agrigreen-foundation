@@ -1,23 +1,49 @@
-//Importing all section component of get-involved page
+import type { Metadata } from "next";
 import PageBanner from "@/components/layouts/PageBanner";
 import dynamic from "next/dynamic";
 
 // Lazy Load Sections
-const DonationBankDetails = dynamic(() => import("@/components/pageSection/Get-involved/DonationBankDetails"), {
-  loading: () => <div className="h-screen w-full bg-background animate-pulse" />
-});
+const DonationBankDetails = dynamic(
+  () => import("@/components/pageSection/Get-involved/DonationBankDetails"),
+  {
+    loading: () => (
+      <div className="h-screen w-full bg-background animate-pulse" />
+    ),
+  },
+);
 
-const EngagementPathways = dynamic(() => import("@/components/pageSection/Get-involved/EngagementPathways"), {
-  loading: () => <div className="h-screen w-full bg-background animate-pulse" />
-});
+const EngagementPathways = dynamic(
+  () => import("@/components/pageSection/Get-involved/EngagementPathways"),
+  {
+    loading: () => (
+      <div className="h-screen w-full bg-background animate-pulse" />
+    ),
+  },
+);
 
-const SocialMediaCorner = dynamic(() => import("@/components/pageSection/Get-involved/SocialMediaCorner"), {
-  loading: () => <div className="h-screen w-full bg-background animate-pulse" />
-});
+const SocialMediaCorner = dynamic(
+  () => import("@/components/pageSection/Get-involved/SocialMediaCorner"),
+  {
+    loading: () => (
+      <div className="h-screen w-full bg-background animate-pulse" />
+    ),
+  },
+);
 
-const FaqSection = dynamic(() => import("@/components/pageSection/Get-involved/FaqSection"), {
-  loading: () => <div className="h-screen w-full bg-background animate-pulse" />
-});
+const FaqSection = dynamic(
+  () => import("@/components/pageSection/Get-involved/FaqSection"),
+  {
+    loading: () => (
+      <div className="h-screen w-full bg-background animate-pulse" />
+    ),
+  },
+);
+
+export const metadata: Metadata = {
+  title: "Get Involved | Agri Green Foundation",
+  description:
+    "Discover ways to support Agri Green Foundation's mission through donations, volunteering, and partnerships.",
+};
 
 export default function Home() {
   return (
